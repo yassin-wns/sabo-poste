@@ -1,0 +1,985 @@
+{
+  "categories": [
+    {
+      "id": "courrier-colis",
+      "name": {
+        "fr": "Courrier & Colis",
+        "ar": "البريد والطرود",
+        "en": "Mail & Parcels"
+      },
+      "description": {
+        "fr": "Envois postaux classiques, recommandés, express et colis nationaux/internationaux.",
+        "ar": "البعائث البريدية الكلاسيكية، المضمونة، السريعة والطرود الوطنية والدولية.",
+        "en": "Classic postal mail, registered mail, express and domestic/international parcels."
+      },
+      "icon": "mail",
+      "count": 4
+    },
+    {
+      "id": "mandats-transferts",
+      "name": {
+        "fr": "Mandats & Transferts",
+        "ar": "الحوالات والتحويلات المالية",
+        "en": "Money Orders & Transfers"
+      },
+      "description": {
+        "fr": "Mandat Web, mandats électroniques minute, mandats ordinaires et transferts d'argent.",
+        "ar": "الحوالة الإلكترونية، الحوالات الفورية، الحوالات العادية والتحويلات المالية السريعة.",
+        "en": "Web Money Orders, instant electronic transfers, ordinary money orders."
+      },
+      "icon": "currency-exchange",
+      "count": 3
+    },
+    {
+      "id": "cartes-edinar",
+      "name": {
+        "fr": "Cartes e-DINAR",
+        "ar": "بطاقات دينار إلكتروني",
+        "en": "e-DINAR Cards"
+      },
+      "description": {
+        "fr": "Cartes prépayées électroniques e-DINAR SMART, e-DINAR PRO, e-DINAR Jeune.",
+        "ar": "البطاقات مسبقة الدفع: دينار سمارت، دينار للمحترفين، دينار الشباب للطلبة والتلاميذ.",
+        "en": "Prepaid electronic cards: e-DINAR SMART, PRO, and Jeune for students and youth."
+      },
+      "icon": "credit-card",
+      "count": 4
+    },
+    {
+      "id": "paiement-factures",
+      "name": {
+        "fr": "Paiement de Factures",
+        "ar": "خلاص الفواتير",
+        "en": "Bill Payments"
+      },
+      "description": {
+        "fr": "Règlement des factures d'eau (SONEDE), d'électricité (STEG), télécoms et taxes.",
+        "ar": "استخلاص فواتير الماء (الصوناد)، الكهرباء والغاز (الستايغ)، الاتصالات والرسوم.",
+        "en": "Settlement of utility bills: water (SONEDE), electricity (STEG), telecoms and public fees."
+      },
+      "icon": "receipt-long",
+      "count": 3
+    },
+    {
+      "id": "services-monetiques",
+      "name": {
+        "fr": "Services Monétiques & Digitaux",
+        "ar": "الخدمات النقدية والرقمية",
+        "en": "Digital Financial Services"
+      },
+      "description": {
+        "fr": "Mobilcred, Mobitamweel, Mobi Tamkeen, DigiCard, Sobflous et inclusion financière.",
+        "ar": "موبيلكريد، موبي تمويل، موبي تمكين، ديجيكارد، صب فلوس وخدمات الإدماج المالي.",
+        "en": "Mobilcred, Mobitamweel, Mobi Tamkeen, DigiCard, Sobflous and micro-finance solutions."
+      },
+      "icon": "payments",
+      "count": 4
+    }
+  ],
+  "services": [
+    {
+      "id": "courrier-ordinaire",
+      "categoryId": "courrier-colis",
+      "title": {
+        "fr": "Courrier Ordinaire",
+        "ar": "الرسائل العادية",
+        "en": "Standard Mail"
+      },
+      "summary": {
+        "fr": "Envoi et réception de lettres et documents au tarif postal économique le plus avantageux.",
+        "ar": "إرسال واستقبال الرسائل والوثائق الورقية بأفضل تعريفة بريدية اقتصادية.",
+        "en": "Sending and receiving letters and paper documents at economical postal rates."
+      },
+      "description": {
+        "fr": "Le service de courrier ordinaire de la Poste Tunisienne permet d'acheminer vos correspondances écrites, documents administratifs et courriers personnels sur tout le territoire tunisien et vers l'étranger en toute sécurité.",
+        "ar": "تتيح خدمة البريد العادي بالبريد التونسي توجيه مراسلاتكم الخطية ووثائقكم الإدارية ورسائلكم الشخصية عبر كامل تراب الجمهورية وإلى الخارج بكل أمان وموثوقية.",
+        "en": "The standard mail service of the Tunisian Post ensures the safe delivery of personal correspondence, administrative documents, and mail across Tunisia and worldwide."
+      },
+      "icon": "mail",
+      "requirements": {
+        "fr": ["Enveloppe normalisée", "Affranchissement par timbre postal en vigueur", "Adresse complète et lisible avec code postal"],
+        "ar": ["ظرف بريدي مطابق للمواصفات", "طابع بريدي قانوني", "عنوان واضح ودقيق يتضمن الترقيم البريدي"],
+        "en": ["Standard envelope", "Valid postage stamp", "Clear address with correct postal code"]
+      },
+      "steps": {
+        "fr": ["Préparer le pli avec l'adresse du destinataire et de l'expéditeur", "Déposer au guichet du bureau ou dans la boîte aux lettres", "Acheminement et distribution par le facteur"],
+        "ar": ["إعداد الرسالة مع ذكر عنوان المرسل إليه والمرسل بدقة", "إيداع الظرف بشباك مكتب البريد أو في صندوق الرسائل", "توجيه وتوزيع المراسلة من قبل عون التوزيع"],
+        "en": ["Prepare the letter with sender and recipient addresses", "Deposit at post office counter or in mailbox", "Routing and final delivery by the postman"]
+      },
+      "deliveryTime": {
+        "fr": "2 à 3 jours ouvrables (national)",
+        "ar": "2 إلى 3 أيام عمل (وطني)",
+        "en": "2 to 3 business days (domestic)"
+      },
+      "featured": true,
+      "isPopular": true
+    },
+    {
+      "id": "courrier-express-cpx",
+      "categoryId": "courrier-colis",
+      "title": {
+        "fr": "Courrier Express & CPX",
+        "ar": "البريد السريع والطرود السريعة (CPX)",
+        "en": "Rapid Post & Express Parcels (CPX)"
+      },
+      "summary": {
+        "fr": "Livraison express garantie en 24h/48h avec suivi en temps réel et remise contre signature.",
+        "ar": "تسليم سريع مضمون في ظرف 24 إلى 48 ساعة مع تتبع فوري وتسليم مقابل إمضاء.",
+        "en": "Guaranteed express delivery within 24-48h with real-time tracking and signature on delivery."
+      },
+      "description": {
+        "fr": "Rapid-Poste (CPX) garantit l'acheminement urgent de vos documents importants et petits paquets avec suivi du code d'envoi en ligne, preuve de dépôt et notification de livraison.",
+        "ar": "تضمن خدمة البريد السريع التوصيل العاجل لوثائقكم الهامة وطرودكم، مع إمكانية التتبع الفوري عبر الإنترنت وإشعار بالوصول والتسليم باليد.",
+        "en": "Rapid-Poste (CPX) guarantees urgent delivery of vital documents and packages with full tracking, proof of deposit, and delivery confirmation."
+      },
+      "icon": "local-shipping",
+      "requirements": {
+        "fr": ["Emballage sécurisé et adapté", "Bordereau Rapid-Poste dûment rempli", "Numéro de téléphone du destinataire"],
+        "ar": ["تعليب محكم ومناسب للمحتوى", "استمارة البريد السريع معمرة بدقة", "رقم هاتف المتسلم للتنسيق"],
+        "en": ["Secure packaging", "Completed Rapid-Post form", "Recipient phone number"]
+      },
+      "steps": {
+        "fr": ["Pesée et enregistrement au guichet", "Attribution du numéro de suivi (tracking)", "Acheminement prioritaire et notification"],
+        "ar": ["وزن الطرد وتسجيله لدى الشباك", "الحصول على وصل ورقم التتبع", "التوجيه ذو الأولوية وإشعار المتسلم"],
+        "en": ["Weighing and counter registration", "Issue of tracking number", "Priority routing and delivery alert"]
+      },
+      "deliveryTime": {
+        "fr": "24h à 48h selon la zone",
+        "ar": "من 24 إلى 48 ساعة حسب المنطقة",
+        "en": "24h to 48h depending on destination"
+      },
+      "featured": true,
+      "isPopular": true
+    },
+    {
+      "id": "colis-postaux",
+      "categoryId": "courrier-colis",
+      "title": {
+        "fr": "Colis Postaux Ordinaires & Recommandés",
+        "ar": "الطرود البريدية العادية والمضمونة",
+        "en": "Standard & Registered Parcels"
+      },
+      "summary": {
+        "fr": "Envoi sécurisé d'objets et marchandises jusqu'à 30 kg à tarif préférentiel.",
+        "ar": "إرسال آمن للبضائع والأغراض حتى وزن 30 كغ بتسعيرة تفاضلية مدروسة.",
+        "en": "Secure dispatch of goods and packages up to 30 kg at preferred postal rates."
+      },
+      "description": {
+        "fr": "Acheminement économique pour vos marchandises et colis, avec options de recommandation, déclaration de valeur et avis de réception (AR).",
+        "ar": "إرسال اقتصادي ومضمون لطرودكم وبضائعكم مع خيارات التأمين، الإعلام بالبلوغ، والتسليم الآمن.",
+        "en": "Economical transport for parcels, with options for insurance, return receipts, and signature delivery."
+      },
+      "icon": "inventory-2",
+      "requirements": {
+        "fr": ["Pièce d'identité de l'expéditeur", "Colis correctement emballé", "Déclaration douanière si envoi international"],
+        "ar": ["بطاقة التعريف الوطنية للمرسل", "طرد مغلف بإحكام", "التصريح الديواني في صورة الإرسال الدولي"],
+        "en": ["Valid ID of sender", "Properly packed parcel", "Customs declaration if international"]
+      },
+      "steps": {
+        "fr": ["Contrôle du conditionnement au guichet", "Établissement du récépissé de dépôt", "Avis d'arrivée transmis au destinataire"],
+        "ar": ["فحص سلامة التعليب لدى الشباك", "إصدار وصل الإيداع القانوني", "توجيه إشعار بالوصول إلى المتسلم"],
+        "en": ["Counter inspection and verification", "Receipt generation", "Arrival notice dispatched to recipient"]
+      },
+      "deliveryTime": {
+        "fr": "3 à 5 jours ouvrables",
+        "ar": "من 3 إلى 5 أيام عمل",
+        "en": "3 to 5 business days"
+      },
+      "featured": false,
+      "isPopular": false
+    },
+    {
+      "id": "telegrammes",
+      "categoryId": "courrier-colis",
+      "title": {
+        "fr": "Télégrammes & Correspondances Officielles",
+        "ar": "البرقيات والمراسلات الرسمية",
+        "en": "Telegram & Official Dispatches"
+      },
+      "summary": {
+        "fr": "Transmission rapide de messages urgents, félicitations, condoléances ou convocations officielles.",
+        "ar": "تبليغ فوري للرسائل المستعجلة، التهاني، التعازي أو الاستدعاءات الرسمية ذات الصبغة القانونية.",
+        "en": "Urgent transmission of verified messages, congratulations, condolences, or legal notices."
+      },
+      "description": {
+        "fr": "Le télégramme postal conserve sa valeur juridique et officielle pour les convocations professionnelles, concours, événements familiaux et avis urgents.",
+        "ar": "تحافظ البرقية البريدية على قيمتها الإثباتية والقانونية في توجيه الاستدعاءات الرسمية والمناسبات الهامة والمستعجلة.",
+        "en": "Telegrams preserve full legal proof for official summons, competitions, and urgent family announcements."
+      },
+      "icon": "mark-chat-unread",
+      "requirements": {
+        "fr": ["Texte du message clair", "Coordonnées exactes du destinataire", "Pièce d'identité"],
+        "ar": ["نص البرقية واضح", "العنوان الدقيق ورقم هاتف المعني", "بطاقة التعريف الوطنية"],
+        "en": ["Clear message text", "Exact recipient address", "National ID"]
+      },
+      "steps": {
+        "fr": ["Rédaction du message au guichet", "Saisie immédiate sur le système réseau postal", "Distribution par porteur spécial"],
+        "ar": ["تحرير نص البرقية بالشباك", "الإدراج الفوري بالنظام الإلكتروني", "التسليم السريع عبر موزع خاص"],
+        "en": ["Draft message at counter", "Instant input into postal network", "Express delivery by courier"]
+      },
+      "deliveryTime": {
+        "fr": "Le jour même ou sous 24h",
+        "ar": "في نفس اليوم أو خلال 24 ساعة",
+        "en": "Same day or within 24 hours"
+      },
+      "featured": false,
+      "isPopular": false
+    },
+    {
+      "id": "mandat-web",
+      "categoryId": "mandats-transferts",
+      "title": {
+        "fr": "Mandat Web & Mandat Minute",
+        "ar": "الحوالة الإلكترونية والحوالة الفورية (Mandat Web)",
+        "en": "Web Money Order & Instant Transfer"
+      },
+      "summary": {
+        "fr": "Transfert d'argent instantané et sécurisé payable immédiatement dans tous les bureaux de poste.",
+        "ar": "تحويل مالي فوري وآمن يمكن سحبه في الحين من أي مكتب بريد بكامل تراب الجمهورية.",
+        "en": "Instant and secure money transfer payable immediately in any post office across Tunisia."
+      },
+      "description": {
+        "fr": "Le Mandat Web permet d'envoyer de l'argent instantanément à un proche ou partenaire sans compte bancaire. Le bénéficiaire reçoit un SMS avec le code secret et encaisse le montant immédiatement au guichet.",
+        "ar": "تمكن الحوالة الإلكترونية الفورية من تحويل الأموال في ثوانٍ معدودة دون اشتراط حساب بنكي. يتلقى المستفيد رسالة نصية قصيرة تحتوي على الرمز السري ليسحب المبلغ مباشرة من الشباك.",
+        "en": "Instant money transfer without requiring a bank account. The recipient receives a secret code via SMS and collects funds instantly at any counter."
+      },
+      "icon": "send",
+      "requirements": {
+        "fr": ["CIN originale en cours de validité", "Numéro de téléphone de l'expéditeur et du bénéficiaire", "Montant à transférer en espèces ou par carte"],
+        "ar": ["بطاقة التعريف الوطنية الأصلية سارية المفعول", "رقم الهاتف الجوال لكل من المرسل والمستفيد", "المبلغ المراد تحويله نقداً أو بالبطاقة"],
+        "en": ["Valid national ID card", "Phone numbers of sender and recipient", "Transfer amount in cash or card"]
+      },
+      "steps": {
+        "fr": ["Présenter sa CIN et remplir la fiche de mandat", "Payer le montant et les frais de service", "Communiquer le code de retrait sécurisé au bénéficiaire"],
+        "ar": ["الاستظهار ببطاقة التعريف وتعبئة مطبوعة الحوالة", "دفع المبلغ المراد تحويله مع معلوم الخدمة", "تسليم الرمز السري للمستفيد لسحب أمواله في الحين"],
+        "en": ["Present ID and fill transfer form", "Pay principal and transfer fees", "Share secret collection code with recipient"]
+      },
+      "deliveryTime": {
+        "fr": "Instantané (quelques secondes)",
+        "ar": "فوري (في بضع ثوانٍ)",
+        "en": "Instant (within seconds)"
+      },
+      "featured": true,
+      "isPopular": true
+    },
+    {
+      "id": "mandat-ordinaire",
+      "categoryId": "mandats-transferts",
+      "title": {
+        "fr": "Mandat Ordinaire & Mandat Carte",
+        "ar": "الحوالة العادية وحوالة البطاقة",
+        "en": "Ordinary Money Order & Card Transfer"
+      },
+      "summary": {
+        "fr": "Transfert traditionnel de fonds avec notification par avis de paiement à domicile.",
+        "ar": "التحويل التقليدي للأموال مع إشعار بالدفع يصل إلى مقر سكنى المستفيد.",
+        "en": "Traditional fund transfer with home arrival voucher and payment notification."
+      },
+      "description": {
+        "fr": "Idéal pour les paiements officiels, pensions alimentaires, et transferts ne nécessitant pas de retrait instantané par SMS.",
+        "ar": "مناسبة للوفاء بالالتزامات الرسمية، النفقة، والتحويلات التي لا تتطلب سحباً فورياً عبر الهاتف.",
+        "en": "Ideal for court settlements, alimony payments, and non-instant domestic transfers."
+      },
+      "icon": "price-change",
+      "requirements": {
+        "fr": ["CIN valide", "Nom complet et adresse exacte du bénéficiaire", "Fiche de mandat postal"],
+        "ar": ["بطاقة التعريف الوطنية", "الاسم الكامل والعنوان الدقيق للمستفيد", "مطبوعة الحوالة البريدية"],
+        "en": ["Valid National ID", "Full name and exact address of beneficiary", "Postal transfer slip"]
+      },
+      "steps": {
+        "fr": ["Dépôt des fonds au guichet", "Acheminement postal de l'avis de mandat", "Paiement au guichet de destination ou à domicile"],
+        "ar": ["إيداع الأموال بشباك المكتب", "توجيه إشعار الحوالة بريدياً", "صرف الحوالة للمستفيد بعد الاستظهار بهويته"],
+        "en": ["Deposit cash at counter", "Postal dispatch of order slip", "Collection at destination post office"]
+      },
+      "deliveryTime": {
+        "fr": "48h à 72h ouvrables",
+        "ar": "من 48 إلى 72 ساعة عمل",
+        "en": "48h to 72h business days"
+      },
+      "featured": false,
+      "isPopular": false
+    },
+    {
+      "id": "carte-edinar-smart",
+      "categoryId": "cartes-edinar",
+      "title": {
+        "fr": "Carte e-DINAR SMART",
+        "ar": "بطاقة دينار إلكتروني سمارت (e-DINAR SMART)",
+        "en": "e-DINAR SMART Card"
+      },
+      "summary": {
+        "fr": "La carte à puce sécurisée pour vos achats, retraits GAB, paiements sur Internet et l'application D17.",
+        "ar": "البطاقة الذكية المعتمدة للمشتريات وسحب الأموال من الموزعات الآلية والخلاص عبر الإنترنت وتطبيق D17.",
+        "en": "The smart chip card for purchases, ATM withdrawals, online shopping, and mobile D17 payments."
+      },
+      "description": {
+        "fr": "e-DINAR SMART est une carte monétique rechargeable prépayée. Elle permet d'effectuer des retraits sur tous les distributeurs de billets (DAB), de régler des achats chez les commerçants (TPE) et sur Internet, et de gérer votre solde en temps réel via l'application D17.",
+        "ar": "تعتبر بطاقة e-DINAR SMART بطاقة مسبقة الدفع قابلة للشحن، تتيح سحب الأموال من جميع الموزعات الآلية للأوراق المالية (DAB)، وخلاص المشتريات لدى التجار، والدفع عبر الإنترنت، ومتابعة الرصيد في الحين عبر تطبيق D17.",
+        "en": "A rechargeable prepaid card allowing ATM cash withdrawals, in-store payments, internet transactions, and instant balance monitoring via D17."
+      },
+      "icon": "credit-card",
+      "requirements": {
+        "fr": ["Copie de la CIN originale", "Formulaire de souscription signé", "Numéro de téléphone actif"],
+        "ar": ["نسخة من بطاقة التعريف الوطنية مع الاستظهار بالأصل", "مطبوعة الاشتراك ممضاة", "رقم هاتف جوال مسجل باسم الحريف"],
+        "en": ["Copy of National ID card", "Signed subscription contract", "Active phone number"]
+      },
+      "steps": {
+        "fr": ["Acquérir le pack e-DINAR au guichet", "Activation sécurisée par code confidentiel (PIN)", "Liaison immédiate à l'application D17"],
+        "ar": ["اقتناء البطاقة مباشرة من شباك مكتب البريد", "التفعيل الآمن عبر الرمز السري (PIN)", "ربط البطاقة فوراً بتطبيق D17 بهاتفك الجوال"],
+        "en": ["Acquire the card pack at the counter", "Activate via secure PIN", "Pair with the D17 mobile app"]
+      },
+      "deliveryTime": {
+        "fr": "Délivrée immédiatement au guichet",
+        "ar": "تسليم فوري لدى شباك مكتب البريد",
+        "en": "Immediate counter delivery"
+      },
+      "featured": true,
+      "isPopular": true
+    },
+    {
+      "id": "carte-edinar-jeune",
+      "categoryId": "cartes-edinar",
+      "title": {
+        "fr": "Carte e-DINAR Jeune",
+        "ar": "بطاقة دينار إلكتروني للشباب (e-DINAR Jeune)",
+        "en": "e-DINAR Youth Card (Students)"
+      },
+      "summary": {
+        "fr": "Spécialement conçue pour les élèves, étudiants et boursiers : inscription universitaire et gestion du budget.",
+        "ar": "مخصصة للتلاميذ والطلبة وأصحاب المنح المدرسية والجامعية: التسجيل الجامعي وإدارة المصاريف.",
+        "en": "Specially designed for pupils and university students: tuition payment, scholarship receipt, and budget control."
+      },
+      "description": {
+        "fr": "Carte indispensable pour l'inscription universitaire en ligne sur inscription.tn, la réception des bourses et prêts universitaires, et les paiements du quotidien à tarif préférentiel pour les jeunes.",
+        "ar": "البطاقة الأساسية لإجراء الترسيم الجامعي عن بعد عبر موقع inscription.tn، وتلقي المنح والقروض الجامعية، وتسديد النفقات اليومية بتكاليف تفاضلية ميسرة للشباب.",
+        "en": "Essential card for online university registration on inscription.tn, receipt of student grants and loans, and everyday student payments."
+      },
+      "icon": "school",
+      "requirements": {
+        "fr": ["Copie de la CIN de l'étudiant", "Attestation de réussite ou inscription scolaire/universitaire", "Formulaire spécifique Jeune"],
+        "ar": ["نسخة من بطاقة التعريف الوطنية للطالب", "شهادة ترسيم أو نجاح دراسي/جامعي", "استمارة اشتراك خاصة بفئة الشباب"],
+        "en": ["Copy of student's National ID", "Proof of school or university enrollment", "Youth subscription form"]
+      },
+      "steps": {
+        "fr": ["Retrait du pack étudiant au guichet de Sidi Ali Ben Aoun", "Activation du compte e-DINAR en ligne ou au bureau", "Paiement des frais de scolarité et réception des bourses"],
+        "ar": ["استلام بطاقة الطالب من شباك مكتب البريد بسيدي علي بن عون", "تفعيل الحساب الإلكتروني عبر الإنترنت أو بالمكتب", "خلاص معاليم الترسيم واستلام المنحة الجامعية"],
+        "en": ["Obtain student pack at Sidi Ali Ben Aoun counter", "Activate account online or at post office", "Pay tuition and receive scholarship grants"]
+      },
+      "deliveryTime": {
+        "fr": "Délivrée sur place au guichet",
+        "ar": "تسليم فوري ومباشر على عين المكان",
+        "en": "Delivered on the spot at counter"
+      },
+      "featured": true,
+      "isPopular": true
+    },
+    {
+      "id": "carte-edinar-pro",
+      "categoryId": "cartes-edinar",
+      "title": {
+        "fr": "Carte e-DINAR PRO & Corporate",
+        "ar": "بطاقة دينار إلكتروني للمحترفين والمؤسسات (PRO)",
+        "en": "e-DINAR PRO & Corporate Card"
+      },
+      "summary": {
+        "fr": "Solution monétique pour les commerçants, artisans, professions libérales et PME.",
+        "ar": "الحل المالي والنقدي المعتمد للتجار، الحرفيين، أصحاب المهن الحرة والمؤسسات الصغرى والمتوسطة.",
+        "en": "Financial payment solution for merchants, artisans, freelancers, and small businesses."
+      },
+      "description": {
+        "fr": "Permet aux professionnels d'encaisser les paiements de leurs clients, de régler leurs fournisseurs, de gérer leur trésorerie et d'accéder aux services B2B de la Poste Tunisienne.",
+        "ar": "تمكن المحترفين من استخلاص مستحقاتهم من الحرفاء، وخلاص المزودين، ومتابعة المعاملات التجارية والاستفادة من الخدمات الموجهة للشركات.",
+        "en": "Enables business owners to collect customer payments, settle supplier invoices, track cashflow, and access corporate postal services."
+      },
+      "icon": "business-center",
+      "requirements": {
+        "fr": ["Extrait du Registre National des Entreprises (RNE) / Patente", "Copie de la CIN du représentant légal", "Justificatif de domicile professionnel"],
+        "ar": ["مضمون السجل الوطني للمؤسسات أو المعرف الجبائي (الباتيندة)", "نسخة من بطاقة التعريف للوكيل أو صاحب النشاط", "شهادة إقامة مهنية"],
+        "en": ["National Business Registry extract / Tax ID", "ID copy of legal representative", "Proof of business address"]
+      },
+      "steps": {
+        "fr": ["Dépôt du dossier professionnel au bureau de poste", "Validation et remise de la carte PRO", "Association aux terminaux de paiement et D17 Pro"],
+        "ar": ["إيداع الملف المهني لدى مكتب البريد", "التثبت وتسليم بطاقة المحترف", "الربط بأجهزة الدفع الإلكتروني وتطبيق D17 المالي"],
+        "en": ["Submit business file at counter", "Validation and card issuance", "Link to POS terminals and D17 Pro"]
+      },
+      "deliveryTime": {
+        "fr": "24h à 48h après validation du dossier",
+        "ar": "خلال 24 إلى 48 ساعة بعد التثبت من الملف",
+        "en": "24h to 48h after document review"
+      },
+      "featured": false,
+      "isPopular": false
+    },
+    {
+      "id": "factures-steg-sonede",
+      "categoryId": "paiement-factures",
+      "title": {
+        "fr": "Paiement STEG, SONEDE & Télécom",
+        "ar": "استخلاص فواتير الكهرباء (STEG) والماء (SONEDE) والاتصالات",
+        "en": "Electricity (STEG), Water (SONEDE) & Telecom Bills"
+      },
+      "summary": {
+        "fr": "Réglez toutes vos factures de services publics rapidement au guichet ou via D17.",
+        "ar": "خلاص سريع ومضمون لكافة فواتير الخدمات العمومية بشباك البريد أو عبر تطبيق D17.",
+        "en": "Pay all your utility bills quickly at the counter or 24/7 through D17."
+      },
+      "description": {
+        "fr": "Plus besoin de faire la queue dans plusieurs agences. Le guichet de Sidi Ali Ben Aoun prend en charge le règlement direct des factures STEG, SONEDE, Tunisie Télécom, Ooredoo, Orange et amendes routières avec remise immédiate de quittance certifiée.",
+        "ar": "لا داعي للتنقل بين عدة إدارات. يتولى شباك مكتب بريد سيدي علي بن عون استخلاص فواتير الستايغ، الصوناد، اتصالات تونس، أوريدو، أورنج والخطايا المرورية مع تسليم وصل إبراء رسمي في الحين.",
+        "en": "No need to visit multiple agencies. The Sidi Ali Ben Aoun post office counter settles STEG, SONEDE, telecom bills, and traffic fines with certified receipts."
+      },
+      "icon": "receipt",
+      "requirements": {
+        "fr": ["Facture originale ou référence du contrat/numéro de facture", "Montant dû en espèces ou par carte bancaire/e-DINAR"],
+        "ar": ["أصل الفاتورة أو المعرف الدقيق ورقم الفاتورة", "المبلغ المستوجب نقداً أو بالبطاقة البريدية / البنكية"],
+        "en": ["Original bill or invoice/contract reference", "Amount due in cash or card"]
+      },
+      "steps": {
+        "fr": ["Présenter la facture au guichetier", "Validation du montant sur le terminal interconnecté", "Paiement et délivrance de la quittance officielle tamponnée"],
+        "ar": ["تقديم الفاتورة إلى عون الشباك", "التثبت من المبلغ بالنظام المركزي الموحد", "الدفع واستلام الوصل الرسمي المختوم المثبت للخلاص"],
+        "en": ["Hand invoice to counter agent", "System verification and confirmation", "Payment and certified stamped receipt delivery"]
+      },
+      "deliveryTime": {
+        "fr": "Règlement immédiat au guichet",
+        "ar": "خلاص فوري وتسوية آنية",
+        "en": "Immediate counter settlement"
+      },
+      "featured": true,
+      "isPopular": true
+    },
+    {
+      "id": "mobilcred-mobitamweel",
+      "categoryId": "services-monetiques",
+      "title": {
+        "fr": "Mobilcred & Mobitamweel (Inclusion Financière)",
+        "ar": "موبيلكريد وموبي تمويل (التمويل الصغير والإدماج المالي)",
+        "en": "Mobilcred & Mobitamweel (Microfinance Inclusion)"
+      },
+      "summary": {
+        "fr": "Services numériques pour le décaissement de micro-crédits et le remboursement via mobile.",
+        "ar": "خدمات رقمية لصرف القروض الصغرى وسداد الأقساط الشهرية عبر الهاتف الجوال والبريد.",
+        "en": "Digital services for micro-loan disbursement and mobile installment repayments."
+      },
+      "description": {
+        "fr": "Fruit du partenariat entre la Poste Tunisienne et les institutions de microfinance (ENDA, Microcred, etc.). Permet aux petits agriculteurs, commerçants et porteurs de projets de Sidi Ali Ben Aoun de recevoir leurs crédits et de rembourser leurs traites sans se déplacer loin.",
+        "ar": "ثمرة الشراكة الاستراتيجية بين البريد التونسي ومؤسسات التمويل الصغير (مثل أندا، ميكروكريد، تيسير). تمكن صغار الفلاحين والتجار وحاملي المشاريع بسيدي علي بن عون من استلام قروضهم وسداد أقساطهم بكل يسر.",
+        "en": "Partnership between Tunisian Post and microfinance institutions allowing farmers and entrepreneurs to receive micro-loans and pay installments locally."
+      },
+      "icon": "handshake",
+      "requirements": {
+        "fr": ["Carte e-DINAR liée", "Numéro de contrat de prêt avec l'institution partenaire", "CIN originale"],
+        "ar": ["بطاقة دينار إلكتروني مفعلة", "رقم عقد القرض لدى المؤسسة المالية المانحة", "أصل بطاقة التعريف الوطنية"],
+        "en": ["Linked e-DINAR card", "Loan contract number from partner institution", "Original National ID"]
+      },
+      "steps": {
+        "fr": ["Inscription du numéro de dossier sur D17 ou au guichet", "Réception des fonds sur la carte e-DINAR", "Remboursement programmé ou manuel des mensualités"],
+        "ar": ["تسجيل رقم الملف بتطبيق D17 أو لدى شباك البريد", "استلام مبلغ التمويل مباشرة على البطاقة", "تسديد الأقساط الشهرية بسهولة وأمان"],
+        "en": ["Register loan reference on D17 or at counter", "Funds credited to e-DINAR card", "Automatic or manual monthly payments"]
+      },
+      "deliveryTime": {
+        "fr": "Immédiat dès accord de l'organisme",
+        "ar": "فوري فور موافقة المؤسسة المالية",
+        "en": "Instant upon partner institution approval"
+      },
+      "featured": true,
+      "isPopular": true
+    },
+    {
+      "id": "services-partenaires-sobflous-digicard",
+      "categoryId": "services-monetiques",
+      "title": {
+        "fr": "Services Partenaires (Sobflous, DigiCard, Farmasi)",
+        "ar": "الخدمات الشريكة (صب فلوس، ديجيكارد، وفارماسي)",
+        "en": "Partner Platforms (Sobflous, DigiCard, Farmasi)"
+      },
+      "summary": {
+        "fr": "Paiement et recharge sécurisés pour plateformes d'e-commerce et vente directe partenaires.",
+        "ar": "شحن المحافظ الرقمية والخلاص المالي لمنصات التجارة الإلكترونية والبيع المباشر الشريكة.",
+        "en": "Secure payment and wallet top-ups for partnered e-commerce and direct selling platforms."
+      },
+      "description": {
+        "fr": "Intégration monétique officielle permettant aux utilisateurs des plateformes Sobflous, DigiCard, Mobi Tamkeen, Mobi Tasshil, Farmasi, Forever et Macoco d'effectuer leurs recharges et règlements grâce à leur compte postal.",
+        "ar": "تكامل نقدي رسمي يتيح لمستخدمي منصات صب فلوس، ديجيكارد، موبي تمكين، موبي تسهيل، فارماسي وفورايفر شحن حساباتهم وتسوية معاملاتهم عبر حساباتهم البريدية.",
+        "en": "Monetary integration enabling users of Sobflous, DigiCard, Mobi Tamkeen, and partner platforms to top up accounts and settle payments directly."
+      },
+      "icon": "account-balance-wallet",
+      "requirements": {
+        "fr": ["Identifiant compte partenaire", "Solde suffisant e-DINAR / compte postal", "Code de sécurité transactionnel"],
+        "ar": ["معرف الحساب لدى المنصة الشريكة", "رصيد كافٍ بالبطاقة أو الحساب الجاري", "الرمز السري لتأكيد المعاملة"],
+        "en": ["Partner account ID", "Sufficient balance in e-DINAR", "Transaction authorization code"]
+      },
+      "steps": {
+        "fr": ["Sélectionner La Poste / D17 sur le portail partenaire", "Saisie sécurisée des coordonnées monétiques", "Confirmation instantanée par SMS"],
+        "ar": ["اختيار وسيلة الدفع بالبريد التونسي / D17 بالموقع الشريك", "إدخال المعطيات بأمان عبر البوابة الموحدة", "تأكيد المعاملة برمز التحقق الفوري (SMS)"],
+        "en": ["Select Tunisian Post / D17 on partner portal", "Enter payment details securely", "Instant confirmation via SMS OTP"]
+      },
+      "deliveryTime": {
+        "fr": "Validation instantanée 24/7",
+        "ar": "تأكيد فوري على مدار الساعة وطيلة أيام الأسبوع",
+        "en": "Instant 24/7 processing"
+      },
+      "featured": false,
+      "isPopular": false
+    }
+  ],
+  "articles": [
+    {
+      "id": "1",
+      "title": {
+        "fr": "Lancement de la nouvelle version SABO POSTE 2.0 à Sidi Ali Ben Aoun",
+        "ar": "إطلاق المنصة الرقمية الجديدة سابو بوست 2.0 بمكتب بريد سيدي علي بن عون",
+        "en": "Launch of the New SABO POSTE 2.0 Platform in Sidi Ali Ben Aoun"
+      },
+      "category": "Actualité",
+      "author": "Bureau de Poste Sidi Ali Ben Aoun",
+      "date": "2026-02-01",
+      "summary": {
+        "fr": "Une plateforme moderne et trilingue pour centraliser l'information des usagers et fluidifier le service public.",
+        "ar": "منصة رقمية عصرية بثلاث لغات لتوحيد وتسهيل وصول المواطنين إلى المعلومات وتخفيف الازدحام.",
+        "en": "A modern trilingual platform centralizing citizen postal information and easing counter lines."
+      },
+      "content": {
+        "fr": "Dans le cadre de l'amélioration continue de l'accueil et du service public au Bureau de Poste de Sidi Ali Ben Aoun, la nouvelle plateforme SABO POSTE 2.0 a été déployée. Elle permet aux citoyens de consulter les horaires en direct, les guides D17, et d'envoyer leurs demandes sans attendre.",
+        "ar": "في إطار الحرص المتواصل على تجويد الخدمات وتقريب المعلومة من المواطنين بمكتب بريد سيدي علي بن عون، تم إطلاق منصة سابو بوست 2.0 لتمكين الحرفاء من الاطلاع الفوري على جداول التوقيت ودلائل تطبيق D17 ومراسلة الإدارة عن بعد.",
+        "en": "As part of ongoing efforts to elevate public service quality at Sidi Ali Ben Aoun Post Office, SABO POSTE 2.0 brings real-time schedules, D17 step-by-step guides, and direct citizen inquiry channels."
+      },
+      "featured": true
+    },
+    {
+      "id": "2",
+      "title": {
+        "fr": "Campagne d'adhésion aux cartes e-DINAR Jeune pour les élèves et étudiants",
+        "ar": "حملة استخراج وتجديد بطاقات دينار الشباب للطلبة والتلاميذ بالجهة",
+        "en": "e-DINAR Youth Card Campaign for Students and School Pupils"
+      },
+      "category": "Services Monétiques",
+      "author": "Guichet Monétique",
+      "date": "2026-01-20",
+      "summary": {
+        "fr": "Des guichets dédiés pour retirer vos cartes e-DINAR Jeune en quelques minutes avec votre CIN.",
+        "ar": "تخصيص شبابيك سريعة لاستلام وتفعيل بطاقات دينار الشباب في دقائق معدودة ببطاقة التعريف.",
+        "en": "Express counters dedicated to student e-DINAR card issuance in minutes."
+      },
+      "content": {
+        "fr": "Le bureau de poste de Sidi Ali Ben Aoun invite les étudiants et élèves de la région à régulariser ou retirer leurs cartes e-DINAR Jeune pour le paiement des bourses, des droits d'examen et les inscriptions sur internet.",
+        "ar": "يدعو مكتب بريد سيدي علي بن عون كافة التلاميذ والطلبة بالمعتمدية إلى المبادرة باستلام وتفعيل بطاقاتهم للاستفادة من صرف المنح المدرسية وخلاص معاليم التسجيل الجامعي بسلاسة تامة.",
+        "en": "Sidi Ali Ben Aoun post office invites all local students to obtain and activate their youth cards for smooth university enrollment and grant disbursements."
+      },
+      "featured": true
+    },
+    {
+      "id": "3",
+      "title": {
+        "fr": "Rappel sur les horaires de service continu et guichet de samedi",
+        "ar": "تذكير بمواعيد العمل الأسبوعية والحصص الصباحية ليوم السبت",
+        "en": "Notice regarding Weekly Working Hours and Saturday Morning Shift"
+      },
+      "category": "Horaires & Organisation",
+      "author": "Administration Locale",
+      "date": "2026-01-10",
+      "summary": {
+        "fr": "Ouverture du lundi au vendredi (8h00-12h00 / 14h00-17h00) et permanence le samedi matin.",
+        "ar": "المكتب مفتوح من الاثنين إلى الجمعة على فترتين ويوم السبت صباحاً لتسهيل قضاء شؤونكم.",
+        "en": "Open Monday through Friday in two shifts, plus Saturday morning operational hours."
+      },
+      "content": {
+        "fr": "Afin de mieux vous servir, nous vous rappelons que le bureau assure toutes les opérations postales et financières du lundi au vendredi en double séance, ainsi qu'une séance le samedi de 08h00 à 12h00.",
+        "ar": "حرصاً على تقديم أفضل التسهيلات، نذكر المواطنين بأن مكتب البريد يفتح أبوابه من الاثنين إلى الجمعة (8:00 إلى 12:00 ومن 14:00 إلى 17:00) إضافة إلى حصة صباحية يوم السبت من 8:00 إلى 12:00.",
+        "en": "For optimal customer convenience, the post office operates Monday to Friday (08:00-12:00 & 14:00-17:00) with a Saturday morning window from 08:00 to 12:00."
+      },
+      "featured": false
+    }
+  ],
+  "guides": [
+    {
+      "id": "guide-d17-activation",
+      "title": {
+        "fr": "Comment installer et activer l'application D17 sur votre smartphone",
+        "ar": "كيفية تنزيل وتفعيل تطبيق D17 على هاتفك الجوال",
+        "en": "How to Download and Activate the D17 App on Your Mobile"
+      },
+      "category": "D17 Mobile",
+      "readTime": "3 min",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "title": {
+            "fr": "Télécharger l'application D17",
+            "ar": "تحميل التطبيق الرسمي D17",
+            "en": "Download the Official D17 App"
+          },
+          "description": {
+            "fr": "Rendez-vous sur Google Play Store ou Apple App Store et recherchez 'D17 La Poste Tunisienne'.",
+            "ar": "افتح متجر Google Play أو Apple App Store وابحث عن تطبيق 'D17' الرسمي التابع للبريد التونسي.",
+            "en": "Open Google Play Store or Apple App Store and search for 'D17 La Poste Tunisienne'."
+          }
+        },
+        {
+          "stepNumber": 2,
+          "title": {
+            "fr": "Créer votre compte utilisateur",
+            "ar": "إنشاء حساب مستخدم جديد",
+            "en": "Create Your User Account"
+          },
+          "description": {
+            "fr": "Saisissez votre numéro de téléphone tunisien et votre numéro de CIN pour recevoir un code d'activation SMS.",
+            "ar": "أدخل رقم هاتفك الجوال المسجل باسمك ورقم بطاقة التعريف الوطنية لتلقي رمز التفعيل عبر رسالة قصيرة.",
+            "en": "Enter your Tunisian mobile number and National ID to receive a verification SMS."
+          }
+        },
+        {
+          "stepNumber": 3,
+          "title": {
+            "fr": "Associer votre carte e-DINAR",
+            "ar": "ربط بطاقتك دينار إلكتروني",
+            "en": "Link Your e-DINAR Card"
+          },
+          "description": {
+            "fr": "Entrez les 16 chiffres de votre carte e-DINAR ainsi que la date d'expiration pour lier votre compte de paiement.",
+            "ar": "أدخل الأرقام الـ16 للبطاقة وتاريخ نهاية الصلاحية لربط محفظتك والتحكم في رصيدك بأمان.",
+            "en": "Enter your 16-digit card number and expiration date to link your postal payment wallet."
+          }
+        },
+        {
+          "stepNumber": 4,
+          "title": {
+            "fr": "Définir votre code secret PIN à 4 chiffres",
+            "ar": "تحديد الرمز السري الشخصي (PIN)",
+            "en": "Set Your 4-Digit Secret PIN"
+          },
+          "description": {
+            "fr": "Choisissez un mot de passe et un code PIN confidentiel qui servira à valider chaque transaction financière.",
+            "ar": "اختر رمزاً سرياً شخصياً لا تشاركه مع أي شخص، وسيتم استخدامه لتأكيد جميع عملياتك المالية.",
+            "en": "Choose a secure personal PIN to confirm all your outgoing transactions and payments."
+          }
+        }
+      ]
+    },
+    {
+      "id": "guide-d17-paiement-factures",
+      "title": {
+        "fr": "Payer ses factures STEG ou SONEDE en 60 secondes avec D17",
+        "ar": "خلاص فواتير الكهرباء أو الماء في أقل من دقيقة عبر D17",
+        "en": "Pay STEG or SONEDE Utility Bills in 60 Seconds with D17"
+      },
+      "category": "Paiements Digitaux",
+      "readTime": "2 min",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "title": {
+            "fr": "Ouvrir la rubrique 'Paiement Factures'",
+            "ar": "الدخول إلى قسم 'خلاص الفواتير'",
+            "en": "Navigate to 'Bill Payment'"
+          },
+          "description": {
+            "fr": "Sur l'écran d'accueil de D17, appuyez sur l'icône 'Factures' et choisissez l'organisme (STEG, SONEDE, etc.).",
+            "ar": "من الشاشة الرئيسية لتطبيق D17، اضغط على خانة 'الفواتير' واختر المؤسسة المعنية (الكهرباء، الماء...).",
+            "en": "On the D17 home screen, tap the 'Bills' icon and choose your utility provider."
+          }
+        },
+        {
+          "stepNumber": 2,
+          "title": {
+            "fr": "Saisir la référence de la facture",
+            "ar": "إدخال معرف الفاتورة",
+            "en": "Enter Invoice Reference"
+          },
+          "description": {
+            "fr": "Indiquez la référence client ou scannez le code-barres figurant sur le papier de votre facture.",
+            "ar": "أدخل المعرف أو رقم الفاتورة أو قم بمسح الرمز الشريطي (Code-barres) الموجود أسفل الفاتورة بالكاميرا.",
+            "en": "Enter the client reference number or scan the barcode printed at the bottom of your bill."
+          }
+        },
+        {
+          "stepNumber": 3,
+          "title": {
+            "fr": "Valider et conserver le reçu numérique",
+            "ar": "تأكيد الدفع وحفظ الوصل الإلكتروني",
+            "en": "Confirm Payment & Save Receipt"
+          },
+          "description": {
+            "fr": "Vérifiez le montant exact, saisissez votre PIN D17 et téléchargez instantanément votre reçu officiel avec numéro d'opération.",
+            "ar": "تثبت من المبلغ الظاهر على الشاشة، أدخل رمزك السري، وحمل مباشرة الوصل الرقمي الرسمي المختوم.",
+            "en": "Verify the amount shown, enter your PIN, and instantly download your certified digital receipt."
+          }
+        }
+      ]
+    },
+    {
+      "id": "guide-d17-transfert-argent",
+      "title": {
+        "fr": "Envoyer de l'argent instantanément de carte à carte ou par mandat mobile",
+        "ar": "تحويل الأموال الفوري من بطاقة إلى أخرى أو عبر حوالة هاتفية",
+        "en": "Instant Peer-to-Peer Transfer or Mobile Cash Order with D17"
+      },
+      "category": "Transferts d'argent",
+      "readTime": "2 min",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "title": {
+            "fr": "Choisir le type de transfert",
+            "ar": "اختيار نوع التحويل المالي",
+            "en": "Select Transfer Type"
+          },
+          "description": {
+            "fr": "Optez pour un transfert direct vers une autre carte e-DINAR ou un mandat minute retirable au guichet par SMS.",
+            "ar": "اختر بين التحويل المباشر لبطاقة دينار أخرى، أو إرسال حوالة فورية يسحبها المتسلم نقداً من أي شباك بريد.",
+            "en": "Select direct transfer to another e-DINAR card or a cash voucher collectable at any counter."
+          }
+        },
+        {
+          "stepNumber": 2,
+          "title": {
+            "fr": "Indiquer le destinataire et le montant",
+            "ar": "تحديد رقم المستفيد والمبلغ",
+            "en": "Enter Recipient & Amount"
+          },
+          "description": {
+            "fr": "Renseignez le numéro de téléphone ou le numéro de carte du bénéficiaire ainsi que le montant en dinars tunisiens.",
+            "ar": "أدخل رقم هاتف المستفيد أو رقم بطاقته والمبلغ المراد إرساله بالدينار التونسي بدقة.",
+            "en": "Enter the recipient's phone number or card number and the amount in Tunisian Dinars."
+          }
+        },
+        {
+          "stepNumber": 3,
+          "title": {
+            "fr": "Confirmation par PIN",
+            "ar": "التأكيد بالرمز السري",
+            "en": "PIN Confirmation"
+          },
+          "description": {
+            "fr": "Saisissez votre code PIN secret. Le destinataire est averti par SMS dans la seconde qui suit.",
+            "ar": "أدخل رمز PIN السري، وسيصل إشعار فوري إلى المتسلم عبر رسالة نصية قصيرة.",
+            "en": "Input your confidential PIN. The recipient receives an instant SMS notification within seconds."
+          }
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "1",
+      "category": "D17",
+      "question": {
+        "fr": "Que faire si j'ai oublié mon mot de passe ou code secret D17 ?",
+        "ar": "ماذا أفعل في صورة نسيان كلمة العبور أو الرمز السري لتطبيق D17 ؟",
+        "en": "What should I do if I forgot my D17 password or secret PIN?"
+      },
+      "answer": {
+        "fr": "Sur l'écran de connexion de l'application D17, cliquez sur 'Mot de passe oublié'. Un code de réinitialisation vous sera envoyé par SMS sur votre numéro enregistré. Si le problème persiste, présentez-vous au bureau de poste de Sidi Ali Ben Aoun avec votre CIN originale pour réinitialiser vos paramètres d'accès en toute sécurité.",
+        "ar": "من خلال شاشة الدخول لتطبيق D17، اضغط على 'نسيت كلمة السر'. سيصلك رمز أمان لإعادة الضبط عبر رسالة نصية قصيرة. في حال تعذر ذلك، يرجى التوجه إلى شباك مكتب بريد سيدي علي بن عون مصحوباً ببطاقة التعريف الوطنية الأصلية لإعادة تهيئة حسابك فوراً.",
+        "en": "On the D17 login screen, tap 'Forgot Password'. A security reset code will be sent via SMS to your registered phone number. If issues persist, visit the Sidi Ali Ben Aoun post office counter with your original ID for secure reset."
+      }
+    },
+    {
+      "id": "2",
+      "category": "Cartes e-DINAR",
+      "question": {
+        "fr": "Comment recharger ma carte e-DINAR au bureau ou à distance ?",
+        "ar": "كيف يمكنني شحن بطاقة دينار إلكتروني في المكتب أو عن بعد ؟",
+        "en": "How can I top up my e-DINAR card at the office or remotely?"
+      },
+      "answer": {
+        "fr": "Vous pouvez recharger votre carte : 1) Directement en espèces au guichet du bureau de poste de Sidi Ali Ben Aoun, 2) Par virement depuis un compte courant postal (CCP), 3) Depuis une autre carte e-DINAR via l'application D17, ou 4) Sur les distributeurs automatiques de billets (DAB) équipés.",
+        "ar": "يمكن شحن بطاقتك بعدة طرق: 1) نقداً مباشرة لدى شباك مكتب بريد سيدي علي بن عون، 2) عبر تحويل من حساب جاري بريدي (CCP)، 3) من بطاقة دينار إلكتروني أخرى عبر تطبيق D17، أو 4) من خلال الموزعات الآلية للأوراق المالية المجهزة.",
+        "en": "You can top up your card: 1) In cash at the Sidi Ali Ben Aoun post office counter, 2) By transfer from a postal checking account (CCP), 3) From another e-DINAR card through D17, or 4) At supported ATMs."
+      }
+    },
+    {
+      "id": "3",
+      "category": "Horaires & Services",
+      "question": {
+        "fr": "Quels sont les horaires d'ouverture du bureau de poste de Sidi Ali Ben Aoun ?",
+        "ar": "ما هي أوقات عمل مكتب بريد سيدي علي بن عون ؟",
+        "en": "What are the opening hours of Sidi Ali Ben Aoun post office?"
+      },
+      "answer": {
+        "fr": "Le bureau est ouvert du lundi au vendredi en double séance : le matin de 08h00 à 12h00 et l'après-midi de 14h00 à 17h00. Une permanence est également assurée chaque samedi matin de 08h00 à 12h00. Le bureau est fermé le dimanche et les jours fériés officiels.",
+        "ar": "يعمل المكتب من الاثنين إلى الجمعة بنظام الحصتين: الحصة الصباحية من الساعة 08:00 إلى 12:00، والحصة المسائية من الساعة 14:00 إلى 17:00. كما تؤمن حصة استمرار صباحية كل يوم سبت من 08:00 إلى 12:00، ويغلق المكتب يوم الأحد وأيام العطل الرسمية.",
+        "en": "The office operates Monday through Friday in two shifts: morning from 08:00 to 12:00 and afternoon from 14:00 to 17:00. A Saturday morning shift is available from 08:00 to 12:00. The post office is closed on Sundays and official public holidays."
+      }
+    },
+    {
+      "id": "4",
+      "category": "Mandats & Transferts",
+      "question": {
+        "fr": "De quoi ai-je besoin pour retirer un Mandat Web envoyé à mon nom ?",
+        "ar": "ما هي الوثائق المطلوبة لسحب حوالة إلكترونية (Mandat Web) مرسلة باسمي ؟",
+        "en": "What documents are required to withdraw a Web Money Order sent in my name?"
+      },
+      "answer": {
+        "fr": "Pour retirer un mandat au guichet, vous devez présenter obligatoirement : 1) Votre Carte d'Identité Nationale (CIN) originale en cours de validité, 2) Le code secret de la transaction (communiqué par l'expéditeur ou reçu par SMS), et 3) Le montant exact attendu.",
+        "ar": "لسحب الحوالة من الشباك، يجب الاستظهار إجبارياً بـ: 1) أصل بطاقة التعريف الوطنية سارية المفعول، 2) الرمز السري للعملية (الذي تسلمته من المرسل أو عبر رسالة نصية قصيرة)، و3) تحديد المبلغ المتوقع سحبه.",
+        "en": "To collect your money order at the counter, you must present: 1) Your original valid National ID card, 2) The secret transaction code (received from the sender or by SMS), and 3) The exact expected amount."
+      }
+    },
+    {
+      "id": "5",
+      "category": "Paiements de factures",
+      "question": {
+        "fr": "Le paiement d'une facture STEG ou SONEDE au bureau de poste est-il pris en compte immédiatement ?",
+        "ar": "هل خلاص فاتورة الكهرباء أو الماء بشباك البريد يتم احتسابه وتسويته في الحين ؟",
+        "en": "Is the payment of a STEG or SONEDE bill at the post office processed immediately?"
+      },
+      "answer": {
+        "fr": "Oui, le système informatique de la Poste Tunisienne est directement interconnecté en temps réel avec la STEG et la SONEDE. Dès paiement au guichet ou via D17, vous recevez un reçu certifié avec valeur libératoire et le compte de la société d'eau ou d'électricité est mis à jour instantanément.",
+        "ar": "نعم، النظام المعلوماتي للبريد التونسي متصل مباشرة وبصفة آنية مع منظومات الستايغ والصوناد. بمجرد الخلاص بشباك المكتب أو عبر D17، تتسلم وصلاً رسمياً له صبغة إبراء قانونية ويتم تحيين حسابك لدى الشركة المعنية فورياً.",
+        "en": "Yes, the Tunisian Post computer network is interconnected in real-time with STEG and SONEDE. Once settled at the counter or via D17, you receive a certified legal receipt and the utility provider's database is updated instantaneously."
+      }
+    }
+  ],
+  "agencies": [
+    {
+      "id": "bureau-sidi-ali-ben-aoun",
+      "name": {
+        "fr": "Bureau de Poste de Sidi Ali Ben Aoun",
+        "ar": "مكتب بريد سيدي علي بن عون",
+        "en": "Sidi Ali Ben Aoun Post Office"
+      },
+      "postalCode": "9120",
+      "governorate": {
+        "fr": "Sidi Bouzid",
+        "ar": "سيدي بوزيد",
+        "en": "Sidi Bouzid"
+      },
+      "delegation": {
+        "fr": "Sidi Ali Ben Aoun",
+        "ar": "سيدي علي بن عون",
+        "en": "Sidi Ali Ben Aoun"
+      },
+      "address": {
+        "fr": "Avenue Habib Bourguiba, 9120 Sidi Ali Ben Aoun, Tunisie",
+        "ar": "شارع الحبيب بورقيبة، 9120 سيدي علي بن عون، تونس",
+        "en": "Habib Bourguiba Avenue, 9120 Sidi Ali Ben Aoun, Tunisia"
+      },
+      "phone": "+216 76 661 100",
+      "email": "bureau.sidi.ali.ben.aoun@poste.tn",
+      "latitude": 34.8569,
+      "longitude": 9.1235,
+      "schedule": {
+        "monday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
+        "tuesday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
+        "wednesday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
+        "thursday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
+        "friday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
+        "saturday": { "morning": "08:00 - 12:00", "afternoon": "Fermé / مغلق", "status": "half-day" },
+        "sunday": { "morning": "Fermé / مغلق", "afternoon": "Fermé / مغلق", "status": "closed" }
+      },
+      "features": [
+        { "fr": "Guichet Postal & Courrier", "ar": "شباك الخدمات البريدية والمراسلات", "en": "Postal & Mail Counter" },
+        { "fr": "Guichet Épargne & Opérations Financières", "ar": "شباك الادخار والعمليات المالية", "en": "Savings & Financial Counter" },
+        { "fr": "Espace Monétique & Cartes e-DINAR", "ar": "فضاء النقدية وبطاقات دينار إلكتروني", "en": "Monetary Space & e-DINAR" },
+        { "fr": "Distributeur Automatique de Billets (DAB 24/7)", "ar": "موزع آلي للأوراق المالية (DAB 24/7)", "en": "ATM Machine (DAB 24/7)" },
+        { "fr": "Service Mandat Web & Transferts Minutes", "ar": "خدمة الحوالة الإلكترونية والحوالات الفورية", "en": "Web Money Order & Instant Transfer" },
+        { "fr": "Point d'Accueil et d'Orientation Citoyen", "ar": "نقطة استقبال وتوجيه المواطنين", "en": "Citizen Welcome & Guidance Desk" }
+      ],
+      "activeCounters": 4,
+      "supervisor": "Chef de Centre - Bureau Sidi Ali Ben Aoun"
+    }
+  ],
+  "messages": [
+    {
+      "id": "1",
+      "fullName": "Mohamed Trabelsi",
+      "email": "mohamed.trabelsi@gmail.com",
+      "phone": "+216 98 123 456",
+      "category": "D17",
+      "subject": "Difficulté de liaison de ma carte e-DINAR sur l'application",
+      "message": "Bonjour, j'ai acheté une nouvelle carte e-DINAR SMART au bureau de Sidi Ali Ben Aoun hier, mais l'application D17 m'affiche un message d'erreur lors de la saisie des coordonnées. Pouvez-vous m'indiquer la démarche pour débloquer la situation ? Merci.",
+      "status": "reviewed",
+      "adminNote": "Vérifié dans le système. La carte est bien active. Conseillé de rafraîchir le cache de l'application et de réessayer.",
+      "createdAt": "2026-01-28T10:15:00Z"
+    },
+    {
+      "id": "2",
+      "fullName": "Fatma Guesmi",
+      "email": "fatma.guesmi@yahoo.fr",
+      "phone": "+216 22 456 789",
+      "category": "Paiement de Factures",
+      "subject": "Règlement facture STEG en retard",
+      "message": "Puis-je payer une facture d'électricité STEG dont la date limite est dépassée de quelques jours directement au guichet du bureau de poste de Sidi Ali Ben Aoun ?",
+      "status": "replied",
+      "adminNote": "Répondu par SMS/appel. Oui, les factures en retard sont acceptées au guichet tant qu'aucune coupure n'est programmée.",
+      "createdAt": "2026-01-29T14:30:00Z"
+    },
+    {
+      "id": "3",
+      "fullName": "Brahim Mansouri",
+      "email": "brahim.mansouri@outlook.com",
+      "phone": "+216 55 987 321",
+      "category": "Courrier & Colis",
+      "subject": "Suivi de colis CPX expédié vers Tunis",
+      "message": "J'ai expédié un colis par Rapid-Poste (CPX) depuis votre bureau avant-hier. Le numéro d'envoi est CPX9120785TN. Est-il déjà arrivé au centre de tri de Tunis ?",
+      "status": "pending",
+      "adminNote": "",
+      "createdAt": "2026-02-02T09:00:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "fullName": "Administrateur SABO POSTE",
+      "email": "admin@saboposte.poste.tn",
+      "role": "SuperAdmin",
+      "active": true,
+      "createdAt": "2026-01-05"
+    },
+    {
+      "id": "2",
+      "username": "agent_aoun",
+      "fullName": "Agent Guichet Sidi Ali Ben Aoun",
+      "email": "agent.aoun@poste.tn",
+      "role": "Agent",
+      "active": true,
+      "createdAt": "2026-01-15"
+    }
+  ],
+  "settings": {
+    "siteName": {
+      "fr": "SABO POSTE 2.0 — Plateforme d'Information du Bureau de Poste",
+      "ar": "سابو بوست 2.0 — منصة الإعلام والخدمات لمكتب بريد سيدي علي بن عون",
+      "en": "SABO POSTE 2.0 — Sidi Ali Ben Aoun Post Office Information Platform"
+    },
+    "agencyName": {
+      "fr": "Bureau de Poste de Sidi Ali Ben Aoun (9120)",
+      "ar": "مكتب بريد سيدي علي بن عون (9120)",
+      "en": "Sidi Ali Ben Aoun Post Office (9120)"
+    },
+    "emergencyPhone": "+216 76 661 100",
+    "supportEmail": "contact.sabo@poste.tn",
+    "announcementActive": true,
+    "announcement": {
+      "fr": "Bienvenue sur SABO POSTE 2.0 : Consultez les horaires officiels, découvrez les guides D17 et transmettez vos demandes en toute simplicité.",
+      "ar": "مرحباً بكم في منصة سابو بوست 2.0: اطلعوا على مواعيد العمل الرسمية، اكتشفوا دلائل D17 وقدموا استفساراتكم بكل يسر.",
+      "en": "Welcome to SABO POSTE 2.0: Check official hours, explore D17 digital guides, and submit inquiries with ease."
+    },
+    "version": "2.0.0",
+    "academicReference": "Stage de Perfectionnement — ISET Sidi Bouzid — Yassin Wannassi — Janvier 2026"
+  },
+  "activityLogs": [
+    {
+      "id": "1",
+      "action": "Connexion Administrateur",
+      "user": "admin",
+      "timestamp": "2026-02-02T08:30:12Z",
+      "details": "Connexion sécurisée réussie sur le panneau d'administration"
+    },
+    {
+      "id": "2",
+      "action": "Mise à jour Horaire",
+      "user": "admin",
+      "timestamp": "2026-02-01T15:20:00Z",
+      "details": "Confirmation des horaires hebdomadaires pour la séance du samedi"
+    },
+    {
+      "id": "3",
+      "action": "Traitement Message Citoyen",
+      "user": "agent_aoun",
+      "timestamp": "2026-01-29T16:05:44Z",
+      "details": "Message #2 marqué comme répondu avec note explicative"
+    }
+  ]
+}
