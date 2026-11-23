@@ -1,0 +1,161 @@
+<div class="mgmt-page">
+  <div class="mgmt-header">
+    <div>
+      <h1 class="mgmt-title">Gestion des Actualités & Avis</h1>
+      <p class="mgmt-sub">Communiquez les informations officielles et campagnes aux citoyens</p>
+    </div>
+    <button (click)="openCreateModal()" class="btn btn-primary">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span>Nouvel Article</span>
+    </button>
+  </div>
+
+  <div class="card table-card">
+    <div class="table-responsive">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Catégorie</th>
+            <th>Date</th>
+            <th>Auteur</th>
+            <th>À la une</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let art of articles">
+            <td>
+              <strong>{{ art.title.fr }}</strong>
+              <div class="text-muted text-small">{{ art.title.ar }}</div>
+            </td>
+            <td><span class="badge badge-secondary">{{ art.category }}</span></td>
+            <td>{{ art.date }}</td>
+            <td>{{ art.author }}</td>
+            <td>
+              <span *ngIf="art.featured" class="badge badge-gold">Oui</span>
+              <span *ngIf="!art.featured" class="text-muted">Non</span>
+            </td>
+            <td>
+              <div class="table-actions">
+                <button (click)="openEditModal(art)" class="btn btn-secondary btn-sm" title="Modifier">
+                  <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button (click)="confirmDelete(art)" class="btn btn-danger btn-sm" title="Supprimer">
+                  <span class="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div *ngIf="isEditModalOpen" class="modal-backdrop" (click)="isEditModalOpen = false">
+  <div class="modal-dialog modal-lg" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">{{ isCreating ? 'Nouvel Article' : 'Modifier l\'Article' }}</h3>
+      <button class="modal-close" (click)="isEditModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body form-modal-body">
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label">Catégorie</label>
+          <input type="text" [(ngModel)]="currentArticle.category" class="form-control" placeholder="ex: Actualité, Services Monétiques">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Auteur</label>
+          <input type="text" [(ngModel)]="currentArticle.author" class="form-control">
+        </div>
+      </div>
+
+      <!-- TITLES -->
+      <div class="form-section-title">Titres de l'Avis</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Titre (FR)</label>
+          <input type="text" [(ngModel)]="currentArticle.title.fr" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="form-label">العنوان (AR)</label>
+          <input type="text" [(ngModel)]="currentArticle.title.ar" class="form-control text-right" dir="rtl">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Title (EN)</label>
+          <input type="text" [(ngModel)]="currentArticle.title.en" class="form-control">
+        </div>
+      </div>
+
+      <!-- SUMMARIES -->
+      <div class="form-section-title">Résumé Court</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Résumé (FR)</label>
+          <textarea [(ngModel)]="currentArticle.summary.fr" rows="2" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">الملخص (AR)</label>
+          <textarea [(ngModel)]="currentArticle.summary.ar" rows="2" class="form-control text-right" dir="rtl"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Summary (EN)</label>
+          <textarea [(ngModel)]="currentArticle.summary.en" rows="2" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <!-- CONTENTS -->
+      <div class="form-section-title">Contenu Détaillé</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Texte complet (FR)</label>
+          <textarea [(ngModel)]="currentArticle.content.fr" rows="4" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">النص الكامل (AR)</label>
+          <textarea [(ngModel)]="currentArticle.content.ar" rows="4" class="form-control text-right" dir="rtl"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Full Content (EN)</label>
+          <textarea [(ngModel)]="currentArticle.content.en" rows="4" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" [(ngModel)]="currentArticle.featured">
+          <span>Mettre en avant sur la page d'accueil</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isEditModalOpen = false">Annuler</button>
+      <button class="btn btn-primary" (click)="saveArticle()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div *ngIf="isDeleteModalOpen" class="modal-backdrop" (click)="isDeleteModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">Confirmer la suppression</h3>
+      <button class="modal-close" (click)="isDeleteModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Supprimer l'article <strong>{{ articleToDelete?.title?.fr }}</strong> ?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isDeleteModalOpen = false">Annuler</button>
+      <button class="btn btn-danger" (click)="executeDelete()">Supprimer</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,203 @@
+<div class="mgmt-page">
+  <div class="mgmt-header">
+    <div>
+      <h1 class="mgmt-title">Messages & Réclamations des Citoyens</h1>
+      <p class="mgmt-sub">Suivez les demandes, questions et signalements reçus via le formulaire de contact</p>
+    </div>
+  </div>
+
+  <!-- Filters Bar -->
+  <div class="mgmt-filters-bar card">
+    <div class="search-box">
+      <span class="material-symbols-outlined">search</span>
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Rechercher par expéditeur, email ou objet..."
+        class="form-control">
+    </div>
+
+    <!-- Status Tabs -->
+    <div class="status-filter-pills">
+      <button
+        class="pill-btn"
+        [class.active]="selectedStatus === 'all'"
+        (click)="selectedStatus = 'all'">
+        Tous ({{ messages.length }})
+      </button>
+      <button
+        class="pill-btn"
+        [class.active]="selectedStatus === 'pending'"
+        (click)="selectedStatus = 'pending'">
+        En attente
+      </button>
+      <button
+        class="pill-btn"
+        [class.active]="selectedStatus === 'reviewed'"
+        (click)="selectedStatus = 'reviewed'">
+        En cours
+      </button>
+      <button
+        class="pill-btn"
+        [class.active]="selectedStatus === 'replied'"
+        (click)="selectedStatus = 'replied'">
+        Répondu
+      </button>
+    </div>
+  </div>
+
+  <div class="card table-card">
+    <div class="table-responsive">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Expéditeur</th>
+            <th>Catégorie</th>
+            <th>Objet</th>
+            <th>Date d'envoi</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let msg of filteredMessages">
+            <td>
+              <strong>{{ msg.fullName }}</strong>
+              <div class="text-muted small">{{ msg.email }}</div>
+              <div *ngIf="msg.phone" class="text-muted small">{{ msg.phone }}</div>
+            </td>
+            <td><span class="badge badge-secondary">{{ msg.category }}</span></td>
+            <td>
+              <div class="table-subject">{{ msg.subject }}</div>
+            </td>
+            <td>{{ msg.createdAt | date:'short' }}</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'badge-danger': msg.status === 'pending',
+                  'badge-warning': msg.status === 'reviewed',
+                  'badge-success': msg.status === 'replied'
+                }">
+                {{ msg.status === 'pending' ? 'En attente' : (msg.status === 'reviewed' ? 'En examen' : 'Répondu') }}
+              </span>
+            </td>
+            <td>
+              <div class="table-actions">
+                <button (click)="openDetail(msg)" class="btn btn-primary btn-sm" title="Consulter">
+                  <span class="material-symbols-outlined">visibility</span>
+                </button>
+                <button (click)="confirmDelete(msg)" class="btn btn-danger btn-sm" title="Supprimer">
+                  <span class="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="filteredMessages.length === 0">
+            <td colspan="6" class="text-center py-4 text-muted">
+              Aucun message ne correspond aux filtres.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MESSAGE DETAIL MODAL -->
+<div *ngIf="isDetailModalOpen && activeMessage" class="modal-backdrop" (click)="isDetailModalOpen = false">
+  <div class="modal-dialog modal-lg" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title-box">
+        <span class="badge badge-secondary">{{ activeMessage.category }}</span>
+        <h3 class="modal-title">{{ activeMessage.subject }}</h3>
+      </div>
+      <button class="modal-close" (click)="isDetailModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <!-- Sender Info Strip -->
+      <div class="sender-info-strip card mb-3">
+        <div><strong>Expéditeur :</strong> {{ activeMessage.fullName }}</div>
+        <div><strong>Email :</strong> <a [href]="'mailto:' + activeMessage.email">{{ activeMessage.email }}</a></div>
+        <div *ngIf="activeMessage.phone"><strong>Téléphone :</strong> {{ activeMessage.phone }}</div>
+        <div><strong>Reçu le :</strong> {{ activeMessage.createdAt | date:'medium' }}</div>
+      </div>
+
+      <!-- Message Text -->
+      <div class="form-section-title">Message Citoyen</div>
+      <div class="message-content-box card mb-3">
+        <p>{{ activeMessage.message }}</p>
+      </div>
+
+      <!-- Change Status Actions -->
+      <div class="form-section-title">Modifier le Statut</div>
+      <div class="status-change-buttons mb-3">
+        <button
+          type="button"
+          (click)="updateStatus('pending')"
+          class="btn btn-sm"
+          [class.btn-danger]="activeMessage.status === 'pending'"
+          [class.btn-secondary]="activeMessage.status !== 'pending'">
+          En attente
+        </button>
+        <button
+          type="button"
+          (click)="updateStatus('reviewed')"
+          class="btn btn-sm"
+          [class.btn-warning]="activeMessage.status === 'reviewed'"
+          [class.btn-secondary]="activeMessage.status !== 'reviewed'">
+          En cours d'examen
+        </button>
+        <button
+          type="button"
+          (click)="updateStatus('replied')"
+          class="btn btn-sm"
+          [class.btn-success]="activeMessage.status === 'replied'"
+          [class.btn-secondary]="activeMessage.status !== 'replied'">
+          Marquer comme Répondu
+        </button>
+      </div>
+
+      <!-- Internal Admin Note -->
+      <div class="form-section-title">Note Interne de Traitement (Guichet / Admin)</div>
+      <div class="form-group">
+        <textarea
+          [(ngModel)]="tempAdminNote"
+          rows="3"
+          class="form-control"
+          placeholder="Ex: Répondu par téléphone au citoyen. Dossier e-DINAR débloqué le 28/01..."></textarea>
+      </div>
+      <button type="button" (click)="saveNote()" class="btn btn-secondary btn-sm">
+        <span class="material-symbols-outlined">save</span>
+        <span>Enregistrer la note</span>
+      </button>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isDetailModalOpen = false">Fermer</button>
+      <button class="btn btn-danger" (click)="confirmDelete(activeMessage)">Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div *ngIf="isDeleteModalOpen" class="modal-backdrop" (click)="isDeleteModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">Confirmer la suppression</h3>
+      <button class="modal-close" (click)="isDeleteModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Supprimer définitivement le message de <strong>{{ messageToDelete?.fullName }}</strong> ?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isDeleteModalOpen = false">Annuler</button>
+      <button class="btn btn-danger" (click)="executeDelete()">Supprimer</button>
+    </div>
+  </div>
+</div>

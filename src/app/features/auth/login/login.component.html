@@ -1,0 +1,82 @@
+<div class="login-wrapper">
+  <div class="login-card card">
+    <div class="login-header">
+      <div class="login-logo-circle">
+        <svg class="login-post-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" fill="#003399" />
+          <path d="M14 20L24 27L34 20" stroke="#FFB800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 20V32C14 33.1 14.9 34 16 34H32C33.1 34 34 33.1 34 32V20" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2>{{ 'nav_login' | localized }}</h2>
+      <p>Portail d’administration SABO POSTE 2.0</p>
+    </div>
+
+    <!-- Error Alert -->
+    <div *ngIf="errorMessage" class="login-error">
+      <span class="material-symbols-outlined">error</span>
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <form (ngSubmit)="onLogin()" class="login-form">
+      <div class="form-group">
+        <label class="form-label" for="username">Nom d'utilisateur</label>
+        <div class="input-icon-box">
+          <span class="material-symbols-outlined in-icon">person</span>
+          <input
+            id="username"
+            type="text"
+            [(ngModel)]="username"
+            name="username"
+            class="form-control with-icon"
+            placeholder="Ex: admin"
+            required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Mot de passe</label>
+        <div class="input-icon-box">
+          <span class="material-symbols-outlined in-icon">lock</span>
+          <input
+            id="password"
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            class="form-control with-icon"
+            placeholder="••••••••"
+            required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="isSubmitting">
+        <span class="material-symbols-outlined">{{ isSubmitting ? 'sync' : 'login' }}</span>
+        <span>{{ isSubmitting ? 'Connexion en cours...' : 'Se Connecter' }}</span>
+      </button>
+    </form>
+
+    <!-- Demo Fast Access -->
+    <div class="demo-access-box">
+      <div class="demo-divider">
+        <span>Accès Rapide Démonstration</span>
+      </div>
+      <div class="demo-buttons">
+        <button type="button" class="btn btn-secondary btn-sm" (click)="prefillAdmin()">
+          <span class="material-symbols-outlined">admin_panel_settings</span>
+          <span>SuperAdmin (admin / admin)</span>
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="prefillAgent()">
+          <span class="material-symbols-outlined">badge</span>
+          <span>Agent Guichet (agent_aoun / admin)</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="login-back-home">
+      <a routerLink="/" class="back-link">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <span>Retour au site public</span>
+      </a>
+    </div>
+  </div>
+</div>

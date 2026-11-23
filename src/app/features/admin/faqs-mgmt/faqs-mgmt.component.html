@@ -1,0 +1,126 @@
+<div class="mgmt-page">
+  <div class="mgmt-header">
+    <div>
+      <h1 class="mgmt-title">Gestion de la FAQ</h1>
+      <p class="mgmt-sub">Centralisez les questions répétitives pour faire gagner du temps aux agents du guichet</p>
+    </div>
+    <button (click)="openCreateModal()" class="btn btn-primary">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span>Nouvelle Question</span>
+    </button>
+  </div>
+
+  <div class="card table-card">
+    <div class="table-responsive">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Catégorie</th>
+            <th>Réponse Résumée (FR)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of faqs">
+            <td>
+              <strong>{{ f.question.fr }}</strong>
+              <div class="text-muted text-small">{{ f.question.ar }}</div>
+            </td>
+            <td><span class="badge badge-secondary">{{ f.category }}</span></td>
+            <td>
+              <p class="answer-cell">{{ f.answer.fr }}</p>
+            </td>
+            <td>
+              <div class="table-actions">
+                <button (click)="openEditModal(f)" class="btn btn-secondary btn-sm" title="Modifier">
+                  <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button (click)="confirmDelete(f)" class="btn btn-danger btn-sm" title="Supprimer">
+                  <span class="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div *ngIf="isEditModalOpen" class="modal-backdrop" (click)="isEditModalOpen = false">
+  <div class="modal-dialog modal-lg" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">{{ isCreating ? 'Nouvelle Question FAQ' : 'Modifier la Question FAQ' }}</h3>
+      <button class="modal-close" (click)="isEditModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body form-modal-body">
+      <div class="form-group">
+        <label class="form-label">Catégorie</label>
+        <input type="text" [(ngModel)]="currentFaq.category" class="form-control" placeholder="ex: D17, Cartes e-DINAR, Mandats">
+      </div>
+
+      <!-- QUESTIONS -->
+      <div class="form-section-title">Question (Trilingue)</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Question (FR)</label>
+          <input type="text" [(ngModel)]="currentFaq.question.fr" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="form-label">السؤال (AR)</label>
+          <input type="text" [(ngModel)]="currentFaq.question.ar" class="form-control text-right" dir="rtl">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Question (EN)</label>
+          <input type="text" [(ngModel)]="currentFaq.question.en" class="form-control">
+        </div>
+      </div>
+
+      <!-- ANSWERS -->
+      <div class="form-section-title">Réponse Officielle (Trilingue)</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Réponse (FR)</label>
+          <textarea [(ngModel)]="currentFaq.answer.fr" rows="4" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">الإجابة (AR)</label>
+          <textarea [(ngModel)]="currentFaq.answer.ar" rows="4" class="form-control text-right" dir="rtl"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Answer (EN)</label>
+          <textarea [(ngModel)]="currentFaq.answer.en" rows="4" class="form-control"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isEditModalOpen = false">Annuler</button>
+      <button class="btn btn-primary" (click)="saveFaq()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div *ngIf="isDeleteModalOpen" class="modal-backdrop" (click)="isDeleteModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">Confirmer la suppression</h3>
+      <button class="modal-close" (click)="isDeleteModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Supprimer cette question : <strong>{{ faqToDelete?.question?.fr }}</strong> ?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isDeleteModalOpen = false">Annuler</button>
+      <button class="btn btn-danger" (click)="executeDelete()">Supprimer</button>
+    </div>
+  </div>
+</div>

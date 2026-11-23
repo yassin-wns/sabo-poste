@@ -1,0 +1,133 @@
+.login-wrapper {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem;
+  background: radial-gradient(circle at center, var(--primary-light) 0%, var(--bg-main) 100%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 2.5rem 2.25rem;
+  box-shadow: var(--shadow-xl);
+  border-top: 5px solid var(--primary-blue);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-logo-circle {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+}
+
+.login-post-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.login-header h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--dark-blue);
+  margin-bottom: 0.35rem;
+}
+
+.login-header p {
+  font-size: 0.88rem;
+  color: var(--slate-500);
+}
+
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-icon-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.in-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--slate-400);
+  font-size: 1.25rem;
+  pointer-events: none;
+}
+
+[dir="rtl"] .in-icon {
+  left: auto;
+  right: 1rem;
+}
+
+.with-icon {
+  padding-left: 2.75rem;
+}
+
+[dir="rtl"] .with-icon {
+  padding-left: 1rem;
+  padding-right: 2.75rem;
+}
+
+.demo-access-box {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+.demo-divider {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.demo-divider span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--slate-500);
+  background-color: #ffffff;
+  padding: 0 0.5rem;
+}
+
+.demo-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.demo-buttons .btn {
+  justify-content: flex-start;
+}
+
+.login-back-home {
+  text-align: center;
+  margin-top: 1.75rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--slate-600);
+}
+
+.back-link:hover {
+  color: var(--primary-blue);
+}

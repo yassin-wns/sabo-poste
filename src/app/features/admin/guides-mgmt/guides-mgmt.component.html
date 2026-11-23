@@ -1,0 +1,163 @@
+<div class="mgmt-page">
+  <div class="mgmt-header">
+    <div>
+      <h1 class="mgmt-title">Gestion des Guides D17</h1>
+      <p class="mgmt-sub">Rédigez les procédures interactives pas-à-pas pour les usagers de l'application</p>
+    </div>
+    <button (click)="openCreateModal()" class="btn btn-primary">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span>Nouveau Guide</span>
+    </button>
+  </div>
+
+  <div class="card table-card">
+    <div class="table-responsive">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Titre du Guide</th>
+            <th>Catégorie</th>
+            <th>Durée</th>
+            <th>Nombre d'étapes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let g of guides">
+            <td>
+              <strong>{{ g.title.fr }}</strong>
+              <div class="text-muted text-small">{{ g.title.ar }}</div>
+            </td>
+            <td><span class="badge badge-secondary">{{ g.category }}</span></td>
+            <td>{{ g.readTime }}</td>
+            <td><span class="badge badge-primary">{{ g.steps.length }} étapes</span></td>
+            <td>
+              <div class="table-actions">
+                <button (click)="openEditModal(g)" class="btn btn-secondary btn-sm" title="Modifier">
+                  <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button (click)="confirmDelete(g)" class="btn btn-danger btn-sm" title="Supprimer">
+                  <span class="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT GUIDE MODAL -->
+<div *ngIf="isEditModalOpen" class="modal-backdrop" (click)="isEditModalOpen = false">
+  <div class="modal-dialog modal-lg" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">{{ isCreating ? 'Nouveau Guide D17' : 'Modifier le Guide D17' }}</h3>
+      <button class="modal-close" (click)="isEditModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body form-modal-body">
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label">Catégorie</label>
+          <input type="text" [(ngModel)]="currentGuide.category" class="form-control" placeholder="ex: D17 Mobile">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Temps de lecture estimé</label>
+          <input type="text" [(ngModel)]="currentGuide.readTime" class="form-control" placeholder="ex: 3 min">
+        </div>
+      </div>
+
+      <!-- TITLES -->
+      <div class="form-section-title">Titre du Guide</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Titre (FR)</label>
+          <input type="text" [(ngModel)]="currentGuide.title.fr" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="form-label">العنوان (AR)</label>
+          <input type="text" [(ngModel)]="currentGuide.title.ar" class="form-control text-right" dir="rtl">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Title (EN)</label>
+          <input type="text" [(ngModel)]="currentGuide.title.en" class="form-control">
+        </div>
+      </div>
+
+      <!-- STEPS LIST -->
+      <div class="steps-header-row">
+        <div class="form-section-title mb-0">Étapes de la Procédure ({{ currentGuide.steps.length }})</div>
+        <button type="button" (click)="addStep()" class="btn btn-secondary btn-sm">
+          <span class="material-symbols-outlined">add</span>
+          <span>Ajouter une étape</span>
+        </button>
+      </div>
+
+      <div *ngFor="let step of currentGuide.steps; let idx = index" class="step-edit-card card my-2">
+        <div class="step-card-head">
+          <strong>Étape {{ step.stepNumber }}</strong>
+          <button type="button" (click)="removeStep(idx)" class="btn btn-danger btn-sm" *ngIf="currentGuide.steps.length > 1">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+        </div>
+
+        <div class="grid-3">
+          <div class="form-group">
+            <label class="form-label">Titre Étape (FR)</label>
+            <input type="text" [(ngModel)]="step.title.fr" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="form-label">عنوان المرحلة (AR)</label>
+            <input type="text" [(ngModel)]="step.title.ar" class="form-control text-right" dir="rtl">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Step Title (EN)</label>
+            <input type="text" [(ngModel)]="step.title.en" class="form-control">
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="form-group">
+            <label class="form-label">Description (FR)</label>
+            <textarea [(ngModel)]="step.description.fr" rows="2" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">الوصف (AR)</label>
+            <textarea [(ngModel)]="step.description.ar" rows="2" class="form-control text-right" dir="rtl"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description (EN)</label>
+            <textarea [(ngModel)]="step.description.en" rows="2" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isEditModalOpen = false">Annuler</button>
+      <button class="btn btn-primary" (click)="saveGuide()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div *ngIf="isDeleteModalOpen" class="modal-backdrop" (click)="isDeleteModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">Confirmer la suppression</h3>
+      <button class="modal-close" (click)="isDeleteModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Supprimer le guide <strong>{{ guideToDelete?.title?.fr }}</strong> ?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isDeleteModalOpen = false">Annuler</button>
+      <button class="btn btn-danger" (click)="executeDelete()">Supprimer</button>
+    </div>
+  </div>
+</div>

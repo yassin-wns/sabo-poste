@@ -1,0 +1,248 @@
+<div class="mgmt-page">
+  <div class="mgmt-header">
+    <div>
+      <h1 class="mgmt-title">Gestion des Services Postaux</h1>
+      <p class="mgmt-sub">Ajoutez, modifiez ou supprimez les prestations affichées sur la plateforme</p>
+    </div>
+    <button (click)="openCreateModal()" class="btn btn-primary">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span>Nouveau Service</span>
+    </button>
+  </div>
+
+  <!-- Filters Bar -->
+  <div class="mgmt-filters-bar card">
+    <div class="search-box">
+      <span class="material-symbols-outlined">search</span>
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Rechercher par titre ou identifiant..."
+        class="form-control">
+    </div>
+
+    <div class="cat-filter">
+      <select [(ngModel)]="selectedCategory" class="form-control">
+        <option value="all">Toutes les catégories ({{ services.length }})</option>
+        <option *ngFor="let cat of categories" [value]="cat.id">
+          {{ cat.name | localized }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Services Table Card -->
+  <div class="card table-card">
+    <div class="table-responsive">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Prestation</th>
+            <th>Catégorie</th>
+            <th>Délai</th>
+            <th>Options</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of filteredServices">
+            <td>
+              <div class="service-cell">
+                <span class="material-symbols-outlined s-icon-table">{{ s.icon }}</span>
+                <div>
+                  <strong>{{ s.title.fr }}</strong>
+                  <div class="ar-title-preview text-muted">{{ s.title.ar }}</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="badge badge-secondary">{{ s.categoryId }}</span>
+            </td>
+            <td>
+              <span class="badge badge-primary">{{ s.deliveryTime.fr }}</span>
+            </td>
+            <td>
+              <div class="options-badges">
+                <span *ngIf="s.featured" class="badge badge-gold">À la une</span>
+                <span *ngIf="s.isPopular" class="badge badge-success">Populaire</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-actions">
+                <button (click)="openEditModal(s)" class="btn btn-secondary btn-sm" title="Modifier">
+                  <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button (click)="confirmDelete(s)" class="btn btn-danger btn-sm" title="Supprimer">
+                  <span class="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="filteredServices.length === 0">
+            <td colspan="5" class="text-center py-4 text-muted">
+              Aucun service postal ne correspond aux critères.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ADD / EDIT SERVICE MODAL -->
+<div *ngIf="isEditModalOpen" class="modal-backdrop" (click)="isEditModalOpen = false">
+  <div class="modal-dialog modal-lg" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">{{ isCreating ? 'Créer un Nouveau Service' : 'Modifier le Service' }}</h3>
+      <button class="modal-close" (click)="isEditModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body form-modal-body">
+      <div class="grid-2">
+        <!-- Identifiant / Slug -->
+        <div class="form-group">
+          <label class="form-label">Identifiant (ID)</label>
+          <input
+            type="text"
+            [(ngModel)]="currentService.id"
+            placeholder="Ex: mandat-web"
+            class="form-control"
+            [disabled]="!isCreating">
+        </div>
+
+        <!-- Catégorie -->
+        <div class="form-group">
+          <label class="form-label">Catégorie</label>
+          <select [(ngModel)]="currentService.categoryId" class="form-control">
+            <option *ngFor="let cat of categories" [value]="cat.id">
+              {{ cat.name.fr }} ({{ cat.name.ar }})
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Icon -->
+      <div class="form-group">
+        <label class="form-label">Icône Material Symbols</label>
+        <input type="text" [(ngModel)]="currentService.icon" placeholder="Ex: mail, send, credit_card" class="form-control">
+      </div>
+
+      <!-- TITLES (TRILINGUAL) -->
+      <div class="form-section-title">Titres Multilingues</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Titre Français</label>
+          <input type="text" [(ngModel)]="currentService.title.fr" class="form-control" placeholder="Titre en français">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Titre Arabe</label>
+          <input type="text" [(ngModel)]="currentService.title.ar" class="form-control text-right" placeholder="العنوان بالعربية" dir="rtl">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Titre Anglais</label>
+          <input type="text" [(ngModel)]="currentService.title.en" class="form-control" placeholder="English Title">
+        </div>
+      </div>
+
+      <!-- SUMMARIES -->
+      <div class="form-section-title">Résumé Court</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Résumé (FR)</label>
+          <textarea [(ngModel)]="currentService.summary.fr" rows="2" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">الملخص (AR)</label>
+          <textarea [(ngModel)]="currentService.summary.ar" rows="2" class="form-control text-right" dir="rtl"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Summary (EN)</label>
+          <textarea [(ngModel)]="currentService.summary.en" rows="2" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <!-- REQUIREMENTS BUFFER (LINE SEPARATED) -->
+      <div class="form-section-title">Documents Requis (Une ligne par document)</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Pièces requises (FR)</label>
+          <textarea [(ngModel)]="reqsFrBuffer" rows="3" class="form-control" placeholder="Ex: CIN originale"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">الوثائق المطلوبة (AR)</label>
+          <textarea [(ngModel)]="reqsArBuffer" rows="3" class="form-control text-right" dir="rtl" placeholder="بطاقة التعريف"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Requirements (EN)</label>
+          <textarea [(ngModel)]="reqsEnBuffer" rows="3" class="form-control" placeholder="Original ID"></textarea>
+        </div>
+      </div>
+
+      <!-- STEPS BUFFER -->
+      <div class="form-section-title">Étapes de la Procédure (Une ligne par étape)</div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label class="form-label">Étapes (FR)</label>
+          <textarea [(ngModel)]="stepsFrBuffer" rows="3" class="form-control" placeholder="1. Dépôt au guichet"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">مراحل الخدمة (AR)</label>
+          <textarea [(ngModel)]="stepsArBuffer" rows="3" class="form-control text-right" dir="rtl" placeholder="1. الإيداع لدى الشباك"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Steps (EN)</label>
+          <textarea [(ngModel)]="stepsEnBuffer" rows="3" class="form-control" placeholder="1. Counter deposit"></textarea>
+        </div>
+      </div>
+
+      <!-- TOGGLES -->
+      <div class="grid-2 toggles-row">
+        <label class="checkbox-label">
+          <input type="checkbox" [(ngModel)]="currentService.featured">
+          <span>Afficher sur la page d'accueil (À la une)</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" [(ngModel)]="currentService.isPopular">
+          <span>Marquer comme Très Demandé / Populaire</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isEditModalOpen = false">Annuler</button>
+      <button class="btn btn-primary" (click)="saveService()">
+        <span class="material-symbols-outlined">save</span>
+        <span>Enregistrer</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div *ngIf="isDeleteModalOpen" class="modal-backdrop" (click)="isDeleteModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">Confirmer la suppression</h3>
+      <button class="modal-close" (click)="isDeleteModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Êtes-vous sûr de vouloir supprimer définitivement le service postal suivant ?</p>
+      <div class="del-preview card my-3">
+        <strong>{{ serviceToDelete?.title?.fr }}</strong>
+        <span class="text-muted">ID: {{ serviceToDelete?.id }}</span>
+      </div>
+      <p class="text-danger small">Cette action est irréversible et retirera ce service de la base de données JSON Server.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isDeleteModalOpen = false">Annuler</button>
+      <button class="btn btn-danger" (click)="executeDelete()">
+        <span class="material-symbols-outlined">delete</span>
+        <span>Supprimer Définitivement</span>
+      </button>
+    </div>
+  </div>
+</div>

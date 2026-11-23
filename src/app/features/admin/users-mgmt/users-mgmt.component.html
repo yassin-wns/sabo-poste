@@ -1,0 +1,141 @@
+<div class="mgmt-page">
+  <div class="mgmt-header">
+    <div>
+      <h1 class="mgmt-title">Gestion des Utilisateurs</h1>
+      <p class="mgmt-sub">Comptes d'accès autorisés pour la gestion de la plateforme SABO POSTE 2.0</p>
+    </div>
+    <button (click)="openCreateModal()" class="btn btn-primary">
+      <span class="material-symbols-outlined">person_add</span>
+      <span>Nouvel Utilisateur</span>
+    </button>
+  </div>
+
+  <div class="card table-card">
+    <div class="table-responsive">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Nom Complet</th>
+            <th>Nom d'utilisateur</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th>Statut</th>
+            <th>Créé le</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of users">
+            <td>
+              <div class="user-cell">
+                <div class="user-avatar-sm">
+                  <span class="material-symbols-outlined">person</span>
+                </div>
+                <strong>{{ u.fullName }}</strong>
+              </div>
+            </td>
+            <td><code>{{ u.username }}</code></td>
+            <td>{{ u.email }}</td>
+            <td>
+              <span class="badge" [class.badge-gold]="u.role === 'SuperAdmin'" [class.badge-primary]="u.role !== 'SuperAdmin'">
+                {{ u.role }}
+              </span>
+            </td>
+            <td>
+              <span class="badge" [class.badge-success]="u.active" [class.badge-danger]="!u.active">
+                {{ u.active ? 'Actif' : 'Inactif' }}
+              </span>
+            </td>
+            <td>{{ u.createdAt }}</td>
+            <td>
+              <div class="table-actions">
+                <button (click)="openEditModal(u)" class="btn btn-secondary btn-sm" title="Modifier">
+                  <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button
+                  (click)="confirmDelete(u)"
+                  class="btn btn-danger btn-sm"
+                  title="Supprimer"
+                  [disabled]="u.username === 'admin'">
+                  <span class="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div *ngIf="isEditModalOpen" class="modal-backdrop" (click)="isEditModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">{{ isCreating ? 'Nouvel Utilisateur' : 'Modifier Utilisateur' }}</h3>
+      <button class="modal-close" (click)="isEditModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Nom d'utilisateur (Login)</label>
+        <input type="text" [(ngModel)]="currentUser.username" class="form-control" [disabled]="!isCreating && currentUser.username === 'admin'">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nom Complet</label>
+        <input type="text" [(ngModel)]="currentUser.fullName" class="form-control" placeholder="Ex: Agent Ahmed">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" [(ngModel)]="currentUser.email" class="form-control" placeholder="ahmed&#64;poste.tn">
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label">Rôle</label>
+          <select [(ngModel)]="currentUser.role" class="form-control">
+            <option value="SuperAdmin">SuperAdmin</option>
+            <option value="Admin">Admin</option>
+            <option value="Agent">Agent Guichet</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">État du compte</label>
+          <select [(ngModel)]="currentUser.active" class="form-control">
+            <option [ngValue]="true">Actif</option>
+            <option [ngValue]="false">Inactif</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isEditModalOpen = false">Annuler</button>
+      <button class="btn btn-primary" (click)="saveUser()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE MODAL -->
+<div *ngIf="isDeleteModalOpen" class="modal-backdrop" (click)="isDeleteModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">Confirmer la suppression</h3>
+      <button class="modal-close" (click)="isDeleteModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Supprimer l'utilisateur <strong>{{ userToDelete?.fullName }}</strong> ({{ userToDelete?.username }}) ?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isDeleteModalOpen = false">Annuler</button>
+      <button class="btn btn-danger" (click)="executeDelete()">Supprimer</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="mgmt-page" *ngIf="settings">
+  <div class="mgmt-header">
+    <div>
+      <h1 class="mgmt-title">Paramètres de la Plateforme</h1>
+      <p class="mgmt-sub">Configuration générale du Bureau de Poste de Sidi Ali Ben Aoun</p>
+    </div>
+    <button (click)="saveSettings()" class="btn btn-primary" [disabled]="isSaving">
+      <span class="material-symbols-outlined">save</span>
+      <span>{{ isSaving ? 'Enregistrement...' : 'Enregistrer les Modifications' }}</span>
+    </button>
+  </div>
+
+  <div class="settings-grid">
+    <!-- Announcement Banner Settings -->
+    <div class="card settings-card">
+      <div class="settings-card-header">
+        <span class="material-symbols-outlined s-icon">campaign</span>
+        <div>
+          <h3>Bannière d'Alerte & Avis Général</h3>
+          <p>Bandeau d'information prioritaire affiché au sommet de chaque page publique</p>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="checkbox-label">
+          <input type="checkbox" [(ngModel)]="settings.announcementActive">
+          <strong>Activer le bandeau d'annonce officiel</strong>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Message du bandeau (Français)</label>
+        <textarea [(ngModel)]="settings.announcement.fr" rows="2" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">نص البلاغ (العربية)</label>
+        <textarea [(ngModel)]="settings.announcement.ar" rows="2" class="form-control text-right" dir="rtl"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Announcement Text (English)</label>
+        <textarea [(ngModel)]="settings.announcement.en" rows="2" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <!-- Agency Identity & Coordinates -->
+    <div class="card settings-card">
+      <div class="settings-card-header">
+        <span class="material-symbols-outlined s-icon">local_post_office</span>
+        <div>
+          <h3>Coordonnées & Contact Bureau</h3>
+          <p>Numéros et adresses officielles communiqués aux citoyens</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label">Téléphone d'Urgence / Guichet</label>
+          <input type="text" [(ngModel)]="settings.emergencyPhone" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Courriel de Support</label>
+          <input type="email" [(ngModel)]="settings.supportEmail" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nom Officiel du Bureau (Français)</label>
+        <input type="text" [(ngModel)]="settings.agencyName.fr" class="form-control">
+      </div>
+      <div class="form-group">
+        <label class="form-label">الاسم الرسمي للمكتب (العربية)</label>
+        <input type="text" [(ngModel)]="settings.agencyName.ar" class="form-control text-right" dir="rtl">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Official Office Name (English)</label>
+        <input type="text" [(ngModel)]="settings.agencyName.en" class="form-control">
+      </div>
+    </div>
+
+    <!-- Academic & System Attribution -->
+    <div class="card settings-card">
+      <div class="settings-card-header">
+        <span class="material-symbols-outlined s-icon">info</span>
+        <div>
+          <h3>Informations Système & Références</h3>
+          <p>Traçabilité académique du projet SABO POSTE 2.0</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label">Version de la plateforme</label>
+          <input type="text" [value]="settings.version" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Référence du Stage</label>
+          <input type="text" [(ngModel)]="settings.academicReference" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

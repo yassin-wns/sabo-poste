@@ -1,0 +1,73 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="container">
+      <span class="section-tag">Bureau de Poste Sidi Ali Ben Aoun</span>
+      <h1 class="page-title">{{ 'articles_title' | localized }}</h1>
+      <p class="page-subtitle">{{ 'articles_subtitle' | localized }}</p>
+    </div>
+  </div>
+
+  <div class="container articles-main">
+    <div *ngIf="loading" class="loading-state">
+      <div class="spinner"></div>
+      <p>Chargement des actualités...</p>
+    </div>
+
+    <div *ngIf="!loading" class="grid-3 articles-grid">
+      <div *ngFor="let art of articles" class="article-item card">
+        <div class="article-meta">
+          <span class="badge badge-primary">{{ art.category }}</span>
+          <span class="art-date">{{ art.date }}</span>
+        </div>
+
+        <h3 class="article-title">{{ art.title | localized }}</h3>
+        <p class="article-summary">{{ art.summary | localized }}</p>
+
+        <div class="article-footer">
+          <span class="author-tag">
+            <span class="material-symbols-outlined">person</span>
+            <span>{{ art.author }}</span>
+          </span>
+          <button (click)="openArticle(art)" class="btn btn-outline btn-sm">
+            <span>{{ 'article_read_more' | localized }}</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE MODAL -->
+<div *ngIf="selectedArticle" class="modal-backdrop" (click)="closeArticle()">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title-box">
+        <span class="badge badge-primary">{{ selectedArticle.category }}</span>
+        <h3 class="modal-title">{{ selectedArticle.title | localized }}</h3>
+      </div>
+      <button class="modal-close" (click)="closeArticle()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="art-detail-meta">
+        <span><span class="material-symbols-outlined">calendar_today</span> {{ selectedArticle.date }}</span>
+        <span><span class="material-symbols-outlined">source</span> {{ selectedArticle.author }}</span>
+      </div>
+
+      <div class="art-callout">
+        <p>{{ selectedArticle.summary | localized }}</p>
+      </div>
+
+      <div class="art-full-content">
+        <p>{{ selectedArticle.content | localized }}</p>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="closeArticle()">Fermer</button>
+    </div>
+  </div>
+</div>

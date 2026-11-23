@@ -1,0 +1,143 @@
+.mgmt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.mgmt-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--dark-blue);
+  margin-bottom: 0.25rem;
+}
+
+.mgmt-sub {
+  font-size: 0.92rem;
+  color: var(--slate-500);
+}
+
+.mgmt-filters-bar {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.search-box span {
+  color: var(--slate-400);
+}
+
+.cat-filter {
+  min-width: 250px;
+}
+
+.table-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.service-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.s-icon-table {
+  font-size: 1.5rem;
+  color: var(--primary-blue);
+  background-color: var(--primary-light);
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+}
+
+.ar-title-preview {
+  font-size: 0.8rem;
+}
+
+.options-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Modal Form Specifics */
+.modal-lg {
+  max-width: 850px;
+}
+
+.form-modal-body {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.form-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-blue);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.35rem;
+  margin: 1.25rem 0 0.85rem;
+}
+
+.toggles-row {
+  margin-top: 1.25rem;
+  background-color: var(--slate-50);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+}
+
+.del-preview {
+  padding: 1rem;
+  background-color: var(--slate-50);
+  border-left: 4px solid var(--danger);
+}
+
+.del-preview strong {
+  display: block;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.my-3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.small {
+  font-size: 0.85rem;
+}

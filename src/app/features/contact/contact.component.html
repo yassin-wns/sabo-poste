@@ -1,0 +1,197 @@
+<div class="page-container">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="container">
+      <span class="section-tag">Orientation & Assistance Citoyenne</span>
+      <h1 class="page-title">{{ 'contact_title' | localized }}</h1>
+      <p class="page-subtitle">{{ 'contact_subtitle' | localized }}</p>
+    </div>
+  </div>
+
+  <div class="container contact-main">
+    <div class="contact-grid">
+      <!-- Left: Reactive Contact Form -->
+      <div class="form-card-column">
+        <div class="card contact-card">
+          <div class="card-head">
+            <span class="material-symbols-outlined head-ic">edit_note</span>
+            <div>
+              <h3>Formulaire de Message</h3>
+              <p>Remplissez les informations ci-dessous pour transmettre votre requête à notre équipe</p>
+            </div>
+          </div>
+
+          <!-- Success Alert -->
+          <div *ngIf="submitSuccess" class="alert alert-success">
+            <span class="material-symbols-outlined alert-ic">check_circle</span>
+            <div>
+              <strong>Demande transmise avec succès !</strong>
+              <p>{{ 'form_success' | localized }}</p>
+            </div>
+          </div>
+
+          <!-- Error Alert -->
+          <div *ngIf="submitError" class="alert alert-danger">
+            <span class="material-symbols-outlined alert-ic">error</span>
+            <div>
+              <strong>Erreur lors de l'envoi</strong>
+              <p>{{ 'form_error' | localized }}</p>
+            </div>
+          </div>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="grid-2 form-row">
+              <!-- Full Name -->
+              <div class="form-group">
+                <label class="form-label" for="fullName">
+                  {{ 'form_name' | localized }} <span class="required">*</span>
+                </label>
+                <input
+                  id="fullName"
+                  type="text"
+                  formControlName="fullName"
+                  class="form-control"
+                  [class.is-invalid]="isFieldInvalid('fullName')"
+                  placeholder="Ex: Yassin Wannassi">
+                <span *ngIf="isFieldInvalid('fullName')" class="form-error">
+                  Veuillez renseigner votre nom complet (au moins 3 caractères).
+                </span>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label class="form-label" for="email">
+                  {{ 'form_email' | localized }} <span class="required">*</span>
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  formControlName="email"
+                  class="form-control"
+                  [class.is-invalid]="isFieldInvalid('email')"
+                  placeholder="exemple&#64;domaine.tn">
+                <span *ngIf="isFieldInvalid('email')" class="form-error">
+                  Veuillez fournir une adresse email valide.
+                </span>
+              </div>
+            </div>
+
+            <div class="grid-2 form-row">
+              <!-- Phone -->
+              <div class="form-group">
+                <label class="form-label" for="phone">
+                  {{ 'form_phone' | localized }}
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  formControlName="phone"
+                  class="form-control"
+                  placeholder="+216 98 123 456">
+              </div>
+
+              <!-- Category -->
+              <div class="form-group">
+                <label class="form-label" for="category">
+                  {{ 'form_category' | localized }} <span class="required">*</span>
+                </label>
+                <select id="category" formControlName="category" class="form-control">
+                  <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group">
+              <label class="form-label" for="subject">
+                {{ 'form_subject' | localized }} <span class="required">*</span>
+              </label>
+              <input
+                id="subject"
+                type="text"
+                formControlName="subject"
+                class="form-control"
+                [class.is-invalid]="isFieldInvalid('subject')"
+                placeholder="Ex: Renseignement sur le déblocage de mon compte D17">
+              <span *ngIf="isFieldInvalid('subject')" class="form-error">
+                Veuillez indiquer un sujet clair (au moins 5 caractères).
+              </span>
+            </div>
+
+            <!-- Message Body -->
+            <div class="form-group">
+              <label class="form-label" for="message">
+                {{ 'form_message' | localized }} <span class="required">*</span>
+              </label>
+              <textarea
+                id="message"
+                formControlName="message"
+                rows="5"
+                class="form-control"
+                [class.is-invalid]="isFieldInvalid('message')"
+                placeholder="Décrivez votre question ou problème de manière précise..."></textarea>
+              <span *ngIf="isFieldInvalid('message')" class="form-error">
+                Le message doit comporter au moins 10 caractères.
+              </span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="isSubmitting">
+              <span class="material-symbols-outlined">{{ isSubmitting ? 'sync' : 'send' }}</span>
+              <span>{{ isSubmitting ? ('form_sending' | localized) : ('form_submit' | localized) }}</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Office Direct Coordinates -->
+      <div class="info-card-column">
+        <div class="card info-box">
+          <h3 class="info-box-title">Bureau de Poste de Sidi Ali Ben Aoun</h3>
+          <p class="info-box-desc">Nos agents restent à votre disposition pour tout traitement administratif et financier direct.</p>
+
+          <div class="info-details">
+            <div class="i-item">
+              <span class="material-symbols-outlined i-icon">location_on</span>
+              <div>
+                <strong>Adresse</strong>
+                <p>Avenue Habib Bourguiba, 9120 Sidi Ali Ben Aoun, Tunisie</p>
+              </div>
+            </div>
+
+            <div class="i-item">
+              <span class="material-symbols-outlined i-icon">call</span>
+              <div>
+                <strong>Téléphone d'accueil</strong>
+                <p>+216 76 661 100</p>
+              </div>
+            </div>
+
+            <div class="i-item">
+              <span class="material-symbols-outlined i-icon">mail</span>
+              <div>
+                <strong>Courriel d'information</strong>
+                <p>contact.sabo&#64;poste.tn</p>
+              </div>
+            </div>
+
+            <div class="i-item">
+              <span class="material-symbols-outlined i-icon">schedule</span>
+              <div>
+                <strong>Accueil au Guichet</strong>
+                <p>Du Lundi au Vendredi (8h-12h / 14h-17h)<br>Samedi (8h-12h)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="academic-note-box">
+            <span class="material-symbols-outlined an-ic">school</span>
+            <div>
+              <strong>Projet Académique</strong>
+              <p>Stage de Perfectionnement — ISET Sidi Bouzid — Yassin Wannassi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

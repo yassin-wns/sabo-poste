@@ -1,0 +1,367 @@
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-badge-pill">
+        <span class="material-symbols-outlined badge-icon">verified</span>
+        <span>{{ 'hero_badge' | localized }}</span>
+      </div>
+
+      <h1 class="hero-title">{{ 'hero_title' | localized }}</h1>
+      <p class="hero-subtitle">{{ 'hero_subtitle' | localized }}</p>
+
+      <!-- Instant Search Bar -->
+      <form class="hero-search-box" (ngSubmit)="onSearch()">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          name="searchQuery"
+          [placeholder]="'hero_search_placeholder' | localized"
+          class="hero-search-input"
+          autocomplete="off">
+        <button type="submit" class="btn btn-gold hero-search-btn">
+          {{ 'cat_all' | localized }}
+        </button>
+      </form>
+
+      <!-- Quick Action Buttons -->
+      <div class="hero-actions">
+        <a routerLink="/services" class="btn btn-primary btn-lg">
+          <span class="material-symbols-outlined">apps</span>
+          <span>{{ 'hero_btn_services' | localized }}</span>
+        </a>
+        <a routerLink="/d17" class="btn btn-outline-white btn-lg">
+          <span class="material-symbols-outlined">smartphone</span>
+          <span>{{ 'hero_btn_d17' | localized }}</span>
+        </a>
+        <a routerLink="/horaires" class="btn btn-outline-white btn-lg">
+          <span class="material-symbols-outlined">schedule</span>
+          <span>{{ 'hero_btn_hours' | localized }}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Office Status Card -->
+    <div class="hero-card-wrapper">
+      <div class="office-status-card">
+        <div class="status-card-header">
+          <div class="status-badge-lg" [class.open]="isAgencyOpen" [class.closed]="!isAgencyOpen">
+            <span class="indicator-dot"></span>
+            <span>{{ isAgencyOpen ? ('status_open' | localized) : ('status_closed' | localized) }}</span>
+          </div>
+          <span class="postal-tag">Code 9120</span>
+        </div>
+
+        <h3 class="office-name">{{ 'brand_subtitle' | localized }}</h3>
+        <p class="office-address">
+          <span class="material-symbols-outlined">location_on</span>
+          <span>Avenue Habib Bourguiba, Sidi Ali Ben Aoun</span>
+        </p>
+
+        <div class="today-hours-block">
+          <div class="today-label">{{ 'status_today_hours' | localized }}</div>
+          <div class="hours-row">
+            <span class="material-symbols-outlined">wb_sunny</span>
+            <span>08h00 - 12h00 (Séance Matin)</span>
+          </div>
+          <div class="hours-row">
+            <span class="material-symbols-outlined">wb_twilight</span>
+            <span>14h00 - 17h00 (Séance Après-Midi)</span>
+          </div>
+        </div>
+
+        <div class="status-card-stats">
+          <div class="c-stat">
+            <strong>4</strong>
+            <span>Guichets</span>
+          </div>
+          <div class="c-stat">
+            <strong>DAB 24/7</strong>
+            <span>Distributeur</span>
+          </div>
+          <div class="c-stat">
+            <strong>D17</strong>
+            <span>Mobile</span>
+          </div>
+        </div>
+
+        <a routerLink="/horaires" class="btn btn-secondary btn-sm btn-block">
+          <span>Consulter le planning complet</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM STATS STRIP -->
+<section class="stats-strip">
+  <div class="container stats-container">
+    <div class="stat-item">
+      <div class="stat-number">10+</div>
+      <div class="stat-label">{{ 'stat_services' | localized }}</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number">4</div>
+      <div class="stat-label">{{ 'stat_counters' | localized }}</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">{{ 'stat_satisfaction' | localized }}</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">{{ 'stat_d17_access' | localized }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES SECTION -->
+<section class="section categories-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Organisation</span>
+      <h2 class="section-title">{{ 'categories_title' | localized }}</h2>
+      <p class="section-subtitle">{{ 'categories_subtitle' | localized }}</p>
+    </div>
+
+    <div class="categories-grid">
+      <a
+        *ngFor="let cat of categories"
+        [routerLink]="['/services']"
+        [queryParams]="{ category: cat.id }"
+        class="category-card">
+        <div class="cat-icon-box">
+          <span class="material-symbols-outlined cat-icon">{{ cat.icon }}</span>
+        </div>
+        <h3 class="cat-title">{{ cat.name | localized }}</h3>
+        <p class="cat-desc">{{ cat.description | localized }}</p>
+        <span class="cat-link">
+          <span>Découvrir</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED SERVICES SECTION -->
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Prestations Essentielles</span>
+      <h2 class="section-title">Services les Plus Demandés</h2>
+      <p class="section-subtitle">Consultez les formalités et documents nécessaires avant votre déplacement au guichet</p>
+    </div>
+
+    <div class="grid-3">
+      <div *ngFor="let service of featuredServices" class="service-card">
+        <div class="service-card-top">
+          <span class="badge badge-gold" *ngIf="service.isPopular">
+            <span class="material-symbols-outlined">star</span> {{ 'service_popular' | localized }}
+          </span>
+          <span class="badge badge-primary">
+            <span class="material-symbols-outlined">speed</span> {{ service.deliveryTime | localized }}
+          </span>
+        </div>
+
+        <div class="service-icon-wrapper">
+          <span class="material-symbols-outlined service-icon">{{ service.icon }}</span>
+        </div>
+
+        <h3 class="service-title">{{ service.title | localized }}</h3>
+        <p class="service-summary">{{ service.summary | localized }}</p>
+
+        <div class="service-card-footer">
+          <button (click)="openServiceDetail(service)" class="btn btn-outline btn-block">
+            <span>{{ 'service_btn_details' | localized }}</span>
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-cta">
+      <a routerLink="/services" class="btn btn-primary btn-lg">
+        <span>Voir tous les services (Courrier, Mandats, Cartes, Factures)</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- D17 SPOTLIGHT SECTION -->
+<section class="section d17-spotlight-section">
+  <div class="container d17-split-container">
+    <div class="d17-info-side">
+      <span class="badge badge-gold">Application Mobile Officielle</span>
+      <h2 class="d17-heading">{{ 'd17_hero_title' | localized }}</h2>
+      <p class="d17-text">{{ 'd17_hero_subtitle' | localized }}</p>
+
+      <div class="d17-features-list">
+        <div class="d17-f-item">
+          <div class="f-icon-box"><span class="material-symbols-outlined">receipt_long</span></div>
+          <div>
+            <strong>{{ 'd17_why_1_title' | localized }}</strong>
+            <p>{{ 'd17_why_1_desc' | localized }}</p>
+          </div>
+        </div>
+
+        <div class="d17-f-item">
+          <div class="f-icon-box"><span class="material-symbols-outlined">send</span></div>
+          <div>
+            <strong>{{ 'd17_why_2_title' | localized }}</strong>
+            <p>{{ 'd17_why_2_desc' | localized }}</p>
+          </div>
+        </div>
+
+        <div class="d17-f-item">
+          <div class="f-icon-box"><span class="material-symbols-outlined">security</span></div>
+          <div>
+            <strong>{{ 'd17_why_3_title' | localized }}</strong>
+            <p>{{ 'd17_why_3_desc' | localized }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="d17-actions">
+        <a routerLink="/d17" class="btn btn-gold btn-lg">
+          <span class="material-symbols-outlined">menu_book</span>
+          <span>Consulter les Guides Pratiques D17</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="d17-visual-side">
+      <div class="d17-mockup-card">
+        <div class="mockup-header">
+          <span class="mockup-badge">DIGI POST BANK</span>
+          <span class="mockup-logo">D17</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-balance">
+            <span>Solde e-DINAR disponible</span>
+            <h3>148.500 <small>TND</small></h3>
+          </div>
+          <div class="mockup-actions-grid">
+            <div class="m-action"><span class="material-symbols-outlined">send</span><span>Transfert</span></div>
+            <div class="m-action"><span class="material-symbols-outlined">receipt</span><span>Factures</span></div>
+            <div class="m-action"><span class="material-symbols-outlined">qr_code_scanner</span><span>Scanner QR</span></div>
+            <div class="m-action"><span class="material-symbols-outlined">credit_card</span><span>Recharge</span></div>
+          </div>
+          <div class="mockup-notice">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span>Paiement sécurisé crypté par La Poste Tunisienne</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS & ANNOUNCEMENTS SECTION -->
+<section class="section news-section" *ngIf="articles.length > 0">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Avis aux Citoyens</span>
+      <h2 class="section-title">{{ 'articles_title' | localized }}</h2>
+      <p class="section-subtitle">{{ 'articles_subtitle' | localized }}</p>
+    </div>
+
+    <div class="grid-3">
+      <div *ngFor="let art of articles" class="news-card">
+        <div class="news-meta">
+          <span class="news-cat">{{ art.category }}</span>
+          <span class="news-date">{{ art.date }}</span>
+        </div>
+        <h3 class="news-title">{{ art.title | localized }}</h3>
+        <p class="news-summary">{{ art.summary | localized }}</p>
+        <a [routerLink]="['/articles', art.id]" class="news-link">
+          <span>{{ 'article_read_more' | localized }}</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA SECTION -->
+<section class="section cta-section">
+  <div class="container cta-container">
+    <div class="cta-content">
+      <h2>Besoin d'une assistance ou d'un renseignement ?</h2>
+      <p>Nos agents au bureau de Sidi Ali Ben Aoun sont à votre écoute pour vous guider dans toutes vos démarches postales et financières.</p>
+    </div>
+    <div class="cta-buttons">
+      <a routerLink="/contact" class="btn btn-gold btn-lg">
+        <span class="material-symbols-outlined">mail</span>
+        <span>Envoyer un message</span>
+      </a>
+      <a routerLink="/faq" class="btn btn-outline-white btn-lg">
+        <span class="material-symbols-outlined">help</span>
+        <span>Consulter la FAQ</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE DETAIL MODAL -->
+<div *ngIf="selectedService" class="modal-backdrop" (click)="closeServiceDetail()">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title-box">
+        <span class="material-symbols-outlined m-icon">{{ selectedService.icon }}</span>
+        <h3 class="modal-title">{{ selectedService.title | localized }}</h3>
+      </div>
+      <button class="modal-close" (click)="closeServiceDetail()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <p class="m-desc">{{ selectedService.description | localized }}</p>
+
+      <div class="m-section">
+        <h4><span class="material-symbols-outlined">fact_check</span> {{ 'service_requirements' | localized }}</h4>
+        <ul class="m-list">
+          <li *ngFor="let req of (selectedService.requirements | localized)">
+            <span class="material-symbols-outlined check-icon">check_circle</span>
+            <span>{{ req }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="m-section">
+        <h4><span class="material-symbols-outlined">format_list_numbered</span> {{ 'service_steps' | localized }}</h4>
+        <ol class="m-steps">
+          <li *ngFor="let step of (selectedService.steps | localized); let i = index">
+            <span class="step-num">{{ i + 1 }}</span>
+            <span class="step-text">{{ step }}</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="m-delivery-box">
+        <span class="material-symbols-outlined">timer</span>
+        <div>
+          <strong>{{ 'service_delivery' | localized }}</strong>
+          <span>{{ selectedService.deliveryTime | localized }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="closeServiceDetail()">
+        {{ 'service_modal_close' | localized }}
+      </button>
+      <a routerLink="/contact" (click)="closeServiceDetail()" class="btn btn-primary">
+        <span class="material-symbols-outlined">help_outline</span>
+        <span>Poser une question</span>
+      </a>
+    </div>
+  </div>
+</div>

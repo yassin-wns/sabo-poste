@@ -1,0 +1,160 @@
+<div class="page-container">
+  <!-- D17 Header Banner -->
+  <div class="d17-hero-header">
+    <div class="container">
+      <div class="d17-hero-badge">
+        <span class="material-symbols-outlined">payments</span>
+        <span>DIGI POST BANK — LA POSTE TUNISIENNE</span>
+      </div>
+      <h1 class="d17-main-title">Espace Digital D17 & Cartes e-DINAR</h1>
+      <p class="d17-main-sub">
+        Votre portefeuille électronique mobile pour payer vos factures, transférer de l'argent et gérer vos cartes prépayées à distance en toute sécurité.
+      </p>
+
+      <div class="d17-hero-stats">
+        <div class="d17-stat-card">
+          <span class="material-symbols-outlined stat-ic">bolt</span>
+          <div>
+            <strong>Instantané</strong>
+            <span>Paiements en 60 secondes</span>
+          </div>
+        </div>
+        <div class="d17-stat-card">
+          <span class="material-symbols-outlined stat-ic">lock</span>
+          <div>
+            <strong>100% Sécurisé</strong>
+            <span>Code PIN & Validation SMS</span>
+          </div>
+        </div>
+        <div class="d17-stat-card">
+          <span class="material-symbols-outlined stat-ic">all_inclusive</span>
+          <div>
+            <strong>Accessible 24/7</strong>
+            <span>Sans déplacement au guichet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d17-body-content">
+    <!-- STUDENT FOCUS BANNER (Documented in Report) -->
+    <div class="student-focus-banner">
+      <div class="student-icon-circle">
+        <span class="material-symbols-outlined">school</span>
+      </div>
+      <div class="student-text">
+        <span class="badge badge-gold">Spécial Élèves & Étudiants</span>
+        <h3>{{ 'd17_student_focus_title' | localized }}</h3>
+        <p>{{ 'd17_student_focus_desc' | localized }}</p>
+        <p class="student-sub">
+          Retirez votre carte directement au bureau de Sidi Ali Ben Aoun avec une simple copie de votre carte d'identité nationale (CIN).
+        </p>
+      </div>
+      <a routerLink="/contact" class="btn btn-gold btn-sm">
+        <span>Renseignements Étudiants</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- INTERACTIVE STEP-BY-STEP GUIDES -->
+    <div class="guides-section">
+      <div class="section-header">
+        <span class="section-tag">Tutoriels Interactifs</span>
+        <h2 class="section-title">{{ 'd17_guides_title' | localized }}</h2>
+        <p class="section-subtitle">Sélectionnez une procédure pour afficher les étapes pas-à-pas détaillées</p>
+      </div>
+
+      <div class="guides-tabs">
+        <button
+          *ngFor="let g of guides; let idx = index"
+          class="guide-tab-btn"
+          [class.active]="activeGuideIndex === idx"
+          (click)="selectGuide(idx)">
+          <span class="material-symbols-outlined">play_circle</span>
+          <span>{{ g.title | localized }}</span>
+        </button>
+      </div>
+
+      <div *ngIf="guides.length > 0" class="active-guide-card card">
+        <div class="guide-meta-bar">
+          <span class="badge badge-primary">{{ guides[activeGuideIndex].category }}</span>
+          <span class="read-time"><span class="material-symbols-outlined">timer</span> Temps de lecture : {{ guides[activeGuideIndex].readTime }}</span>
+        </div>
+
+        <h3 class="guide-display-title">{{ guides[activeGuideIndex].title | localized }}</h3>
+
+        <div class="guide-steps-flow">
+          <div *ngFor="let step of guides[activeGuideIndex].steps" class="step-card">
+            <div class="step-circle">{{ step.stepNumber }}</div>
+            <div class="step-info">
+              <h4>{{ step.title | localized }}</h4>
+              <p>{{ step.description | localized }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPATIBLE CARDS DIRECTORY -->
+    <div class="compatible-cards-section">
+      <div class="section-header">
+        <span class="section-tag">Écosystème Monétique</span>
+        <h2 class="section-title">{{ 'd17_cards_title' | localized }}</h2>
+        <p class="section-subtitle">{{ 'd17_cards_subtitle' | localized }}</p>
+      </div>
+
+      <div class="grid-3 cards-grid">
+        <div *ngFor="let card of compatibleCards" class="card-item card">
+          <div class="card-item-header">
+            <div class="card-icon-round">
+              <span class="material-symbols-outlined">{{ card.icon }}</span>
+            </div>
+            <span class="badge badge-secondary">{{ card.category }}</span>
+          </div>
+
+          <h3 class="card-item-title">{{ card.name }}</h3>
+          <p class="card-item-desc">{{ card.desc }}</p>
+
+          <div class="card-item-footer">
+            <span class="material-symbols-outlined check-badge">check_circle</span>
+            <span>Intégration D17 Activée</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D17 TROUBLESHOOTING & FAQ -->
+    <div class="troubleshooting-section">
+      <div class="section-header">
+        <span class="section-tag">Assistance Technique</span>
+        <h2 class="section-title">Questions Fréquentes & Dépannage D17</h2>
+        <p class="section-subtitle">Conseils en cas de difficulté lors de l'utilisation de l'application</p>
+      </div>
+
+      <div class="d17-faq-list">
+        <div *ngFor="let faq of d17Faqs" class="d17-faq-card card">
+          <div class="faq-q">
+            <span class="material-symbols-outlined q-icon">help</span>
+            <h4>{{ faq.q }}</h4>
+          </div>
+          <div class="faq-a">
+            <p>{{ faq.a }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guichet-cta-banner card">
+        <span class="material-symbols-outlined g-icon">support_agent</span>
+        <div class="g-text">
+          <h4>Besoin d'aide pour configurer votre application D17 ?</h4>
+          <p>Nos agents au bureau de Sidi Ali Ben Aoun vous accueillent pour vérifier votre carte, régulariser votre numéro de mobile ou réinitialiser votre code confidentiel.</p>
+        </div>
+        <a routerLink="/contact" class="btn btn-primary">
+          <span>Contacter le guichet</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

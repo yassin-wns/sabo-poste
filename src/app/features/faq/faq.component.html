@@ -1,0 +1,95 @@
+<div class="page-container">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="container">
+      <span class="section-tag">Base de Connaissances Postale</span>
+      <h1 class="page-title">{{ 'faq_title' | localized }}</h1>
+      <p class="page-subtitle">{{ 'faq_subtitle' | localized }}</p>
+
+      <!-- Instant Search Filter -->
+      <div class="faq-search-box">
+        <span class="material-symbols-outlined s-icon">search</span>
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          [placeholder]="'faq_search_placeholder' | localized"
+          class="faq-search-input">
+        <button *ngIf="searchQuery" (click)="searchQuery = ''" class="clear-btn">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container faq-main">
+    <!-- Category Pills -->
+    <div class="faq-categories-pills">
+      <button
+        class="cat-pill"
+        [class.active]="selectedCategory === 'all'"
+        (click)="selectCategory('all')">
+        Toutes les Questions
+      </button>
+
+      <button
+        *ngFor="let cat of categories"
+        class="cat-pill"
+        [class.active]="selectedCategory === cat"
+        (click)="selectCategory(cat)">
+        {{ cat }}
+      </button>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-state">
+      <div class="spinner"></div>
+      <p>Chargement des réponses...</p>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!loading && filteredFaqs.length === 0" class="empty-state card">
+      <span class="material-symbols-outlined empty-icon">help_center</span>
+      <h3>Aucune question trouvée</h3>
+      <p>Aucune réponse ne correspond à vos termes de recherche. Veuillez essayer un autre mot-clé ou nous envoyer votre question.</p>
+      <a routerLink="/contact" class="btn btn-primary">
+        <span>Poser directement ma question</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Accordion List -->
+    <div *ngIf="!loading && filteredFaqs.length > 0" class="faq-accordion-container">
+      <div
+        *ngFor="let faq of filteredFaqs"
+        class="faq-item card"
+        [class.is-expanded]="isOpen(faq.id)">
+        <button class="faq-question-btn" (click)="toggleFaq(faq.id)" [attr.aria-expanded]="isOpen(faq.id)">
+          <div class="q-content">
+            <span class="badge badge-secondary faq-cat-badge">{{ faq.category }}</span>
+            <span class="faq-question-text">{{ faq.question | localized }}</span>
+          </div>
+          <span class="material-symbols-outlined expand-icon">
+            {{ isOpen(faq.id) ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+          </span>
+        </button>
+
+        <div *ngIf="isOpen(faq.id)" class="faq-answer-panel">
+          <p>{{ faq.answer | localized }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Still need help card -->
+    <div class="card help-prompt-card">
+      <span class="material-symbols-outlined prompt-icon">live_help</span>
+      <div>
+        <h3>Vous ne trouvez pas la réponse à votre demande ?</h3>
+        <p>Transmettez votre message directement à notre service client pour recevoir une réponse personnalisée.</p>
+      </div>
+      <a routerLink="/contact" class="btn btn-primary">
+        <span>Contactez le bureau</span>
+        <span class="material-symbols-outlined">mail</span>
+      </a>
+    </div>
+  </div>
+</div>

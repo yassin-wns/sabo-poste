@@ -1,0 +1,171 @@
+<div class="dashboard-page">
+  <div class="dash-header">
+    <div>
+      <h1 class="dash-title">{{ 'admin_title' | localized }}</h1>
+      <p class="dash-sub">Synthèse opérationnelle et métriques de fréquentation de la plateforme</p>
+    </div>
+    <div class="dash-header-actions">
+      <a routerLink="/admin/services" class="btn btn-primary btn-sm">
+        <span class="material-symbols-outlined">add</span>
+        <span>Nouveau Service</span>
+      </a>
+      <a routerLink="/admin/articles" class="btn btn-secondary btn-sm">
+        <span class="material-symbols-outlined">add</span>
+        <span>Publier un Avis</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- KPI CARDS GRID -->
+  <div class="grid-4 kpi-grid">
+    <!-- KPI 1 -->
+    <div class="kpi-card card">
+      <div class="kpi-icon-box bg-blue">
+        <span class="material-symbols-outlined">apps</span>
+      </div>
+      <div class="kpi-data">
+        <span class="kpi-label">{{ 'admin_kpi_services' | localized }}</span>
+        <h3 class="kpi-number">{{ totalServices }}</h3>
+        <span class="kpi-hint">{{ totalCategories }} Catégories actives</span>
+      </div>
+    </div>
+
+    <!-- KPI 2 -->
+    <div class="kpi-card card">
+      <div class="kpi-icon-box bg-gold">
+        <span class="material-symbols-outlined">mark_email_unread</span>
+      </div>
+      <div class="kpi-data">
+        <span class="kpi-label">{{ 'admin_kpi_messages_pending' | localized }}</span>
+        <h3 class="kpi-number text-danger">{{ pendingMessages }}</h3>
+        <span class="kpi-hint">Sur un total de {{ totalMessages }} reçus</span>
+      </div>
+    </div>
+
+    <!-- KPI 3 -->
+    <div class="kpi-card card">
+      <div class="kpi-icon-box bg-green">
+        <span class="material-symbols-outlined">smartphone</span>
+      </div>
+      <div class="kpi-data">
+        <span class="kpi-label">{{ 'admin_kpi_guides' | localized }}</span>
+        <h3 class="kpi-number">{{ totalGuides }}</h3>
+        <span class="kpi-hint">Tutoriels pas-à-pas D17</span>
+      </div>
+    </div>
+
+    <!-- KPI 4 -->
+    <div class="kpi-card card">
+      <div class="kpi-icon-box bg-purple">
+        <span class="material-symbols-outlined">newspaper</span>
+      </div>
+      <div class="kpi-data">
+        <span class="kpi-label">{{ 'admin_kpi_articles' | localized }}</span>
+        <h3 class="kpi-number">{{ totalArticles }}</h3>
+        <span class="kpi-hint">{{ totalFaqs }} Questions FAQ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO COLUMNS: Recent Messages & Activity Log -->
+  <div class="dash-columns-grid">
+    <!-- Messages Table Card -->
+    <div class="card dash-table-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">
+          <span class="material-symbols-outlined">inbox</span>
+          <h3>Derniers Messages des Usagers</h3>
+        </div>
+        <a routerLink="/admin/messages" class="btn btn-secondary btn-sm">
+          <span>Voir tout ({{ totalMessages }})</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Expéditeur</th>
+              <th>Catégorie / Objet</th>
+              <th>Statut</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let msg of recentMessages">
+              <td>
+                <strong>{{ msg.fullName }}</strong>
+                <div class="small-text text-muted">{{ msg.email }}</div>
+              </td>
+              <td>
+                <span class="badge badge-secondary">{{ msg.category }}</span>
+                <div class="subject-text">{{ msg.subject }}</div>
+              </td>
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="{
+                    'badge-danger': msg.status === 'pending',
+                    'badge-warning': msg.status === 'reviewed',
+                    'badge-success': msg.status === 'replied'
+                  }">
+                  {{ msg.status === 'pending' ? 'En attente' : (msg.status === 'reviewed' ? 'Examiné' : 'Répondu') }}
+                </span>
+              </td>
+              <td>
+                <div class="quick-status-actions">
+                  <button
+                    *ngIf="msg.status === 'pending'"
+                    (click)="updateMessageStatus(msg, 'reviewed')"
+                    class="btn btn-secondary btn-sm"
+                    title="Marquer en cours d'examen">
+                    <span class="material-symbols-outlined">visibility</span>
+                  </button>
+                  <button
+                    *ngIf="msg.status !== 'replied'"
+                    (click)="updateMessageStatus(msg, 'replied')"
+                    class="btn btn-primary btn-sm"
+                    title="Marquer comme répondu">
+                    <span class="material-symbols-outlined">done_all</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="recentMessages.length === 0">
+              <td colspan="4" class="text-center text-muted py-3">Aucun message reçu pour le moment.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Activity Log Card -->
+    <div class="card dash-activity-card">
+      <div class="dash-card-header">
+        <div class="dash-card-title">
+          <span class="material-symbols-outlined">history</span>
+          <h3>Journal d'Activité Récente</h3>
+        </div>
+      </div>
+
+      <div class="activity-timeline">
+        <div *ngFor="let log of activityLogs" class="activity-item">
+          <div class="activity-dot"></div>
+          <div class="activity-content">
+            <div class="activity-header">
+              <strong>{{ log.action }}</strong>
+              <span class="log-user">{{ log.user }}</span>
+            </div>
+            <p class="log-desc">{{ log.details }}</p>
+            <span class="log-time">{{ log.timestamp | date:'short' }}</span>
+          </div>
+        </div>
+
+        <div *ngIf="activityLogs.length === 0" class="text-muted text-center py-3">
+          Aucune action enregistrée récemment.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

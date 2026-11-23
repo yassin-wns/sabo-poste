@@ -1,0 +1,129 @@
+<div class="mgmt-page">
+  <div class="mgmt-header">
+    <div>
+      <h1 class="mgmt-title">Gestion des Catégories</h1>
+      <p class="mgmt-sub">Organisez les pôles d'activités postales et financières</p>
+    </div>
+    <button (click)="openCreateModal()" class="btn btn-primary">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span>Nouvelle Catégorie</span>
+    </button>
+  </div>
+
+  <div class="card table-card">
+    <div class="table-responsive">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Catégorie</th>
+            <th>ID / Slug</th>
+            <th>Icône</th>
+            <th>Description (FR)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of categories">
+            <td>
+              <div class="cat-cell">
+                <span class="material-symbols-outlined cat-cell-icon">{{ cat.icon }}</span>
+                <div>
+                  <strong>{{ cat.name.fr }}</strong>
+                  <div class="text-muted text-small">{{ cat.name.ar }}</div>
+                </div>
+              </div>
+            </td>
+            <td><code>{{ cat.id }}</code></td>
+            <td><span class="material-symbols-outlined">{{ cat.icon }}</span></td>
+            <td><p class="desc-cell">{{ cat.description.fr }}</p></td>
+            <td>
+              <div class="table-actions">
+                <button (click)="openEditModal(cat)" class="btn btn-secondary btn-sm" title="Modifier">
+                  <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button (click)="confirmDelete(cat)" class="btn btn-danger btn-sm" title="Supprimer">
+                  <span class="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div *ngIf="isEditModalOpen" class="modal-backdrop" (click)="isEditModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">{{ isCreating ? 'Nouvelle Catégorie' : 'Modifier la Catégorie' }}</h3>
+      <button class="modal-close" (click)="isEditModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label">Identifiant (ID)</label>
+          <input type="text" [(ngModel)]="currentCategory.id" class="form-control" placeholder="ex: mon-id" [disabled]="!isCreating">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Icône Material</label>
+          <input type="text" [(ngModel)]="currentCategory.icon" class="form-control" placeholder="ex: payments">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nom (Français)</label>
+        <input type="text" [(ngModel)]="currentCategory.name.fr" class="form-control">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nom (العربية)</label>
+        <input type="text" [(ngModel)]="currentCategory.name.ar" class="form-control text-right" dir="rtl">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nom (English)</label>
+        <input type="text" [(ngModel)]="currentCategory.name.en" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Description (Français)</label>
+        <textarea [(ngModel)]="currentCategory.description.fr" rows="2" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">الوصف (العربية)</label>
+        <textarea [(ngModel)]="currentCategory.description.ar" rows="2" class="form-control text-right" dir="rtl"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description (English)</label>
+        <textarea [(ngModel)]="currentCategory.description.en" rows="2" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isEditModalOpen = false">Annuler</button>
+      <button class="btn btn-primary" (click)="saveCategory()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div *ngIf="isDeleteModalOpen" class="modal-backdrop" (click)="isDeleteModalOpen = false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">Confirmer la suppression</h3>
+      <button class="modal-close" (click)="isDeleteModalOpen = false">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Supprimer la catégorie <strong>{{ categoryToDelete?.name?.fr }}</strong> ?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="isDeleteModalOpen = false">Annuler</button>
+      <button class="btn btn-danger" (click)="executeDelete()">Supprimer</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+<div class="page-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <span class="section-tag">Bureau de Poste Sidi Ali Ben Aoun</span>
+      <h1 class="page-title">{{ 'services_title' | localized }}</h1>
+      <p class="page-subtitle">{{ 'services_subtitle' | localized }}</p>
+
+      <!-- Search & Filter Controls -->
+      <div class="filter-controls-box">
+        <div class="search-input-wrapper">
+          <span class="material-symbols-outlined search-icon">search</span>
+          <input
+            type="text"
+            [(ngModel)]="searchQuery"
+            placeholder="Rechercher une prestation (nom, mot-clé, procédure...)"
+            class="service-search-input">
+          <button *ngIf="searchQuery" (click)="searchQuery = ''" class="clear-btn">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container services-main">
+    <!-- Category Filter Tabs -->
+    <div class="category-tabs">
+      <button
+        class="tab-btn"
+        [class.active]="selectedCategory === 'all'"
+        (click)="selectCategory('all')">
+        <span class="material-symbols-outlined">apps</span>
+        <span>{{ 'cat_all' | localized }}</span>
+        <span class="count-badge">{{ services.length }}</span>
+      </button>
+
+      <button
+        *ngFor="let cat of categories"
+        class="tab-btn"
+        [class.active]="selectedCategory === cat.id"
+        (click)="selectCategory(cat.id)">
+        <span class="material-symbols-outlined">{{ cat.icon }}</span>
+        <span>{{ cat.name | localized }}</span>
+      </button>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-state">
+      <div class="spinner"></div>
+      <p>Chargement des services postaux...</p>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!loading && filteredServices.length === 0" class="empty-state card">
+      <span class="material-symbols-outlined empty-icon">search_off</span>
+      <h3>Aucun service trouvé</h3>
+      <p>Aucune prestation ne correspond à vos critères de recherche. Essayez d'autres mots-clés ou réinitialisez les filtres.</p>
+      <button class="btn btn-secondary" (click)="selectedCategory = 'all'; searchQuery = ''">
+        Réinitialiser la recherche
+      </button>
+    </div>
+
+    <!-- Services Grid -->
+    <div *ngIf="!loading && filteredServices.length > 0" class="grid-3 services-grid">
+      <div *ngFor="let service of filteredServices" class="service-card">
+        <div class="service-card-top">
+          <span class="badge badge-gold" *ngIf="service.isPopular">
+            <span class="material-symbols-outlined">star</span> {{ 'service_popular' | localized }}
+          </span>
+          <span class="badge badge-primary">
+            <span class="material-symbols-outlined">schedule</span> {{ service.deliveryTime | localized }}
+          </span>
+        </div>
+
+        <div class="service-icon-box">
+          <span class="material-symbols-outlined s-icon">{{ service.icon }}</span>
+        </div>
+
+        <h3 class="service-title">{{ service.title | localized }}</h3>
+        <p class="service-summary">{{ service.summary | localized }}</p>
+
+        <!-- Requirements Preview -->
+        <div class="req-preview">
+          <span class="req-title">Documents essentiels :</span>
+          <ul>
+            <li *ngFor="let req of (service.requirements | localized).slice(0, 2)">
+              <span class="material-symbols-outlined r-icon">check</span>
+              <span>{{ req }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="service-card-bottom">
+          <button (click)="openServiceDetail(service)" class="btn btn-primary btn-block">
+            <span>{{ 'service_btn_details' | localized }}</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE DETAIL MODAL -->
+<div *ngIf="selectedService" class="modal-backdrop" (click)="closeServiceDetail()">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title-box">
+        <span class="material-symbols-outlined modal-head-icon">{{ selectedService.icon }}</span>
+        <div>
+          <h3 class="modal-title">{{ selectedService.title | localized }}</h3>
+          <span class="badge badge-gold" *ngIf="selectedService.isPopular">Service Prioritaire</span>
+        </div>
+      </div>
+      <button class="modal-close" (click)="closeServiceDetail()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="m-summary-callout">
+        <p>{{ selectedService.description | localized }}</p>
+      </div>
+
+      <!-- Requirements Section -->
+      <div class="modal-section">
+        <h4>
+          <span class="material-symbols-outlined icon-sec">assignment</span>
+          <span>{{ 'service_requirements' | localized }}</span>
+        </h4>
+        <ul class="modal-check-list">
+          <li *ngFor="let req of (selectedService.requirements | localized)">
+            <span class="material-symbols-outlined c-green">check_circle</span>
+            <span>{{ req }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Steps Section -->
+      <div class="modal-section">
+        <h4>
+          <span class="material-symbols-outlined icon-sec">checklist</span>
+          <span>{{ 'service_steps' | localized }}</span>
+        </h4>
+        <div class="steps-timeline">
+          <div *ngFor="let step of (selectedService.steps | localized); let idx = index" class="timeline-step">
+            <div class="step-badge">{{ idx + 1 }}</div>
+            <div class="step-content">
+              <p>{{ step }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery / Delay Info -->
+      <div class="delivery-highlight">
+        <span class="material-symbols-outlined">timer</span>
+        <div>
+          <strong>{{ 'service_delivery' | localized }}</strong>
+          <p>{{ selectedService.deliveryTime | localized }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="closeServiceDetail()">
+        {{ 'service_modal_close' | localized }}
+      </button>
+      <a routerLink="/contact" (click)="closeServiceDetail()" class="btn btn-primary">
+        <span class="material-symbols-outlined">mail</span>
+        <span>Poser une question au guichet</span>
+      </a>
+    </div>
+  </div>
+</div>

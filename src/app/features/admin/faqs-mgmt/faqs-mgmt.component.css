@@ -1,0 +1,66 @@
+.mgmt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.mgmt-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--dark-blue);
+  margin-bottom: 0.25rem;
+}
+
+.mgmt-sub {
+  font-size: 0.92rem;
+  color: var(--slate-500);
+}
+
+.table-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.text-small {
+  font-size: 0.8rem;
+}
+
+.answer-cell {
+  max-width: 400px;
+  font-size: 0.85rem;
+  color: var(--slate-600);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.modal-lg {
+  max-width: 850px;
+}
+
+.form-modal-body {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.form-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-blue);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.35rem;
+  margin: 1.25rem 0 0.85rem;
+}
+
+.text-right {
+  text-align: right;
+}

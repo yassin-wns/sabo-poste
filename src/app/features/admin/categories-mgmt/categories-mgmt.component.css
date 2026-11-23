@@ -1,0 +1,60 @@
+.mgmt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.mgmt-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--dark-blue);
+  margin-bottom: 0.25rem;
+}
+
+.mgmt-sub {
+  font-size: 0.92rem;
+  color: var(--slate-500);
+}
+
+.table-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.cat-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cat-cell-icon {
+  font-size: 1.4rem;
+  color: var(--primary-blue);
+  background: var(--primary-light);
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+}
+
+.desc-cell {
+  max-width: 380px;
+  font-size: 0.85rem;
+  color: var(--slate-600);
+  margin: 0;
+}
+
+.text-small {
+  font-size: 0.78rem;
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
