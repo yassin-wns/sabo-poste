@@ -97,14 +97,38 @@
       },
       "icon": "mail",
       "requirements": {
-        "fr": ["Enveloppe normalisée", "Affranchissement par timbre postal en vigueur", "Adresse complète et lisible avec code postal"],
-        "ar": ["ظرف بريدي مطابق للمواصفات", "طابع بريدي قانوني", "عنوان واضح ودقيق يتضمن الترقيم البريدي"],
-        "en": ["Standard envelope", "Valid postage stamp", "Clear address with correct postal code"]
+        "fr": [
+          "Enveloppe normalisée",
+          "Affranchissement par timbre postal en vigueur",
+          "Adresse complète et lisible avec code postal"
+        ],
+        "ar": [
+          "ظرف بريدي مطابق للمواصفات",
+          "طابع بريدي قانوني",
+          "عنوان واضح ودقيق يتضمن الترقيم البريدي"
+        ],
+        "en": [
+          "Standard envelope",
+          "Valid postage stamp",
+          "Clear address with correct postal code"
+        ]
       },
       "steps": {
-        "fr": ["Préparer le pli avec l'adresse du destinataire et de l'expéditeur", "Déposer au guichet du bureau ou dans la boîte aux lettres", "Acheminement et distribution par le facteur"],
-        "ar": ["إعداد الرسالة مع ذكر عنوان المرسل إليه والمرسل بدقة", "إيداع الظرف بشباك مكتب البريد أو في صندوق الرسائل", "توجيه وتوزيع المراسلة من قبل عون التوزيع"],
-        "en": ["Prepare the letter with sender and recipient addresses", "Deposit at post office counter or in mailbox", "Routing and final delivery by the postman"]
+        "fr": [
+          "Préparer le pli avec l'adresse du destinataire et de l'expéditeur",
+          "Déposer au guichet du bureau ou dans la boîte aux lettres",
+          "Acheminement et distribution par le facteur"
+        ],
+        "ar": [
+          "إعداد الرسالة مع ذكر عنوان المرسل إليه والمرسل بدقة",
+          "إيداع الظرف بشباك مكتب البريد أو في صندوق الرسائل",
+          "توجيه وتوزيع المراسلة من قبل عون التوزيع"
+        ],
+        "en": [
+          "Prepare the letter with sender and recipient addresses",
+          "Deposit at post office counter or in mailbox",
+          "Routing and final delivery by the postman"
+        ]
       },
       "deliveryTime": {
         "fr": "2 à 3 jours ouvrables (national)",
@@ -134,14 +158,38 @@
       },
       "icon": "local-shipping",
       "requirements": {
-        "fr": ["Emballage sécurisé et adapté", "Bordereau Rapid-Poste dûment rempli", "Numéro de téléphone du destinataire"],
-        "ar": ["تعليب محكم ومناسب للمحتوى", "استمارة البريد السريع معمرة بدقة", "رقم هاتف المتسلم للتنسيق"],
-        "en": ["Secure packaging", "Completed Rapid-Post form", "Recipient phone number"]
+        "fr": [
+          "Emballage sécurisé et adapté",
+          "Bordereau Rapid-Poste dûment rempli",
+          "Numéro de téléphone du destinataire"
+        ],
+        "ar": [
+          "تعليب محكم ومناسب للمحتوى",
+          "استمارة البريد السريع معمرة بدقة",
+          "رقم هاتف المتسلم للتنسيق"
+        ],
+        "en": [
+          "Secure packaging",
+          "Completed Rapid-Post form",
+          "Recipient phone number"
+        ]
       },
       "steps": {
-        "fr": ["Pesée et enregistrement au guichet", "Attribution du numéro de suivi (tracking)", "Acheminement prioritaire et notification"],
-        "ar": ["وزن الطرد وتسجيله لدى الشباك", "الحصول على وصل ورقم التتبع", "التوجيه ذو الأولوية وإشعار المتسلم"],
-        "en": ["Weighing and counter registration", "Issue of tracking number", "Priority routing and delivery alert"]
+        "fr": [
+          "Pesée et enregistrement au guichet",
+          "Attribution du numéro de suivi (tracking)",
+          "Acheminement prioritaire et notification"
+        ],
+        "ar": [
+          "وزن الطرد وتسجيله لدى الشباك",
+          "الحصول على وصل ورقم التتبع",
+          "التوجيه ذو الأولوية وإشعار المتسلم"
+        ],
+        "en": [
+          "Weighing and counter registration",
+          "Issue of tracking number",
+          "Priority routing and delivery alert"
+        ]
       },
       "deliveryTime": {
         "fr": "24h à 48h selon la zone",
@@ -171,14 +219,38 @@
       },
       "icon": "inventory-2",
       "requirements": {
-        "fr": ["Pièce d'identité de l'expéditeur", "Colis correctement emballé", "Déclaration douanière si envoi international"],
-        "ar": ["بطاقة التعريف الوطنية للمرسل", "طرد مغلف بإحكام", "التصريح الديواني في صورة الإرسال الدولي"],
-        "en": ["Valid ID of sender", "Properly packed parcel", "Customs declaration if international"]
+        "fr": [
+          "Pièce d'identité de l'expéditeur",
+          "Colis correctement emballé",
+          "Déclaration douanière si envoi international"
+        ],
+        "ar": [
+          "بطاقة التعريف الوطنية للمرسل",
+          "طرد مغلف بإحكام",
+          "التصريح الديواني في صورة الإرسال الدولي"
+        ],
+        "en": [
+          "Valid ID of sender",
+          "Properly packed parcel",
+          "Customs declaration if international"
+        ]
       },
       "steps": {
-        "fr": ["Contrôle du conditionnement au guichet", "Établissement du récépissé de dépôt", "Avis d'arrivée transmis au destinataire"],
-        "ar": ["فحص سلامة التعليب لدى الشباك", "إصدار وصل الإيداع القانوني", "توجيه إشعار بالوصول إلى المتسلم"],
-        "en": ["Counter inspection and verification", "Receipt generation", "Arrival notice dispatched to recipient"]
+        "fr": [
+          "Contrôle du conditionnement au guichet",
+          "Établissement du récépissé de dépôt",
+          "Avis d'arrivée transmis au destinataire"
+        ],
+        "ar": [
+          "فحص سلامة التعليب لدى الشباك",
+          "إصدار وصل الإيداع القانوني",
+          "توجيه إشعار بالوصول إلى المتسلم"
+        ],
+        "en": [
+          "Counter inspection and verification",
+          "Receipt generation",
+          "Arrival notice dispatched to recipient"
+        ]
       },
       "deliveryTime": {
         "fr": "3 à 5 jours ouvrables",
@@ -208,14 +280,38 @@
       },
       "icon": "mark-chat-unread",
       "requirements": {
-        "fr": ["Texte du message clair", "Coordonnées exactes du destinataire", "Pièce d'identité"],
-        "ar": ["نص البرقية واضح", "العنوان الدقيق ورقم هاتف المعني", "بطاقة التعريف الوطنية"],
-        "en": ["Clear message text", "Exact recipient address", "National ID"]
+        "fr": [
+          "Texte du message clair",
+          "Coordonnées exactes du destinataire",
+          "Pièce d'identité"
+        ],
+        "ar": [
+          "نص البرقية واضح",
+          "العنوان الدقيق ورقم هاتف المعني",
+          "بطاقة التعريف الوطنية"
+        ],
+        "en": [
+          "Clear message text",
+          "Exact recipient address",
+          "National ID"
+        ]
       },
       "steps": {
-        "fr": ["Rédaction du message au guichet", "Saisie immédiate sur le système réseau postal", "Distribution par porteur spécial"],
-        "ar": ["تحرير نص البرقية بالشباك", "الإدراج الفوري بالنظام الإلكتروني", "التسليم السريع عبر موزع خاص"],
-        "en": ["Draft message at counter", "Instant input into postal network", "Express delivery by courier"]
+        "fr": [
+          "Rédaction du message au guichet",
+          "Saisie immédiate sur le système réseau postal",
+          "Distribution par porteur spécial"
+        ],
+        "ar": [
+          "تحرير نص البرقية بالشباك",
+          "الإدراج الفوري بالنظام الإلكتروني",
+          "التسليم السريع عبر موزع خاص"
+        ],
+        "en": [
+          "Draft message at counter",
+          "Instant input into postal network",
+          "Express delivery by courier"
+        ]
       },
       "deliveryTime": {
         "fr": "Le jour même ou sous 24h",
@@ -245,14 +341,38 @@
       },
       "icon": "send",
       "requirements": {
-        "fr": ["CIN originale en cours de validité", "Numéro de téléphone de l'expéditeur et du bénéficiaire", "Montant à transférer en espèces ou par carte"],
-        "ar": ["بطاقة التعريف الوطنية الأصلية سارية المفعول", "رقم الهاتف الجوال لكل من المرسل والمستفيد", "المبلغ المراد تحويله نقداً أو بالبطاقة"],
-        "en": ["Valid national ID card", "Phone numbers of sender and recipient", "Transfer amount in cash or card"]
+        "fr": [
+          "CIN originale en cours de validité",
+          "Numéro de téléphone de l'expéditeur et du bénéficiaire",
+          "Montant à transférer en espèces ou par carte"
+        ],
+        "ar": [
+          "بطاقة التعريف الوطنية الأصلية سارية المفعول",
+          "رقم الهاتف الجوال لكل من المرسل والمستفيد",
+          "المبلغ المراد تحويله نقداً أو بالبطاقة"
+        ],
+        "en": [
+          "Valid national ID card",
+          "Phone numbers of sender and recipient",
+          "Transfer amount in cash or card"
+        ]
       },
       "steps": {
-        "fr": ["Présenter sa CIN et remplir la fiche de mandat", "Payer le montant et les frais de service", "Communiquer le code de retrait sécurisé au bénéficiaire"],
-        "ar": ["الاستظهار ببطاقة التعريف وتعبئة مطبوعة الحوالة", "دفع المبلغ المراد تحويله مع معلوم الخدمة", "تسليم الرمز السري للمستفيد لسحب أمواله في الحين"],
-        "en": ["Present ID and fill transfer form", "Pay principal and transfer fees", "Share secret collection code with recipient"]
+        "fr": [
+          "Présenter sa CIN et remplir la fiche de mandat",
+          "Payer le montant et les frais de service",
+          "Communiquer le code de retrait sécurisé au bénéficiaire"
+        ],
+        "ar": [
+          "الاستظهار ببطاقة التعريف وتعبئة مطبوعة الحوالة",
+          "دفع المبلغ المراد تحويله مع معلوم الخدمة",
+          "تسليم الرمز السري للمستفيد لسحب أمواله في الحين"
+        ],
+        "en": [
+          "Present ID and fill transfer form",
+          "Pay principal and transfer fees",
+          "Share secret collection code with recipient"
+        ]
       },
       "deliveryTime": {
         "fr": "Instantané (quelques secondes)",
@@ -282,14 +402,38 @@
       },
       "icon": "price-change",
       "requirements": {
-        "fr": ["CIN valide", "Nom complet et adresse exacte du bénéficiaire", "Fiche de mandat postal"],
-        "ar": ["بطاقة التعريف الوطنية", "الاسم الكامل والعنوان الدقيق للمستفيد", "مطبوعة الحوالة البريدية"],
-        "en": ["Valid National ID", "Full name and exact address of beneficiary", "Postal transfer slip"]
+        "fr": [
+          "CIN valide",
+          "Nom complet et adresse exacte du bénéficiaire",
+          "Fiche de mandat postal"
+        ],
+        "ar": [
+          "بطاقة التعريف الوطنية",
+          "الاسم الكامل والعنوان الدقيق للمستفيد",
+          "مطبوعة الحوالة البريدية"
+        ],
+        "en": [
+          "Valid National ID",
+          "Full name and exact address of beneficiary",
+          "Postal transfer slip"
+        ]
       },
       "steps": {
-        "fr": ["Dépôt des fonds au guichet", "Acheminement postal de l'avis de mandat", "Paiement au guichet de destination ou à domicile"],
-        "ar": ["إيداع الأموال بشباك المكتب", "توجيه إشعار الحوالة بريدياً", "صرف الحوالة للمستفيد بعد الاستظهار بهويته"],
-        "en": ["Deposit cash at counter", "Postal dispatch of order slip", "Collection at destination post office"]
+        "fr": [
+          "Dépôt des fonds au guichet",
+          "Acheminement postal de l'avis de mandat",
+          "Paiement au guichet de destination ou à domicile"
+        ],
+        "ar": [
+          "إيداع الأموال بشباك المكتب",
+          "توجيه إشعار الحوالة بريدياً",
+          "صرف الحوالة للمستفيد بعد الاستظهار بهويته"
+        ],
+        "en": [
+          "Deposit cash at counter",
+          "Postal dispatch of order slip",
+          "Collection at destination post office"
+        ]
       },
       "deliveryTime": {
         "fr": "48h à 72h ouvrables",
@@ -319,14 +463,38 @@
       },
       "icon": "credit-card",
       "requirements": {
-        "fr": ["Copie de la CIN originale", "Formulaire de souscription signé", "Numéro de téléphone actif"],
-        "ar": ["نسخة من بطاقة التعريف الوطنية مع الاستظهار بالأصل", "مطبوعة الاشتراك ممضاة", "رقم هاتف جوال مسجل باسم الحريف"],
-        "en": ["Copy of National ID card", "Signed subscription contract", "Active phone number"]
+        "fr": [
+          "Copie de la CIN originale",
+          "Formulaire de souscription signé",
+          "Numéro de téléphone actif"
+        ],
+        "ar": [
+          "نسخة من بطاقة التعريف الوطنية مع الاستظهار بالأصل",
+          "مطبوعة الاشتراك ممضاة",
+          "رقم هاتف جوال مسجل باسم الحريف"
+        ],
+        "en": [
+          "Copy of National ID card",
+          "Signed subscription contract",
+          "Active phone number"
+        ]
       },
       "steps": {
-        "fr": ["Acquérir le pack e-DINAR au guichet", "Activation sécurisée par code confidentiel (PIN)", "Liaison immédiate à l'application D17"],
-        "ar": ["اقتناء البطاقة مباشرة من شباك مكتب البريد", "التفعيل الآمن عبر الرمز السري (PIN)", "ربط البطاقة فوراً بتطبيق D17 بهاتفك الجوال"],
-        "en": ["Acquire the card pack at the counter", "Activate via secure PIN", "Pair with the D17 mobile app"]
+        "fr": [
+          "Acquérir le pack e-DINAR au guichet",
+          "Activation sécurisée par code confidentiel (PIN)",
+          "Liaison immédiate à l'application D17"
+        ],
+        "ar": [
+          "اقتناء البطاقة مباشرة من شباك مكتب البريد",
+          "التفعيل الآمن عبر الرمز السري (PIN)",
+          "ربط البطاقة فوراً بتطبيق D17 بهاتفك الجوال"
+        ],
+        "en": [
+          "Acquire the card pack at the counter",
+          "Activate via secure PIN",
+          "Pair with the D17 mobile app"
+        ]
       },
       "deliveryTime": {
         "fr": "Délivrée immédiatement au guichet",
@@ -356,14 +524,38 @@
       },
       "icon": "school",
       "requirements": {
-        "fr": ["Copie de la CIN de l'étudiant", "Attestation de réussite ou inscription scolaire/universitaire", "Formulaire spécifique Jeune"],
-        "ar": ["نسخة من بطاقة التعريف الوطنية للطالب", "شهادة ترسيم أو نجاح دراسي/جامعي", "استمارة اشتراك خاصة بفئة الشباب"],
-        "en": ["Copy of student's National ID", "Proof of school or university enrollment", "Youth subscription form"]
+        "fr": [
+          "Copie de la CIN de l'étudiant",
+          "Attestation de réussite ou inscription scolaire/universitaire",
+          "Formulaire spécifique Jeune"
+        ],
+        "ar": [
+          "نسخة من بطاقة التعريف الوطنية للطالب",
+          "شهادة ترسيم أو نجاح دراسي/جامعي",
+          "استمارة اشتراك خاصة بفئة الشباب"
+        ],
+        "en": [
+          "Copy of student's National ID",
+          "Proof of school or university enrollment",
+          "Youth subscription form"
+        ]
       },
       "steps": {
-        "fr": ["Retrait du pack étudiant au guichet de Sidi Ali Ben Aoun", "Activation du compte e-DINAR en ligne ou au bureau", "Paiement des frais de scolarité et réception des bourses"],
-        "ar": ["استلام بطاقة الطالب من شباك مكتب البريد بسيدي علي بن عون", "تفعيل الحساب الإلكتروني عبر الإنترنت أو بالمكتب", "خلاص معاليم الترسيم واستلام المنحة الجامعية"],
-        "en": ["Obtain student pack at Sidi Ali Ben Aoun counter", "Activate account online or at post office", "Pay tuition and receive scholarship grants"]
+        "fr": [
+          "Retrait du pack étudiant au guichet de Sidi Ali Ben Aoun",
+          "Activation du compte e-DINAR en ligne ou au bureau",
+          "Paiement des frais de scolarité et réception des bourses"
+        ],
+        "ar": [
+          "استلام بطاقة الطالب من شباك مكتب البريد بسيدي علي بن عون",
+          "تفعيل الحساب الإلكتروني عبر الإنترنت أو بالمكتب",
+          "خلاص معاليم الترسيم واستلام المنحة الجامعية"
+        ],
+        "en": [
+          "Obtain student pack at Sidi Ali Ben Aoun counter",
+          "Activate account online or at post office",
+          "Pay tuition and receive scholarship grants"
+        ]
       },
       "deliveryTime": {
         "fr": "Délivrée sur place au guichet",
@@ -393,14 +585,38 @@
       },
       "icon": "business-center",
       "requirements": {
-        "fr": ["Extrait du Registre National des Entreprises (RNE) / Patente", "Copie de la CIN du représentant légal", "Justificatif de domicile professionnel"],
-        "ar": ["مضمون السجل الوطني للمؤسسات أو المعرف الجبائي (الباتيندة)", "نسخة من بطاقة التعريف للوكيل أو صاحب النشاط", "شهادة إقامة مهنية"],
-        "en": ["National Business Registry extract / Tax ID", "ID copy of legal representative", "Proof of business address"]
+        "fr": [
+          "Extrait du Registre National des Entreprises (RNE) / Patente",
+          "Copie de la CIN du représentant légal",
+          "Justificatif de domicile professionnel"
+        ],
+        "ar": [
+          "مضمون السجل الوطني للمؤسسات أو المعرف الجبائي (الباتيندة)",
+          "نسخة من بطاقة التعريف للوكيل أو صاحب النشاط",
+          "شهادة إقامة مهنية"
+        ],
+        "en": [
+          "National Business Registry extract / Tax ID",
+          "ID copy of legal representative",
+          "Proof of business address"
+        ]
       },
       "steps": {
-        "fr": ["Dépôt du dossier professionnel au bureau de poste", "Validation et remise de la carte PRO", "Association aux terminaux de paiement et D17 Pro"],
-        "ar": ["إيداع الملف المهني لدى مكتب البريد", "التثبت وتسليم بطاقة المحترف", "الربط بأجهزة الدفع الإلكتروني وتطبيق D17 المالي"],
-        "en": ["Submit business file at counter", "Validation and card issuance", "Link to POS terminals and D17 Pro"]
+        "fr": [
+          "Dépôt du dossier professionnel au bureau de poste",
+          "Validation et remise de la carte PRO",
+          "Association aux terminaux de paiement et D17 Pro"
+        ],
+        "ar": [
+          "إيداع الملف المهني لدى مكتب البريد",
+          "التثبت وتسليم بطاقة المحترف",
+          "الربط بأجهزة الدفع الإلكتروني وتطبيق D17 المالي"
+        ],
+        "en": [
+          "Submit business file at counter",
+          "Validation and card issuance",
+          "Link to POS terminals and D17 Pro"
+        ]
       },
       "deliveryTime": {
         "fr": "24h à 48h après validation du dossier",
@@ -430,14 +646,35 @@
       },
       "icon": "receipt",
       "requirements": {
-        "fr": ["Facture originale ou référence du contrat/numéro de facture", "Montant dû en espèces ou par carte bancaire/e-DINAR"],
-        "ar": ["أصل الفاتورة أو المعرف الدقيق ورقم الفاتورة", "المبلغ المستوجب نقداً أو بالبطاقة البريدية / البنكية"],
-        "en": ["Original bill or invoice/contract reference", "Amount due in cash or card"]
+        "fr": [
+          "Facture originale ou référence du contrat/numéro de facture",
+          "Montant dû en espèces ou par carte bancaire/e-DINAR"
+        ],
+        "ar": [
+          "أصل الفاتورة أو المعرف الدقيق ورقم الفاتورة",
+          "المبلغ المستوجب نقداً أو بالبطاقة البريدية / البنكية"
+        ],
+        "en": [
+          "Original bill or invoice/contract reference",
+          "Amount due in cash or card"
+        ]
       },
       "steps": {
-        "fr": ["Présenter la facture au guichetier", "Validation du montant sur le terminal interconnecté", "Paiement et délivrance de la quittance officielle tamponnée"],
-        "ar": ["تقديم الفاتورة إلى عون الشباك", "التثبت من المبلغ بالنظام المركزي الموحد", "الدفع واستلام الوصل الرسمي المختوم المثبت للخلاص"],
-        "en": ["Hand invoice to counter agent", "System verification and confirmation", "Payment and certified stamped receipt delivery"]
+        "fr": [
+          "Présenter la facture au guichetier",
+          "Validation du montant sur le terminal interconnecté",
+          "Paiement et délivrance de la quittance officielle tamponnée"
+        ],
+        "ar": [
+          "تقديم الفاتورة إلى عون الشباك",
+          "التثبت من المبلغ بالنظام المركزي الموحد",
+          "الدفع واستلام الوصل الرسمي المختوم المثبت للخلاص"
+        ],
+        "en": [
+          "Hand invoice to counter agent",
+          "System verification and confirmation",
+          "Payment and certified stamped receipt delivery"
+        ]
       },
       "deliveryTime": {
         "fr": "Règlement immédiat au guichet",
@@ -467,14 +704,38 @@
       },
       "icon": "handshake",
       "requirements": {
-        "fr": ["Carte e-DINAR liée", "Numéro de contrat de prêt avec l'institution partenaire", "CIN originale"],
-        "ar": ["بطاقة دينار إلكتروني مفعلة", "رقم عقد القرض لدى المؤسسة المالية المانحة", "أصل بطاقة التعريف الوطنية"],
-        "en": ["Linked e-DINAR card", "Loan contract number from partner institution", "Original National ID"]
+        "fr": [
+          "Carte e-DINAR liée",
+          "Numéro de contrat de prêt avec l'institution partenaire",
+          "CIN originale"
+        ],
+        "ar": [
+          "بطاقة دينار إلكتروني مفعلة",
+          "رقم عقد القرض لدى المؤسسة المالية المانحة",
+          "أصل بطاقة التعريف الوطنية"
+        ],
+        "en": [
+          "Linked e-DINAR card",
+          "Loan contract number from partner institution",
+          "Original National ID"
+        ]
       },
       "steps": {
-        "fr": ["Inscription du numéro de dossier sur D17 ou au guichet", "Réception des fonds sur la carte e-DINAR", "Remboursement programmé ou manuel des mensualités"],
-        "ar": ["تسجيل رقم الملف بتطبيق D17 أو لدى شباك البريد", "استلام مبلغ التمويل مباشرة على البطاقة", "تسديد الأقساط الشهرية بسهولة وأمان"],
-        "en": ["Register loan reference on D17 or at counter", "Funds credited to e-DINAR card", "Automatic or manual monthly payments"]
+        "fr": [
+          "Inscription du numéro de dossier sur D17 ou au guichet",
+          "Réception des fonds sur la carte e-DINAR",
+          "Remboursement programmé ou manuel des mensualités"
+        ],
+        "ar": [
+          "تسجيل رقم الملف بتطبيق D17 أو لدى شباك البريد",
+          "استلام مبلغ التمويل مباشرة على البطاقة",
+          "تسديد الأقساط الشهرية بسهولة وأمان"
+        ],
+        "en": [
+          "Register loan reference on D17 or at counter",
+          "Funds credited to e-DINAR card",
+          "Automatic or manual monthly payments"
+        ]
       },
       "deliveryTime": {
         "fr": "Immédiat dès accord de l'organisme",
@@ -504,14 +765,38 @@
       },
       "icon": "account-balance-wallet",
       "requirements": {
-        "fr": ["Identifiant compte partenaire", "Solde suffisant e-DINAR / compte postal", "Code de sécurité transactionnel"],
-        "ar": ["معرف الحساب لدى المنصة الشريكة", "رصيد كافٍ بالبطاقة أو الحساب الجاري", "الرمز السري لتأكيد المعاملة"],
-        "en": ["Partner account ID", "Sufficient balance in e-DINAR", "Transaction authorization code"]
+        "fr": [
+          "Identifiant compte partenaire",
+          "Solde suffisant e-DINAR / compte postal",
+          "Code de sécurité transactionnel"
+        ],
+        "ar": [
+          "معرف الحساب لدى المنصة الشريكة",
+          "رصيد كافٍ بالبطاقة أو الحساب الجاري",
+          "الرمز السري لتأكيد المعاملة"
+        ],
+        "en": [
+          "Partner account ID",
+          "Sufficient balance in e-DINAR",
+          "Transaction authorization code"
+        ]
       },
       "steps": {
-        "fr": ["Sélectionner La Poste / D17 sur le portail partenaire", "Saisie sécurisée des coordonnées monétiques", "Confirmation instantanée par SMS"],
-        "ar": ["اختيار وسيلة الدفع بالبريد التونسي / D17 بالموقع الشريك", "إدخال المعطيات بأمان عبر البوابة الموحدة", "تأكيد المعاملة برمز التحقق الفوري (SMS)"],
-        "en": ["Select Tunisian Post / D17 on partner portal", "Enter payment details securely", "Instant confirmation via SMS OTP"]
+        "fr": [
+          "Sélectionner La Poste / D17 sur le portail partenaire",
+          "Saisie sécurisée des coordonnées monétiques",
+          "Confirmation instantanée par SMS"
+        ],
+        "ar": [
+          "اختيار وسيلة الدفع بالبريد التونسي / D17 بالموقع الشريك",
+          "إدخال المعطيات بأمان عبر البوابة الموحدة",
+          "تأكيد المعاملة برمز التحقق الفوري (SMS)"
+        ],
+        "en": [
+          "Select Tunisian Post / D17 on partner portal",
+          "Enter payment details securely",
+          "Instant confirmation via SMS OTP"
+        ]
       },
       "deliveryTime": {
         "fr": "Validation instantanée 24/7",
@@ -859,21 +1144,73 @@
       "latitude": 34.8569,
       "longitude": 9.1235,
       "schedule": {
-        "monday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
-        "tuesday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
-        "wednesday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
-        "thursday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
-        "friday": { "morning": "08:00 - 12:00", "afternoon": "14:00 - 17:00", "status": "open" },
-        "saturday": { "morning": "08:00 - 12:00", "afternoon": "Fermé / مغلق", "status": "half-day" },
-        "sunday": { "morning": "Fermé / مغلق", "afternoon": "Fermé / مغلق", "status": "closed" }
+        "monday": {
+          "morning": "08:00 - 12:00",
+          "afternoon": "14:00 - 17:00",
+          "status": "open"
+        },
+        "tuesday": {
+          "morning": "08:00 - 12:00",
+          "afternoon": "14:00 - 17:00",
+          "status": "open"
+        },
+        "wednesday": {
+          "morning": "08:00 - 12:00",
+          "afternoon": "14:00 - 17:00",
+          "status": "open"
+        },
+        "thursday": {
+          "morning": "08:00 - 12:00",
+          "afternoon": "14:00 - 17:00",
+          "status": "open"
+        },
+        "friday": {
+          "morning": "08:00 - 12:00",
+          "afternoon": "14:00 - 17:00",
+          "status": "open"
+        },
+        "saturday": {
+          "morning": "08:00 - 12:00",
+          "afternoon": "Fermé / مغلق",
+          "status": "half-day"
+        },
+        "sunday": {
+          "morning": "Fermé / مغلق",
+          "afternoon": "Fermé / مغلق",
+          "status": "closed"
+        }
       },
       "features": [
-        { "fr": "Guichet Postal & Courrier", "ar": "شباك الخدمات البريدية والمراسلات", "en": "Postal & Mail Counter" },
-        { "fr": "Guichet Épargne & Opérations Financières", "ar": "شباك الادخار والعمليات المالية", "en": "Savings & Financial Counter" },
-        { "fr": "Espace Monétique & Cartes e-DINAR", "ar": "فضاء النقدية وبطاقات دينار إلكتروني", "en": "Monetary Space & e-DINAR" },
-        { "fr": "Distributeur Automatique de Billets (DAB 24/7)", "ar": "موزع آلي للأوراق المالية (DAB 24/7)", "en": "ATM Machine (DAB 24/7)" },
-        { "fr": "Service Mandat Web & Transferts Minutes", "ar": "خدمة الحوالة الإلكترونية والحوالات الفورية", "en": "Web Money Order & Instant Transfer" },
-        { "fr": "Point d'Accueil et d'Orientation Citoyen", "ar": "نقطة استقبال وتوجيه المواطنين", "en": "Citizen Welcome & Guidance Desk" }
+        {
+          "fr": "Guichet Postal & Courrier",
+          "ar": "شباك الخدمات البريدية والمراسلات",
+          "en": "Postal & Mail Counter"
+        },
+        {
+          "fr": "Guichet Épargne & Opérations Financières",
+          "ar": "شباك الادخار والعمليات المالية",
+          "en": "Savings & Financial Counter"
+        },
+        {
+          "fr": "Espace Monétique & Cartes e-DINAR",
+          "ar": "فضاء النقدية وبطاقات دينار إلكتروني",
+          "en": "Monetary Space & e-DINAR"
+        },
+        {
+          "fr": "Distributeur Automatique de Billets (DAB 24/7)",
+          "ar": "موزع آلي للأوراق المالية (DAB 24/7)",
+          "en": "ATM Machine (DAB 24/7)"
+        },
+        {
+          "fr": "Service Mandat Web & Transferts Minutes",
+          "ar": "خدمة الحوالة الإلكترونية والحوالات الفورية",
+          "en": "Web Money Order & Instant Transfer"
+        },
+        {
+          "fr": "Point d'Accueil et d'Orientation Citoyen",
+          "ar": "نقطة استقبال وتوجيه المواطنين",
+          "en": "Citizen Welcome & Guidance Desk"
+        }
       ],
       "activeCounters": 4,
       "supervisor": "Chef de Centre - Bureau Sidi Ali Ben Aoun"
@@ -881,40 +1218,13 @@
   ],
   "messages": [
     {
-      "id": "1",
-      "fullName": "Mohamed Trabelsi",
-      "email": "mohamed.trabelsi@gmail.com",
-      "phone": "+216 98 123 456",
-      "category": "D17",
-      "subject": "Difficulté de liaison de ma carte e-DINAR sur l'application",
-      "message": "Bonjour, j'ai acheté une nouvelle carte e-DINAR SMART au bureau de Sidi Ali Ben Aoun hier, mais l'application D17 m'affiche un message d'erreur lors de la saisie des coordonnées. Pouvez-vous m'indiquer la démarche pour débloquer la situation ? Merci.",
-      "status": "reviewed",
-      "adminNote": "Vérifié dans le système. La carte est bien active. Conseillé de rafraîchir le cache de l'application et de réessayer.",
-      "createdAt": "2026-01-28T10:15:00Z"
-    },
-    {
-      "id": "2",
-      "fullName": "Fatma Guesmi",
-      "email": "fatma.guesmi@yahoo.fr",
-      "phone": "+216 22 456 789",
-      "category": "Paiement de Factures",
-      "subject": "Règlement facture STEG en retard",
-      "message": "Puis-je payer une facture d'électricité STEG dont la date limite est dépassée de quelques jours directement au guichet du bureau de poste de Sidi Ali Ben Aoun ?",
+      "fullName": "Test Citoyen",
+      "email": "citoyen@poste.tn",
+      "subject": "Demande carte e-DINAR Jeune",
+      "message": "Bonjour, je souhaite savoir les documents pour retirer la carte.",
       "status": "replied",
-      "adminNote": "Répondu par SMS/appel. Oui, les factures en retard sont acceptées au guichet tant qu'aucune coupure n'est programmée.",
-      "createdAt": "2026-01-29T14:30:00Z"
-    },
-    {
-      "id": "3",
-      "fullName": "Brahim Mansouri",
-      "email": "brahim.mansouri@outlook.com",
-      "phone": "+216 55 987 321",
-      "category": "Courrier & Colis",
-      "subject": "Suivi de colis CPX expédié vers Tunis",
-      "message": "J'ai expédié un colis par Rapid-Poste (CPX) depuis votre bureau avant-hier. Le numéro d'envoi est CPX9120785TN. Est-il déjà arrivé au centre de tri de Tunis ?",
-      "status": "pending",
-      "adminNote": "",
-      "createdAt": "2026-02-02T09:00:00Z"
+      "createdAt": "2026-11-24T20:39:15.659Z",
+      "id": 1
     }
   ],
   "users": [

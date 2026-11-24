@@ -1,60 +1,65 @@
-<div class="page-container">
-  <!-- Header -->
-  <div class="page-header">
-    <div class="container">
-      <span class="section-tag">Bureau de Poste de Sidi Ali Ben Aoun</span>
-      <h1 class="page-title">{{ 'horaires_title' | localized }}</h1>
-      <p class="page-subtitle">{{ 'horaires_subtitle' | localized }}</p>
+<!-- ==========================================================================
+     HORAIRES — SABO POSTE 2.0 (Figure 6)
+     Bureau de Poste de Sidi Ali Ben Aoun (9120)
+     ========================================================================== -->
 
-      <!-- Live Status Pill in Hero -->
-      <div class="live-status-hero" [class.open]="isAgencyOpen" [class.closed]="!isAgencyOpen">
-        <span class="live-dot"></span>
-        <span class="live-msg">{{ isAgencyOpen ? ('status_open' | localized) : ('status_closed' | localized) }}</span>
-        <span class="live-time">Heure locale : {{ currentHourStr }}</span>
+<div class="horaires-page">
+  <!-- Page Header -->
+  <header class="horaires-header">
+    <div class="container text-center">
+      <span class="postal-badge">Bureau de Poste de Sidi Ali Ben Aoun</span>
+      <h1 class="page-title">{{ 'horaires_main_title' | localized }}</h1>
+      <p class="page-subtitle">{{ 'horaires_main_subtitle' | localized }}</p>
+
+      <!-- Current Real-time status -->
+      <div class="live-status-banner" [class.is-open]="isAgencyOpen" [class.is-closed]="!isAgencyOpen">
+        <span class="status-pulse-dot"></span>
+        <span class="status-text">{{ isAgencyOpen ? ('status_open' | localized) : ('status_closed' | localized) }}</span>
+        <span class="status-time">| Heure actuelle : {{ currentHourStr }}</span>
       </div>
     </div>
-  </div>
+  </header>
 
-  <div class="container horaires-content">
-    <div class="horaires-grid">
-      <!-- Left Column: Weekly Schedule Table -->
-      <div class="schedule-column">
-        <div class="card schedule-card">
-          <div class="card-header-styled">
-            <span class="material-symbols-outlined c-icon">calendar_month</span>
+  <div class="container main-content">
+    <div class="horaires-layout-grid">
+      <!-- 1. Weekly Schedule Table (Figure 6) -->
+      <div class="table-section">
+        <div class="schedule-table-card">
+          <div class="card-header-row">
+            <span class="material-symbols-outlined header-icon">calendar_month</span>
             <div>
-              <h3>Planning Hebdomadaire des Guichets</h3>
-              <p>Horaires normaux d'ouverture au public</p>
+              <h2 class="card-heading">{{ 'horaires_weekly_title' | localized }}</h2>
+              <p class="card-subheading">Horaires officiels d'ouverture au public</p>
             </div>
           </div>
 
-          <div class="table-responsive">
-            <table class="custom-table schedule-table">
+          <div class="table-container">
+            <table class="horaires-table">
               <thead>
                 <tr>
-                  <th>{{ 'horaires_table_day' | localized }}</th>
-                  <th>{{ 'horaires_table_morning' | localized }}</th>
-                  <th>{{ 'horaires_table_afternoon' | localized }}</th>
-                  <th>{{ 'horaires_table_status' | localized }}</th>
+                  <th>{{ 'horaires_col_day' | localized }}</th>
+                  <th>{{ 'horaires_col_morning' | localized }}</th>
+                  <th>{{ 'horaires_col_afternoon' | localized }}</th>
+                  <th>Statut</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let day of days" [class.today-row]="day.key === todayName">
+                <tr *ngFor="let day of days" [class.highlight-today]="day.key === todayName">
                   <td class="day-cell">
                     <strong>{{ day.labelKey | localized }}</strong>
-                    <span *ngIf="day.key === todayName" class="today-tag">Aujourd'hui</span>
+                    <span *ngIf="day.key === todayName" class="badge-today">Aujourd'hui</span>
                   </td>
-                  <td>{{ getScheduleForDay(day.key).morning }}</td>
-                  <td>{{ getScheduleForDay(day.key).afternoon }}</td>
+                  <td class="time-cell">{{ getScheduleForDay(day.key).morning }}</td>
+                  <td class="time-cell">{{ getScheduleForDay(day.key).afternoon }}</td>
                   <td>
                     <span
-                      class="badge"
+                      class="status-pill-small"
                       [ngClass]="{
-                        'badge-success': getScheduleForDay(day.key).status === 'open',
-                        'badge-warning': getScheduleForDay(day.key).status === 'half-day',
-                        'badge-danger': getScheduleForDay(day.key).status === 'closed'
+                        'pill-open': getScheduleForDay(day.key).status === 'open',
+                        'pill-half': getScheduleForDay(day.key).status === 'half-day',
+                        'pill-closed': getScheduleForDay(day.key).status === 'closed'
                       }">
-                      {{ getScheduleForDay(day.key).status === 'open' ? 'Journée Complète' : (getScheduleForDay(day.key).status === 'half-day' ? 'Séance Unique' : ('horaires_closed_text' | localized)) }}
+                      {{ getScheduleForDay(day.key).status === 'open' ? 'Ouvert' : (getScheduleForDay(day.key).status === 'half-day' ? 'Matin seul' : ('horaires_closed' | localized)) }}
                     </span>
                   </td>
                 </tr>
@@ -62,90 +67,81 @@
             </table>
           </div>
 
-          <div class="schedule-notes">
-            <div class="note-item">
-              <span class="material-symbols-outlined note-icon">info</span>
-              <p>Le Distributeur Automatique de Billets (DAB) reste opérationnel <strong>24h/24 et 7j/7</strong> à l'entrée du bureau.</p>
+          <!-- Information notice boxes -->
+          <div class="notices-list">
+            <div class="notice-card">
+              <span class="material-symbols-outlined notice-icon">atm</span>
+              <div>
+                <strong>Distributeur Automatique (DAB) 24/7</strong>
+                <p>Retrait d'espèces disponible en permanence avec les cartes e-DINAR et bancaires.</p>
+              </div>
             </div>
-            <div class="note-item">
-              <span class="material-symbols-outlined note-icon">schedule</span>
-              <p>Régime d'été et mois de Ramadan : horaires adaptés en séance unique (07h30 - 13h30).</p>
+            <div class="notice-card">
+              <span class="material-symbols-outlined notice-icon">info</span>
+              <div>
+                <strong>Séance Unique (Été & Ramadan)</strong>
+                <p>Pendant la période estivale et le mois saint, le bureau applique la séance unique de 07h30 à 13h30.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Agency Details & Map -->
-      <div class="agency-column">
-        <div class="card agency-info-card">
-          <div class="agency-head">
-            <div class="agency-logo-icon">
+      <!-- 2. Agency Coordinates & Information (Figure 6) -->
+      <div class="info-section">
+        <div class="agency-info-box">
+          <div class="agency-brand-row">
+            <div class="agency-icon-circle">
               <span class="material-symbols-outlined">local_post_office</span>
             </div>
             <div>
-              <h3>Bureau de Sidi Ali Ben Aoun</h3>
-              <span class="badge badge-primary">Matricule Postal 9120</span>
+              <h3 class="agency-title">Bureau de Poste</h3>
+              <span class="code-postal-badge">Sidi Ali Ben Aoun (9120)</span>
             </div>
           </div>
 
-          <div class="agency-details-list">
-            <div class="detail-row">
-              <span class="material-symbols-outlined d-icon">pin_drop</span>
+          <div class="agency-details-rows">
+            <div class="detail-item">
+              <span class="material-symbols-outlined item-icon">location_on</span>
               <div>
-                <span class="d-label">{{ 'agency_address_label' | localized }}</span>
-                <p>Avenue Habib Bourguiba, 9120 Sidi Ali Ben Aoun, Gouvernorat de Sidi Bouzid, Tunisie</p>
+                <span class="item-label">Adresse</span>
+                <p class="item-value">Avenue Habib Bourguiba, 9120 Sidi Ali Ben Aoun, Tunisie</p>
               </div>
             </div>
 
-            <div class="detail-row">
-              <span class="material-symbols-outlined d-icon">phone</span>
+            <div class="detail-item">
+              <span class="material-symbols-outlined item-icon">call</span>
               <div>
-                <span class="d-label">{{ 'agency_phone_label' | localized }}</span>
-                <p><strong>+216 76 661 100</strong></p>
+                <span class="item-label">Téléphone</span>
+                <p class="item-value" dir="ltr">+216 76 661 100</p>
               </div>
             </div>
 
-            <div class="detail-row">
-              <span class="material-symbols-outlined d-icon">mail</span>
+            <div class="detail-item">
+              <span class="material-symbols-outlined item-icon">markunread_mailbox</span>
               <div>
-                <span class="d-label">{{ 'agency_email_label' | localized }}</span>
-                <p>bureau.sidi.ali.ben.aoun&#64;poste.tn</p>
+                <span class="item-label">Code Postal</span>
+                <p class="item-value">9120</p>
               </div>
             </div>
 
-            <div class="detail-row">
-              <span class="material-symbols-outlined d-icon">badge</span>
+            <div class="detail-item">
+              <span class="material-symbols-outlined item-icon">counter_4</span>
               <div>
-                <span class="d-label">{{ 'agency_supervisor_label' | localized }}</span>
-                <p>Chef de Centre — Bureau de Poste</p>
+                <span class="item-label">Capacité</span>
+                <p class="item-value">4 Guichets polyvalents d'accueil et d'opérations</p>
               </div>
             </div>
           </div>
 
-          <hr class="separator">
-
-          <h4 class="features-head">{{ 'agency_features_title' | localized }}</h4>
-          <ul class="features-list">
-            <li *ngFor="let feat of agency?.features">
-              <span class="material-symbols-outlined f-check">check_circle</span>
-              <span>{{ feat | localized }}</span>
-            </li>
-          </ul>
-
-          <!-- Google Maps Interactive Widget -->
-          <div class="map-preview-card">
-            <div class="map-banner">
-              <span class="material-symbols-outlined">map</span>
-              <span>Localisation Géographique</span>
-            </div>
-            <p class="map-desc">Situé au centre-ville de Sidi Ali Ben Aoun, en face de l'Avenue Principale.</p>
-            <a
-              href="https://maps.google.com/?q=34.8569,9.1235"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-outline btn-block">
-              <span class="material-symbols-outlined">open_in_new</span>
-              <span>Ouvrir dans Google Maps</span>
+          <div class="agency-card-actions">
+            <a routerLink="/contact" class="btn btn-primary btn-block">
+              <span class="material-symbols-outlined">mail</span>
+              <span>{{ 'nav_contact' | localized }}</span>
+            </a>
+            <a routerLink="/services" class="btn btn-outline btn-block">
+              <span class="material-symbols-outlined">apps</span>
+              <span>{{ 'nav_services' | localized }}</span>
             </a>
           </div>
         </div>

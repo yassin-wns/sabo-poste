@@ -1,170 +1,109 @@
-<!-- Top Bar -->
-<div class="top-bar">
-  <div class="container top-bar-content">
-    <div class="top-info">
-      <span class="info-item">
-        <span class="material-symbols-outlined icon-sm">location_on</span>
-        <span>Avenue Habib Bourguiba, 9120 Sidi Ali Ben Aoun</span>
-      </span>
-      <span class="info-item">
-        <span class="material-symbols-outlined icon-sm">call</span>
-        <span>+216 76 661 100</span>
-      </span>
-    </div>
-
-    <div class="top-actions">
-      <!-- Live Status Badge -->
-      <div class="live-status-pill" [class.is-open]="isAgencyOpen" [class.is-closed]="!isAgencyOpen">
-        <span class="status-indicator"></span>
-        <span class="status-text">
-          {{ isAgencyOpen ? ('status_open' | localized) : ('status_closed' | localized) }}
-        </span>
-      </div>
-
-      <!-- Language Switcher -->
-      <div class="lang-selector">
-        <button
-          type="button"
-          class="lang-btn"
-          [class.active]="currentLang === 'fr'"
-          (click)="setLanguage('fr')"
-          aria-label="Français">
-          FR
-        </button>
-        <span class="lang-divider">|</span>
-        <button
-          type="button"
-          class="lang-btn arabic-text"
-          [class.active]="currentLang === 'ar'"
-          (click)="setLanguage('ar')"
-          aria-label="العربية">
-          عربي
-        </button>
-        <span class="lang-divider">|</span>
-        <button
-          type="button"
-          class="lang-btn"
-          [class.active]="currentLang === 'en'"
-          (click)="setLanguage('en')"
-          aria-label="English">
-          EN
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Main Navigation Bar -->
 <header class="main-header">
   <div class="container header-container">
-    <!-- Brand Logo -->
+    <!-- Brand / Logo (Tunisian Post Logo) -->
     <a routerLink="/" class="brand-link" (click)="closeMobileMenu()">
-      <div class="brand-logo-badge">
-        <svg class="post-bird-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="24" cy="24" r="22" fill="#003399" />
-          <path d="M14 20L24 27L34 20" stroke="#FFB800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M14 20V32C14 33.1 14.9 34 16 34H32C33.1 34 34 33.1 34 32V20" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M30 14L34 17L30 20" stroke="#FFB800" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <div class="brand-logo-wrapper">
+        <svg class="post-logo-svg" viewBox="0 0 70 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Official Tunisian Post Emblem styling: Blue bird & Yellow diamonds -->
+          <path d="M5 35 C20 10, 45 10, 65 22 C50 25, 30 25, 15 42 Z" fill="#003399"/>
+          <polygon points="35,16 43,10 51,16 43,22" fill="#FFB800"/>
+          <polygon points="46,24 53,19 60,24 53,29" fill="#FFB800"/>
+          <text x="35" y="44" font-family="'Cairo', sans-serif" font-size="8" font-weight="bold" fill="#003399" text-anchor="middle">البريد التونسي</text>
         </svg>
       </div>
-      <div class="brand-text">
-        <span class="brand-title">SABO POSTE <span class="version-tag">2.0</span></span>
-        <span class="brand-desc">{{ 'brand_subtitle' | localized }}</span>
+      <div class="brand-titles">
+        <span class="site-title">{{ 'header_title' | localized }}</span>
+        <span class="site-subtitle">{{ 'header_subtitle' | localized }}</span>
       </div>
     </a>
 
-    <!-- Desktop Navigation Links -->
+    <!-- Nav Items: Accueil | Services | Horaires | Contact | D17 | Admin -->
     <nav class="nav-links">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-        <span class="material-symbols-outlined nav-icon">home</span>
-        <span>{{ 'nav_home' | localized }}</span>
+        {{ 'nav_home' | localized }}
       </a>
       <a routerLink="/services" routerLinkActive="active" class="nav-item">
-        <span class="material-symbols-outlined nav-icon">apps</span>
-        <span>{{ 'nav_services' | localized }}</span>
+        {{ 'nav_services' | localized }}
       </a>
       <a routerLink="/horaires" routerLinkActive="active" class="nav-item">
-        <span class="material-symbols-outlined nav-icon">schedule</span>
-        <span>{{ 'nav_horaires' | localized }}</span>
-      </a>
-      <a routerLink="/d17" routerLinkActive="active" class="nav-item">
-        <span class="material-symbols-outlined nav-icon">smartphone</span>
-        <span class="nav-highlight">{{ 'nav_d17' | localized }}</span>
-      </a>
-      <a routerLink="/faq" routerLinkActive="active" class="nav-item">
-        <span class="material-symbols-outlined nav-icon">help_outline</span>
-        <span>{{ 'nav_faq' | localized }}</span>
-      </a>
-      <a routerLink="/articles" routerLinkActive="active" class="nav-item">
-        <span class="material-symbols-outlined nav-icon">newspaper</span>
-        <span>{{ 'nav_news' | localized }}</span>
+        {{ 'nav_horaires' | localized }}
       </a>
       <a routerLink="/contact" routerLinkActive="active" class="nav-item">
-        <span class="material-symbols-outlined nav-icon">mail</span>
-        <span>{{ 'nav_contact' | localized }}</span>
+        {{ 'nav_contact' | localized }}
+      </a>
+      <a routerLink="/d17" routerLinkActive="active" class="nav-item">
+        {{ 'nav_d17' | localized }}
+      </a>
+      <a routerLink="/admin" routerLinkActive="active" class="nav-item nav-admin-item">
+        {{ 'nav_admin' | localized }}
       </a>
     </nav>
 
-    <!-- Header Actions (Admin / Login) -->
-    <div class="header-right">
-      <a *ngIf="authService.isAuthenticated" routerLink="/admin" class="btn btn-primary btn-sm admin-btn">
-        <span class="material-symbols-outlined">dashboard</span>
-        <span>{{ 'nav_admin' | localized }}</span>
-      </a>
-      <a *ngIf="!authService.isAuthenticated" routerLink="/login" class="btn btn-outline btn-sm login-btn">
-        <span class="material-symbols-outlined">lock</span>
-        <span>{{ 'nav_login' | localized }}</span>
-      </a>
-
-      <!-- Mobile Hamburger Button -->
-      <button type="button" class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle Navigation">
-        <span class="material-symbols-outlined">{{ mobileMenuOpen ? 'close' : 'menu' }}</span>
+    <!-- Language Selector (Figure 11: 3 Stacked Buttons FRANCAIS / العربية / ENGLAIS) -->
+    <div class="lang-stacked-group">
+      <button
+        type="button"
+        class="lang-pill-btn"
+        [class.active]="currentLang === 'fr'"
+        (click)="setLanguage('fr')">
+        {{ 'lang_fr' | localized }}
+      </button>
+      <button
+        type="button"
+        class="lang-pill-btn arabic-btn"
+        [class.active]="currentLang === 'ar'"
+        (click)="setLanguage('ar')">
+        {{ 'lang_ar' | localized }}
+      </button>
+      <button
+        type="button"
+        class="lang-pill-btn"
+        [class.active]="currentLang === 'en'"
+        (click)="setLanguage('en')">
+        {{ 'lang_en' | localized }}
       </button>
     </div>
+
+    <!-- Mobile Hamburger Toggle -->
+    <button type="button" class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle navigation">
+      <span class="material-symbols-outlined">{{ mobileMenuOpen ? 'close' : 'menu' }}</span>
+    </button>
   </div>
 
-  <!-- Mobile Dropdown Menu -->
+  <!-- Mobile Dropdown -->
   <div class="mobile-menu" [class.open]="mobileMenuOpen">
-    <div class="mobile-menu-links">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()" class="mobile-item">
+    <div class="mobile-nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()" class="m-link">
         <span class="material-symbols-outlined">home</span>
         <span>{{ 'nav_home' | localized }}</span>
       </a>
-      <a routerLink="/services" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-item">
+      <a routerLink="/services" routerLinkActive="active" (click)="closeMobileMenu()" class="m-link">
         <span class="material-symbols-outlined">apps</span>
         <span>{{ 'nav_services' | localized }}</span>
       </a>
-      <a routerLink="/horaires" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-item">
+      <a routerLink="/horaires" routerLinkActive="active" (click)="closeMobileMenu()" class="m-link">
         <span class="material-symbols-outlined">schedule</span>
         <span>{{ 'nav_horaires' | localized }}</span>
       </a>
-      <a routerLink="/d17" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-item">
-        <span class="material-symbols-outlined">smartphone</span>
-        <span>{{ 'nav_d17' | localized }}</span>
-      </a>
-      <a routerLink="/faq" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-item">
-        <span class="material-symbols-outlined">help_outline</span>
-        <span>{{ 'nav_faq' | localized }}</span>
-      </a>
-      <a routerLink="/articles" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-item">
-        <span class="material-symbols-outlined">newspaper</span>
-        <span>{{ 'nav_news' | localized }}</span>
-      </a>
-      <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-item">
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()" class="m-link">
         <span class="material-symbols-outlined">mail</span>
         <span>{{ 'nav_contact' | localized }}</span>
       </a>
+      <a routerLink="/d17" routerLinkActive="active" (click)="closeMobileMenu()" class="m-link">
+        <span class="material-symbols-outlined">smartphone</span>
+        <span>{{ 'nav_d17' | localized }}</span>
+      </a>
+      <a routerLink="/admin" routerLinkActive="active" (click)="closeMobileMenu()" class="m-link">
+        <span class="material-symbols-outlined">admin_panel_settings</span>
+        <span>{{ 'nav_admin' | localized }}</span>
+      </a>
+    </div>
 
-      <div class="mobile-auth-section">
-        <a *ngIf="authService.isAuthenticated" routerLink="/admin" (click)="closeMobileMenu()" class="btn btn-primary btn-block">
-          <span class="material-symbols-outlined">dashboard</span>
-          <span>{{ 'nav_admin' | localized }}</span>
-        </a>
-        <a *ngIf="!authService.isAuthenticated" routerLink="/login" (click)="closeMobileMenu()" class="btn btn-outline btn-block">
-          <span class="material-symbols-outlined">lock</span>
-          <span>{{ 'nav_login' | localized }}</span>
-        </a>
-      </div>
+    <!-- Mobile Language Switcher -->
+    <div class="mobile-lang-row">
+      <button (click)="setLanguage('fr')" class="btn btn-sm" [class.btn-gold]="currentLang === 'fr'" [class.btn-secondary]="currentLang !== 'fr'">FRANCAIS</button>
+      <button (click)="setLanguage('ar')" class="btn btn-sm" [class.btn-gold]="currentLang === 'ar'" [class.btn-secondary]="currentLang !== 'ar'">العربية</button>
+      <button (click)="setLanguage('en')" class="btn btn-sm" [class.btn-gold]="currentLang === 'en'" [class.btn-secondary]="currentLang !== 'en'">ENGLAIS</button>
     </div>
   </div>
 </header>

@@ -1,160 +1,168 @@
-<div class="page-container">
-  <!-- D17 Header Banner -->
-  <div class="d17-hero-header">
-    <div class="container">
-      <div class="d17-hero-badge">
-        <span class="material-symbols-outlined">payments</span>
-        <span>DIGI POST BANK — LA POSTE TUNISIENNE</span>
-      </div>
-      <h1 class="d17-main-title">Espace Digital D17 & Cartes e-DINAR</h1>
-      <p class="d17-main-sub">
-        Votre portefeuille électronique mobile pour payer vos factures, transférer de l'argent et gérer vos cartes prépayées à distance en toute sécurité.
+<!-- ==========================================================================
+     D17 — SABO POSTE 2.0 (Figure 7)
+     Application D17 & Cartes e-DINAR
+     ========================================================================== -->
+
+<div class="d17-page">
+  <!-- 1. Header Banner -->
+  <header class="d17-header">
+    <div class="container text-center">
+      <span class="d17-badge-top">La Poste Tunisienne — Digi Post Bank</span>
+      <h1 class="d17-title">{{ 'd17_title' | localized }}</h1>
+      <p class="d17-header-lead">
+        La plateforme mobile officielle de paiement et de gestion financière dématérialisée
       </p>
-
-      <div class="d17-hero-stats">
-        <div class="d17-stat-card">
-          <span class="material-symbols-outlined stat-ic">bolt</span>
-          <div>
-            <strong>Instantané</strong>
-            <span>Paiements en 60 secondes</span>
-          </div>
-        </div>
-        <div class="d17-stat-card">
-          <span class="material-symbols-outlined stat-ic">lock</span>
-          <div>
-            <strong>100% Sécurisé</strong>
-            <span>Code PIN & Validation SMS</span>
-          </div>
-        </div>
-        <div class="d17-stat-card">
-          <span class="material-symbols-outlined stat-ic">all_inclusive</span>
-          <div>
-            <strong>Accessible 24/7</strong>
-            <span>Sans déplacement au guichet</span>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+  </header>
 
-  <div class="container d17-body-content">
-    <!-- STUDENT FOCUS BANNER (Documented in Report) -->
-    <div class="student-focus-banner">
-      <div class="student-icon-circle">
-        <span class="material-symbols-outlined">school</span>
+  <div class="container main-content">
+    <!-- 2. Application D17 (Verbatim Presentation from Report Figure 7) -->
+    <section class="d17-intro-card">
+      <div class="intro-icon-box">
+        <span class="material-symbols-outlined">smartphone</span>
       </div>
-      <div class="student-text">
-        <span class="badge badge-gold">Spécial Élèves & Étudiants</span>
-        <h3>{{ 'd17_student_focus_title' | localized }}</h3>
-        <p>{{ 'd17_student_focus_desc' | localized }}</p>
-        <p class="student-sub">
-          Retirez votre carte directement au bureau de Sidi Ali Ben Aoun avec une simple copie de votre carte d'identité nationale (CIN).
-        </p>
-      </div>
-      <a routerLink="/contact" class="btn btn-gold btn-sm">
-        <span>Renseignements Étudiants</span>
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
+      <div class="intro-content">
+        <h2 class="intro-heading">{{ 'd17_title' | localized }}</h2>
+        <p class="intro-paragraph">{{ 'd17_paragraph' | localized }}</p>
 
-    <!-- INTERACTIVE STEP-BY-STEP GUIDES -->
-    <div class="guides-section">
-      <div class="section-header">
-        <span class="section-tag">Tutoriels Interactifs</span>
-        <h2 class="section-title">{{ 'd17_guides_title' | localized }}</h2>
-        <p class="section-subtitle">Sélectionnez une procédure pour afficher les étapes pas-à-pas détaillées</p>
-      </div>
-
-      <div class="guides-tabs">
-        <button
-          *ngFor="let g of guides; let idx = index"
-          class="guide-tab-btn"
-          [class.active]="activeGuideIndex === idx"
-          (click)="selectGuide(idx)">
-          <span class="material-symbols-outlined">play_circle</span>
-          <span>{{ g.title | localized }}</span>
-        </button>
-      </div>
-
-      <div *ngIf="guides.length > 0" class="active-guide-card card">
-        <div class="guide-meta-bar">
-          <span class="badge badge-primary">{{ guides[activeGuideIndex].category }}</span>
-          <span class="read-time"><span class="material-symbols-outlined">timer</span> Temps de lecture : {{ guides[activeGuideIndex].readTime }}</span>
+        <div class="d17-quick-features">
+          <div class="q-feat">
+            <span class="material-symbols-outlined">receipt_long</span>
+            <span>Paiement de factures</span>
+          </div>
+          <div class="q-feat">
+            <span class="material-symbols-outlined">sync_alt</span>
+            <span>Transfert d'argent</span>
+          </div>
+          <div class="q-feat">
+            <span class="material-symbols-outlined">query_stats</span>
+            <span>Consultation en temps réel</span>
+          </div>
+          <div class="q-feat">
+            <span class="material-symbols-outlined">lock_reset</span>
+            <span>Sécurité renforcée</span>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <h3 class="guide-display-title">{{ guides[activeGuideIndex].title | localized }}</h3>
+    <!-- 3. Aperçu de l'application (Interactive Preview Slider / Cards - Figure 7) -->
+    <section class="d17-preview-section">
+      <div class="section-title-bar text-center">
+        <span class="section-badge">Interface Mobile</span>
+        <h2 class="section-h2">{{ 'd17_preview_title' | localized }}</h2>
+        <p class="section-desc">Découvrez les fonctionnalités de l'application D17 en action</p>
+      </div>
 
-        <div class="guide-steps-flow">
-          <div *ngFor="let step of guides[activeGuideIndex].steps" class="step-card">
-            <div class="step-circle">{{ step.stepNumber }}</div>
-            <div class="step-info">
-              <h4>{{ step.title | localized }}</h4>
-              <p>{{ step.description | localized }}</p>
+      <div class="preview-cards-grid">
+        <div class="preview-phone-card">
+          <div class="phone-card-top">
+            <span class="material-symbols-outlined phone-icon">account_balance_wallet</span>
+            <span class="phone-screen-label">Solde en Direct</span>
+          </div>
+          <div class="phone-screen-body">
+            <div class="mock-balance">
+              <span class="mock-lbl">Solde e-DINAR SMART</span>
+              <h3 class="mock-val">245.800 <small>TND</small></h3>
             </div>
+            <p class="phone-desc">Suivez instantanément votre solde et les mouvements de votre compte après chaque transaction.</p>
+          </div>
+        </div>
+
+        <div class="preview-phone-card">
+          <div class="phone-card-top">
+            <span class="material-symbols-outlined phone-icon">send</span>
+            <span class="phone-screen-label">Transfert d'Argent</span>
+          </div>
+          <div class="phone-screen-body">
+            <div class="mock-transfer-ui">
+              <span class="mock-contact">Vers : +216 98 123 456</span>
+              <div class="mock-status-pill">Succès immédiat</div>
+            </div>
+            <p class="phone-desc">Transférez de l'argent vers n'importe quelle carte e-DINAR ou compte postal en quelques secondes.</p>
+          </div>
+        </div>
+
+        <div class="preview-phone-card">
+          <div class="phone-card-top">
+            <span class="material-symbols-outlined phone-icon">receipt</span>
+            <span class="phone-screen-label">Règlement de Factures</span>
+          </div>
+          <div class="phone-screen-body">
+            <div class="mock-bills-list">
+              <span class="bill-tag">STEG</span>
+              <span class="bill-tag">SONEDE</span>
+              <span class="bill-tag">Télécom</span>
+            </div>
+            <p class="phone-desc">Payez vos factures courantes sans faire la queue et recevez un reçu électronique officiel certifié.</p>
+          </div>
+        </div>
+
+        <div class="preview-phone-card">
+          <div class="phone-card-top">
+            <span class="material-symbols-outlined phone-icon">security</span>
+            <span class="phone-screen-label">Gestion de Sécurité</span>
+          </div>
+          <div class="phone-screen-body">
+            <div class="mock-lock-ui">
+              <span class="material-symbols-outlined">lock</span>
+              <span>Bloquer / Débloquer la carte</span>
+            </div>
+            <p class="phone-desc">Verrouillez temporairement votre carte en un clic en cas de perte et déverrouillez-la à tout moment.</p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- COMPATIBLE CARDS DIRECTORY -->
-    <div class="compatible-cards-section">
-      <div class="section-header">
-        <span class="section-tag">Écosystème Monétique</span>
-        <h2 class="section-title">{{ 'd17_cards_title' | localized }}</h2>
-        <p class="section-subtitle">{{ 'd17_cards_subtitle' | localized }}</p>
+    <!-- 4. Les cartes compatibles avec D17 (Verbatim Text & Cards Grid - Figure 7) -->
+    <section class="d17-cards-section">
+      <div class="section-title-bar">
+        <span class="section-badge">Compatibilité Monétique</span>
+        <h2 class="section-h2">{{ 'd17_cards_title' | localized }}</h2>
+        <p class="cards-narrative">{{ 'd17_cards_desc' | localized }}</p>
       </div>
 
-      <div class="grid-3 cards-grid">
-        <div *ngFor="let card of compatibleCards" class="card-item card">
+      <div class="compatible-cards-grid">
+        <div *ngFor="let card of compatibleCards" class="card-item-box">
           <div class="card-item-header">
-            <div class="card-icon-round">
-              <span class="material-symbols-outlined">{{ card.icon }}</span>
+            <span class="material-symbols-outlined card-ic">{{ card.icon }}</span>
+            <span class="card-badge">{{ card.category }}</span>
+          </div>
+          <h3 class="card-name">{{ card.name }}</h3>
+          <p class="card-sub">{{ card.desc }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Carte e-DINAR Jeune (Verbatim Focus Box - Figure 7) -->
+    <section class="edinar-jeune-section">
+      <div class="jeune-banner-card">
+        <div class="jeune-badge-row">
+          <span class="badge-special">Spécial Étudiants & Scolarité</span>
+        </div>
+        <div class="jeune-split">
+          <div class="jeune-icon-area">
+            <div class="jeune-big-icon">
+              <span class="material-symbols-outlined">school</span>
             </div>
-            <span class="badge badge-secondary">{{ card.category }}</span>
+            <div class="jeune-card-tag">e-DINAR Jeune</div>
           </div>
-
-          <h3 class="card-item-title">{{ card.name }}</h3>
-          <p class="card-item-desc">{{ card.desc }}</p>
-
-          <div class="card-item-footer">
-            <span class="material-symbols-outlined check-badge">check_circle</span>
-            <span>Intégration D17 Activée</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- D17 TROUBLESHOOTING & FAQ -->
-    <div class="troubleshooting-section">
-      <div class="section-header">
-        <span class="section-tag">Assistance Technique</span>
-        <h2 class="section-title">Questions Fréquentes & Dépannage D17</h2>
-        <p class="section-subtitle">Conseils en cas de difficulté lors de l'utilisation de l'application</p>
-      </div>
-
-      <div class="d17-faq-list">
-        <div *ngFor="let faq of d17Faqs" class="d17-faq-card card">
-          <div class="faq-q">
-            <span class="material-symbols-outlined q-icon">help</span>
-            <h4>{{ faq.q }}</h4>
-          </div>
-          <div class="faq-a">
-            <p>{{ faq.a }}</p>
+          <div class="jeune-content">
+            <h2 class="jeune-title">{{ 'd17_jeune_title' | localized }}</h2>
+            <p class="jeune-text">{{ 'd17_jeune_desc' | localized }}</p>
+            <div class="jeune-actions">
+              <a routerLink="/contact" class="btn btn-gold">
+                <span class="material-symbols-outlined">contact_support</span>
+                <span>Renseignements au guichet de Sidi Ali Ben Aoun</span>
+              </a>
+              <a routerLink="/services" class="btn btn-outline-white">
+                <span class="material-symbols-outlined">apps</span>
+                <span>Tous nos services</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="guichet-cta-banner card">
-        <span class="material-symbols-outlined g-icon">support_agent</span>
-        <div class="g-text">
-          <h4>Besoin d'aide pour configurer votre application D17 ?</h4>
-          <p>Nos agents au bureau de Sidi Ali Ben Aoun vous accueillent pour vérifier votre carte, régulariser votre numéro de mobile ou réinitialiser votre code confidentiel.</p>
-        </div>
-        <a routerLink="/contact" class="btn btn-primary">
-          <span>Contacter le guichet</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </a>
-      </div>
-    </div>
+    </section>
   </div>
 </div>

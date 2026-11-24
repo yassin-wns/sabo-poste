@@ -34,7 +34,6 @@ export class ServicesComponent implements OnInit {
       next: (data) => {
         this.services = data;
         this.loading = false;
-        // Check query parameters
         this.route.queryParams.subscribe(params => {
           if (params['category']) {
             this.selectedCategory = params['category'];
@@ -62,12 +61,12 @@ export class ServicesComponent implements OnInit {
     if (this.searchQuery.trim()) {
       const q = this.searchQuery.toLowerCase().trim();
       result = result.filter(s => {
-        const titleFr = s.title.fr.toLowerCase();
-        const titleAr = s.title.ar.toLowerCase();
-        const titleEn = s.title.en.toLowerCase();
-        const sumFr = s.summary.fr.toLowerCase();
-        const sumAr = s.summary.ar.toLowerCase();
-        const sumEn = s.summary.en.toLowerCase();
+        const titleFr = (s.title.fr || '').toLowerCase();
+        const titleAr = (s.title.ar || '').toLowerCase();
+        const titleEn = (s.title.en || '').toLowerCase();
+        const sumFr = (s.summary.fr || '').toLowerCase();
+        const sumAr = (s.summary.ar || '').toLowerCase();
+        const sumEn = (s.summary.en || '').toLowerCase();
         return (
           titleFr.includes(q) ||
           titleAr.includes(q) ||
@@ -80,6 +79,14 @@ export class ServicesComponent implements OnInit {
     }
 
     return result;
+  }
+
+  public get postalServices(): PostalService[] {
+    return this.filteredServices.filter(s => s.categoryId === 'courrier-colis');
+  }
+
+  public get financialServices(): PostalService[] {
+    return this.filteredServices.filter(s => s.categoryId !== 'courrier-colis');
   }
 
   public openServiceDetail(service: PostalService): void {

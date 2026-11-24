@@ -1,171 +1,424 @@
-<div class="dashboard-page">
-  <div class="dash-header">
-    <div>
-      <h1 class="dash-title">{{ 'admin_title' | localized }}</h1>
-      <p class="dash-sub">Synthèse opérationnelle et métriques de fréquentation de la plateforme</p>
-    </div>
-    <div class="dash-header-actions">
-      <a routerLink="/admin/services" class="btn btn-primary btn-sm">
-        <span class="material-symbols-outlined">add</span>
-        <span>Nouveau Service</span>
-      </a>
-      <a routerLink="/admin/articles" class="btn btn-secondary btn-sm">
-        <span class="material-symbols-outlined">add</span>
-        <span>Publier un Avis</span>
-      </a>
-    </div>
-  </div>
+<!-- ==========================================================================
+     ADMIN DASHBOARD — SABO POSTE 2.0 (Figure 10)
+     Tableau de bord de l'administrateur
+     ========================================================================== -->
 
-  <!-- KPI CARDS GRID -->
-  <div class="grid-4 kpi-grid">
-    <!-- KPI 1 -->
-    <div class="kpi-card card">
-      <div class="kpi-icon-box bg-blue">
-        <span class="material-symbols-outlined">apps</span>
-      </div>
-      <div class="kpi-data">
-        <span class="kpi-label">{{ 'admin_kpi_services' | localized }}</span>
-        <h3 class="kpi-number">{{ totalServices }}</h3>
-        <span class="kpi-hint">{{ totalCategories }} Catégories actives</span>
-      </div>
-    </div>
-
-    <!-- KPI 2 -->
-    <div class="kpi-card card">
-      <div class="kpi-icon-box bg-gold">
-        <span class="material-symbols-outlined">mark_email_unread</span>
-      </div>
-      <div class="kpi-data">
-        <span class="kpi-label">{{ 'admin_kpi_messages_pending' | localized }}</span>
-        <h3 class="kpi-number text-danger">{{ pendingMessages }}</h3>
-        <span class="kpi-hint">Sur un total de {{ totalMessages }} reçus</span>
-      </div>
-    </div>
-
-    <!-- KPI 3 -->
-    <div class="kpi-card card">
-      <div class="kpi-icon-box bg-green">
-        <span class="material-symbols-outlined">smartphone</span>
-      </div>
-      <div class="kpi-data">
-        <span class="kpi-label">{{ 'admin_kpi_guides' | localized }}</span>
-        <h3 class="kpi-number">{{ totalGuides }}</h3>
-        <span class="kpi-hint">Tutoriels pas-à-pas D17</span>
-      </div>
-    </div>
-
-    <!-- KPI 4 -->
-    <div class="kpi-card card">
-      <div class="kpi-icon-box bg-purple">
-        <span class="material-symbols-outlined">newspaper</span>
-      </div>
-      <div class="kpi-data">
-        <span class="kpi-label">{{ 'admin_kpi_articles' | localized }}</span>
-        <h3 class="kpi-number">{{ totalArticles }}</h3>
-        <span class="kpi-hint">{{ totalFaqs }} Questions FAQ</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- TWO COLUMNS: Recent Messages & Activity Log -->
-  <div class="dash-columns-grid">
-    <!-- Messages Table Card -->
-    <div class="card dash-table-card">
-      <div class="dash-card-header">
-        <div class="dash-card-title">
-          <span class="material-symbols-outlined">inbox</span>
-          <h3>Derniers Messages des Usagers</h3>
+<div class="admin-wrapper">
+  <!-- 1. Top Navbar -->
+  <header class="admin-header">
+    <div class="container-fluid header-inner">
+      <div class="header-brand-group">
+        <div class="admin-logo-box">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="admin-logo">
+            <circle cx="24" cy="24" r="22" fill="#FFB800" />
+            <path d="M14 20L24 27L34 20" stroke="#003399" stroke-width="3" stroke-linecap="round"/>
+            <path d="M14 20V32C14 33.1 14.9 34 16 34H32C33.1 34 34 33.1 34 32V20" stroke="#003399" stroke-width="2.5"/>
+          </svg>
         </div>
-        <a routerLink="/admin/messages" class="btn btn-secondary btn-sm">
-          <span>Voir tout ({{ totalMessages }})</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
+        <div>
+          <h1 class="admin-app-title">{{ 'admin_dashboard_title' | localized }}</h1>
+          <span class="admin-app-sub">Bureau de Poste de Sidi Ali Ben Aoun (9120)</span>
+        </div>
+      </div>
+
+      <!-- Action items -->
+      <div class="header-right-group">
+        <!-- Language Switcher (Figure 11) -->
+        <div class="admin-lang-pills">
+          <button (click)="setLang('fr')" class="btn-lang" [class.active]="langService.currentLang === 'fr'">FR</button>
+          <button (click)="setLang('ar')" class="btn-lang" [class.active]="langService.currentLang === 'ar'">عربي</button>
+          <button (click)="setLang('en')" class="btn-lang" [class.active]="langService.currentLang === 'en'">EN</button>
+        </div>
+
+        <a routerLink="/" class="btn btn-secondary btn-sm">
+          <span class="material-symbols-outlined">visibility</span>
+          <span>Voir le site</span>
         </a>
-      </div>
 
-      <div class="table-responsive">
-        <table class="custom-table">
-          <thead>
-            <tr>
-              <th>Expéditeur</th>
-              <th>Catégorie / Objet</th>
-              <th>Statut</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let msg of recentMessages">
-              <td>
-                <strong>{{ msg.fullName }}</strong>
-                <div class="small-text text-muted">{{ msg.email }}</div>
-              </td>
-              <td>
-                <span class="badge badge-secondary">{{ msg.category }}</span>
-                <div class="subject-text">{{ msg.subject }}</div>
-              </td>
-              <td>
-                <span
-                  class="badge"
-                  [ngClass]="{
-                    'badge-danger': msg.status === 'pending',
-                    'badge-warning': msg.status === 'reviewed',
-                    'badge-success': msg.status === 'replied'
-                  }">
-                  {{ msg.status === 'pending' ? 'En attente' : (msg.status === 'reviewed' ? 'Examiné' : 'Répondu') }}
-                </span>
-              </td>
-              <td>
-                <div class="quick-status-actions">
-                  <button
-                    *ngIf="msg.status === 'pending'"
-                    (click)="updateMessageStatus(msg, 'reviewed')"
-                    class="btn btn-secondary btn-sm"
-                    title="Marquer en cours d'examen">
-                    <span class="material-symbols-outlined">visibility</span>
-                  </button>
-                  <button
-                    *ngIf="msg.status !== 'replied'"
-                    (click)="updateMessageStatus(msg, 'replied')"
-                    class="btn btn-primary btn-sm"
-                    title="Marquer comme répondu">
-                    <span class="material-symbols-outlined">done_all</span>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr *ngIf="recentMessages.length === 0">
-              <td colspan="4" class="text-center text-muted py-3">Aucun message reçu pour le moment.</td>
-            </tr>
-          </tbody>
-        </table>
+        <button (click)="logout()" class="btn btn-danger btn-sm">
+          <span class="material-symbols-outlined">logout</span>
+          <span>{{ 'nav_logout' | localized }}</span>
+        </button>
       </div>
     </div>
+  </header>
 
-    <!-- Activity Log Card -->
-    <div class="card dash-activity-card">
-      <div class="dash-card-header">
-        <div class="dash-card-title">
-          <span class="material-symbols-outlined">history</span>
-          <h3>Journal d'Activité Récente</h3>
+  <!-- 2. Navigation Tabs (Messages reçus / Services / Agence) -->
+  <div class="admin-tabs-nav">
+    <div class="container-fluid">
+      <div class="nav-tabs-wrapper">
+        <button
+          type="button"
+          class="tab-link"
+          [class.active]="activeTab === 'messages'"
+          (click)="setTab('messages')">
+          <span class="material-symbols-outlined">inbox</span>
+          <span>{{ 'admin_messages_title' | localized }}</span>
+          <span class="badge-counter">{{ messages.length }}</span>
+        </button>
+
+        <button
+          type="button"
+          class="tab-link"
+          [class.active]="activeTab === 'services'"
+          (click)="setTab('services')">
+          <span class="material-symbols-outlined">apps</span>
+          <span>Gestion des Services</span>
+          <span class="badge-counter">{{ services.length }}</span>
+        </button>
+
+        <button
+          type="button"
+          class="tab-link"
+          [class.active]="activeTab === 'agency'"
+          (click)="setTab('agency')">
+          <span class="material-symbols-outlined">apartment</span>
+          <span>Horaires & Agence</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Main Body Content -->
+  <main class="container-fluid admin-main-container">
+    <!-- Loading State -->
+    <div *ngIf="loading" class="admin-loading">
+      <div class="spinner"></div>
+      <p>Chargement des données administratives...</p>
+    </div>
+
+    <!-- TAB 1: MESSAGES REÇUS (Figure 10) -->
+    <div *ngIf="!loading && activeTab === 'messages'" class="tab-pane">
+      <div class="pane-header-row">
+        <div>
+          <h2 class="pane-title">{{ 'admin_messages_title' | localized }}</h2>
+          <p class="pane-subtitle">Consultez, traitez et supprimez les requêtes envoyées par les citoyens via le formulaire de contact</p>
+        </div>
+        <div class="search-box-admin">
+          <span class="material-symbols-outlined">search</span>
+          <input
+            type="text"
+            [(ngModel)]="searchQuery"
+            placeholder="Rechercher par nom, email, sujet..."
+            class="admin-search-input">
         </div>
       </div>
 
-      <div class="activity-timeline">
-        <div *ngFor="let log of activityLogs" class="activity-item">
-          <div class="activity-dot"></div>
-          <div class="activity-content">
-            <div class="activity-header">
-              <strong>{{ log.action }}</strong>
-              <span class="log-user">{{ log.user }}</span>
-            </div>
-            <p class="log-desc">{{ log.details }}</p>
-            <span class="log-time">{{ log.timestamp | date:'short' }}</span>
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th class="col-id">{{ 'admin_col_id' | localized }}</th>
+                <th>{{ 'admin_col_nom' | localized }}</th>
+                <th>{{ 'admin_col_email' | localized }}</th>
+                <th>{{ 'admin_col_sujet' | localized }}</th>
+                <th>{{ 'admin_col_message' | localized }}</th>
+                <th>{{ 'admin_col_date' | localized }}</th>
+                <th class="text-center">{{ 'admin_col_actions' | localized }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let msg of filteredMessages" [class.row-pending]="msg.status === 'pending'">
+                <td class="col-id font-mono">#{{ msg.id }}</td>
+                <td>
+                  <strong>{{ msg.fullName }}</strong>
+                  <div *ngIf="msg.phone" class="text-muted small" dir="ltr">{{ msg.phone }}</div>
+                </td>
+                <td>
+                  <a [href]="'mailto:' + msg.email" class="email-link">{{ msg.email }}</a>
+                </td>
+                <td>
+                  <span class="subject-text">{{ msg.subject }}</span>
+                  <div class="badge-status-pill" [class.badge-replied]="msg.status === 'replied'" [class.badge-pending]="msg.status === 'pending'">
+                    {{ msg.status === 'replied' ? ('admin_mark_replied' | localized) : 'En attente' }}
+                  </div>
+                </td>
+                <td class="message-preview-cell" (click)="openMessage(msg)">
+                  <div class="text-truncate">{{ msg.message }}</div>
+                </td>
+                <td class="date-cell">
+                  {{ msg.createdAt | date:'dd/MM/yyyy HH:mm' }}
+                </td>
+                <td class="actions-cell text-center">
+                  <div class="actions-btns-group">
+                    <button
+                      type="button"
+                      class="btn-act btn-act-view"
+                      title="Lire le message complet"
+                      (click)="openMessage(msg)">
+                      <span class="material-symbols-outlined">visibility</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-act btn-act-reply"
+                      [title]="msg.status === 'replied' ? 'Marquer comme non traité' : 'Marquer comme répondu'"
+                      (click)="toggleReplied(msg)">
+                      <span class="material-symbols-outlined">{{ msg.status === 'replied' ? 'mark_email_unread' : 'mark_email_read' }}</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-act btn-act-delete"
+                      title="Supprimer ce message"
+                      (click)="deleteMessage(msg.id)">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngIf="filteredMessages.length === 0">
+                <td colspan="7" class="text-center py-5 text-muted">
+                  <span class="material-symbols-outlined" style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">inbox</span>
+                  Aucun message reçu pour le moment.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: GESTION DES SERVICES -->
+    <div *ngIf="!loading && activeTab === 'services'" class="tab-pane">
+      <div class="pane-header-row">
+        <div>
+          <h2 class="pane-title">Gestion des Services Postaux et Financiers</h2>
+          <p class="pane-subtitle">Ajoutez, modifiez ou retirez des prestations affichées sur le catalogue public</p>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="openAddService()">
+          <span class="material-symbols-outlined">add</span>
+          <span>Ajouter un Nouveau Service</span>
+        </button>
+      </div>
+
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Catégorie</th>
+                <th>Délai</th>
+                <th>Icône</th>
+                <th class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let s of services">
+                <td>
+                  <strong>{{ s.title | localized }}</strong>
+                  <div class="text-muted small text-truncate" style="max-width: 320px;">{{ s.summary | localized }}</div>
+                </td>
+                <td>
+                  <span class="cat-tag">{{ s.categoryId }}</span>
+                </td>
+                <td>{{ s.deliveryTime | localized }}</td>
+                <td>
+                  <span class="material-symbols-outlined">{{ s.icon }}</span>
+                </td>
+                <td class="actions-cell text-center">
+                  <div class="actions-btns-group">
+                    <button type="button" class="btn-act btn-act-edit" (click)="openEditService(s)" title="Modifier">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button type="button" class="btn-act btn-act-delete" (click)="deleteService(s.id)" title="Supprimer">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: HORAIRES & COORDONNÉES DE L'AGENCE -->
+    <div *ngIf="!loading && activeTab === 'agency' && agency" class="tab-pane">
+      <div class="pane-header-row">
+        <div>
+          <h2 class="pane-title">Paramètres & Horaires de l'Agence</h2>
+          <p class="pane-subtitle">Mettez à jour les coordonnées et les horaires d'ouverture du bureau</p>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="saveAgency()">
+          <span class="material-symbols-outlined">save</span>
+          <span>Enregistrer les modifications</span>
+        </button>
+      </div>
+
+      <div class="agency-settings-grid">
+        <!-- Coordinates Form Card -->
+        <div class="settings-card">
+          <h3 class="card-title-sm">Coordonnées Officielles</h3>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Nom de l'agence (FR)</label>
+            <input type="text" [(ngModel)]="agency.name.fr" class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Code Postal</label>
+            <input type="text" [(ngModel)]="agency.postalCode" class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Adresse (FR)</label>
+            <input type="text" [(ngModel)]="agency.address.fr" class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Numéro de Téléphone</label>
+            <input type="text" [(ngModel)]="agency.phone" class="form-control" dir="ltr">
           </div>
         </div>
 
-        <div *ngIf="activityLogs.length === 0" class="text-muted text-center py-3">
-          Aucune action enregistrée récemment.
+        <!-- Schedule Settings Card -->
+        <div class="settings-card" *ngIf="agency.schedule">
+          <h3 class="card-title-sm">Horaires Hebdomadaires</h3>
+
+          <div class="schedule-editor-rows">
+            <!-- Lundi à Vendredi -->
+            <div class="form-group mb-3">
+              <label class="form-label">Lundi - Vendredi (Matin)</label>
+              <input type="text" [(ngModel)]="agency.schedule.monday.morning" class="form-control">
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">Lundi - Vendredi (Après-midi)</label>
+              <input type="text" [(ngModel)]="agency.schedule.monday.afternoon" class="form-control">
+            </div>
+
+            <!-- Samedi -->
+            <div class="form-group mb-3">
+              <label class="form-label">Samedi (Matin)</label>
+              <input type="text" [(ngModel)]="agency.schedule.saturday.morning" class="form-control">
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </main>
+</div>
+
+<!-- MESSAGE DETAILS MODAL (Figure 10) -->
+<div *ngIf="selectedMessage" class="modal-backdrop-admin" (click)="closeMessage()">
+  <div class="modal-admin-card" (click)="$event.stopPropagation()">
+    <div class="modal-admin-header">
+      <div class="d-flex align-items-center gap-2">
+        <span class="material-symbols-outlined text-primary">mail</span>
+        <h3>Détails du Message #{{ selectedMessage.id }}</h3>
+      </div>
+      <button class="btn-close-modal" (click)="closeMessage()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-admin-body">
+      <div class="msg-meta-row">
+        <div>
+          <strong>Expéditeur :</strong> {{ selectedMessage.fullName }}
+        </div>
+        <div>
+          <strong>Email :</strong> <a [href]="'mailto:' + selectedMessage.email">{{ selectedMessage.email }}</a>
+        </div>
+        <div *ngIf="selectedMessage.phone">
+          <strong>Téléphone :</strong> <span dir="ltr">{{ selectedMessage.phone }}</span>
+        </div>
+        <div>
+          <strong>Date :</strong> {{ selectedMessage.createdAt | date:'dd/MM/yyyy HH:mm' }}
+        </div>
+      </div>
+
+      <div class="msg-subject-box">
+        <strong>Sujet :</strong> {{ selectedMessage.subject }}
+      </div>
+
+      <div class="msg-body-box">
+        <strong>Message :</strong>
+        <p>{{ selectedMessage.message }}</p>
+      </div>
+    </div>
+
+    <div class="modal-admin-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeMessage()">Fermer</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="toggleReplied(selectedMessage); closeMessage()">
+        <span class="material-symbols-outlined">done_all</span>
+        <span>{{ selectedMessage.status === 'replied' ? 'Marquer comme non traité' : 'Marquer comme répondu' }}</span>
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="deleteMessage(selectedMessage.id); closeMessage()">
+        <span class="material-symbols-outlined">delete</span>
+        <span>Supprimer</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE ADD/EDIT MODAL -->
+<div *ngIf="isServiceModalOpen" class="modal-backdrop-admin" (click)="closeServiceModal()">
+  <div class="modal-admin-card modal-lg" (click)="$event.stopPropagation()">
+    <div class="modal-admin-header">
+      <h3>{{ isEditingService ? 'Modifier le Service' : 'Ajouter un Nouveau Service' }}</h3>
+      <button class="btn-close-modal" (click)="closeServiceModal()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-admin-body">
+      <div class="grid-2 form-row mb-3">
+        <div class="form-group">
+          <label class="form-label">Titre du Service (Français) *</label>
+          <input type="text" [(ngModel)]="serviceForm.titleFr" class="form-control" placeholder="Ex: Colis Express">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Titre du Service (Arabe)</label>
+          <input type="text" [(ngModel)]="serviceForm.titleAr" class="form-control" placeholder="العنوان بالعربية" dir="rtl">
+        </div>
+      </div>
+
+      <div class="grid-2 form-row mb-3">
+        <div class="form-group">
+          <label class="form-label">Catégorie</label>
+          <select [(ngModel)]="serviceForm.categoryId" class="form-control">
+            <option value="courrier-colis">Services Postaux (courrier-colis)</option>
+            <option value="mandats-transferts">Mandats & Transferts</option>
+            <option value="cartes-edinar">Cartes e-DINAR & Monétique</option>
+            <option value="factures">Paiement de Factures</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Délai estimé</label>
+          <input type="text" [(ngModel)]="serviceForm.deliveryTime" class="form-control" placeholder="Ex: 24h - 48h">
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="form-label">Description / Résumé (Français)</label>
+        <textarea rows="3" [(ngModel)]="serviceForm.summaryFr" class="form-control" placeholder="Présentation succincte du service"></textarea>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="form-label">Pièces & Documents requis (une ligne par document)</label>
+        <textarea rows="2" [(ngModel)]="serviceForm.requirements" class="form-control" placeholder="Carte d'Identité Nationale (CIN)&#10;Justificatif de domicile"></textarea>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="form-label">Étapes au guichet (une ligne par étape)</label>
+        <textarea rows="2" [(ngModel)]="serviceForm.steps" class="form-control" placeholder="Prendre un ticket d'attente&#10;Présenter la CIN au guichet"></textarea>
+      </div>
+    </div>
+
+    <div class="modal-admin-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeServiceModal()">Annuler</button>
+      <button type="button" class="btn btn-primary" (click)="saveService()">
+        <span class="material-symbols-outlined">save</span>
+        <span>Enregistrer le Service</span>
+      </button>
     </div>
   </div>
 </div>

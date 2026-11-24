@@ -1,175 +1,275 @@
-<div class="page-container">
-  <!-- Page Header -->
-  <div class="page-header">
-    <div class="container">
-      <span class="section-tag">Bureau de Poste Sidi Ali Ben Aoun</span>
-      <h1 class="page-title">{{ 'services_title' | localized }}</h1>
-      <p class="page-subtitle">{{ 'services_subtitle' | localized }}</p>
+<!-- ==========================================================================
+     SERVICES — SABO POSTE 2.0 (Figure 5)
+     Découvrez nos Services: Services Postaux & Services Financiers
+     ========================================================================== -->
 
-      <!-- Search & Filter Controls -->
-      <div class="filter-controls-box">
-        <div class="search-input-wrapper">
+<div class="services-page">
+  <!-- Page Header -->
+  <header class="services-header">
+    <div class="container text-center">
+      <span class="badge-postal">Bureau de Poste de Sidi Ali Ben Aoun</span>
+      <h1 class="page-title">{{ 'services_main_title' | localized }}</h1>
+      <p class="page-subtitle">{{ 'services_main_subtitle' | localized }}</p>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-input-box">
           <span class="material-symbols-outlined search-icon">search</span>
           <input
             type="text"
             [(ngModel)]="searchQuery"
-            placeholder="Rechercher une prestation (nom, mot-clé, procédure...)"
-            class="service-search-input">
-          <button *ngIf="searchQuery" (click)="searchQuery = ''" class="clear-btn">
+            [placeholder]="'services_search_placeholder' | localized"
+            class="search-input">
+          <button *ngIf="searchQuery" (click)="searchQuery = ''" class="clear-search-btn">
             <span class="material-symbols-outlined">close</span>
           </button>
         </div>
       </div>
     </div>
-  </div>
+  </header>
 
-  <div class="container services-main">
-    <!-- Category Filter Tabs -->
-    <div class="category-tabs">
+  <div class="container main-content">
+    <!-- Filter Tabs -->
+    <div class="category-tabs-bar">
       <button
-        class="tab-btn"
+        class="cat-tab-btn"
         [class.active]="selectedCategory === 'all'"
         (click)="selectCategory('all')">
         <span class="material-symbols-outlined">apps</span>
-        <span>{{ 'cat_all' | localized }}</span>
-        <span class="count-badge">{{ services.length }}</span>
+        <span>Tous les services</span>
+        <span class="badge-count">{{ services.length }}</span>
       </button>
 
       <button
-        *ngFor="let cat of categories"
-        class="tab-btn"
-        [class.active]="selectedCategory === cat.id"
-        (click)="selectCategory(cat.id)">
-        <span class="material-symbols-outlined">{{ cat.icon }}</span>
-        <span>{{ cat.name | localized }}</span>
+        class="cat-tab-btn"
+        [class.active]="selectedCategory === 'courrier-colis'"
+        (click)="selectCategory('courrier-colis')">
+        <span class="material-symbols-outlined">markunread_mailbox</span>
+        <span>{{ 'services_postaux_heading' | localized }}</span>
+      </button>
+
+      <button
+        class="cat-tab-btn"
+        [class.active]="selectedCategory !== 'all' && selectedCategory !== 'courrier-colis'"
+        (click)="selectCategory('mandats-transferts')">
+        <span class="material-symbols-outlined">payments</span>
+        <span>{{ 'services_financiers_heading' | localized }}</span>
       </button>
     </div>
 
     <!-- Loading State -->
-    <div *ngIf="loading" class="loading-state">
+    <div *ngIf="loading" class="state-loading">
       <div class="spinner"></div>
-      <p>Chargement des services postaux...</p>
+      <p>Chargement des services...</p>
     </div>
 
-    <!-- Empty State -->
-    <div *ngIf="!loading && filteredServices.length === 0" class="empty-state card">
+    <!-- Empty Search State -->
+    <div *ngIf="!loading && filteredServices.length === 0" class="state-empty">
       <span class="material-symbols-outlined empty-icon">search_off</span>
       <h3>Aucun service trouvé</h3>
-      <p>Aucune prestation ne correspond à vos critères de recherche. Essayez d'autres mots-clés ou réinitialisez les filtres.</p>
-      <button class="btn btn-secondary" (click)="selectedCategory = 'all'; searchQuery = ''">
-        Réinitialiser la recherche
+      <p>Aucune prestation ne correspond à votre recherche. Veuillez réinitialiser les critères.</p>
+      <button class="btn btn-primary" (click)="selectedCategory = 'all'; searchQuery = ''">
+        Afficher tous les services
       </button>
     </div>
 
-    <!-- Services Grid -->
-    <div *ngIf="!loading && filteredServices.length > 0" class="grid-3 services-grid">
-      <div *ngFor="let service of filteredServices" class="service-card">
-        <div class="service-card-top">
-          <span class="badge badge-gold" *ngIf="service.isPopular">
-            <span class="material-symbols-outlined">star</span> {{ 'service_popular' | localized }}
-          </span>
-          <span class="badge badge-primary">
-            <span class="material-symbols-outlined">schedule</span> {{ service.deliveryTime | localized }}
-          </span>
+    <!-- 1. GROUPED VIEW (When no specific sub-filter or all) -->
+    <div *ngIf="!loading && filteredServices.length > 0 && selectedCategory === 'all' && !searchQuery">
+      <!-- Section A: Services Postaux (Figure 5) -->
+      <section class="services-group-section">
+        <div class="group-header">
+          <div class="group-title-box">
+            <div class="group-icon-circle postal">
+              <span class="material-symbols-outlined">markunread_mailbox</span>
+            </div>
+            <div>
+              <h2 class="group-heading">{{ 'services_postaux_heading' | localized }}</h2>
+              <p class="group-desc">Courrier ordinaire, express, recommandés, colis postaux et télégrammes</p>
+            </div>
+          </div>
         </div>
 
-        <div class="service-icon-box">
-          <span class="material-symbols-outlined s-icon">{{ service.icon }}</span>
+        <div class="services-cards-grid">
+          <div *ngFor="let s of postalServices" class="service-box-card">
+            <div class="card-icon-area">
+              <span class="material-symbols-outlined card-main-icon">{{ s.icon }}</span>
+              <span class="card-time-badge">
+                <span class="material-symbols-outlined">timer</span>
+                <span>{{ s.deliveryTime | localized }}</span>
+              </span>
+            </div>
+
+            <h3 class="card-title">{{ s.title | localized }}</h3>
+            <p class="card-summary">{{ s.summary | localized }}</p>
+
+            <div class="card-req-hint">
+              <strong>Pièces requises :</strong>
+              <ul>
+                <li *ngFor="let r of (s.requirements | localized).slice(0, 2)">
+                  <span class="material-symbols-outlined">check</span>
+                  <span>{{ r }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-btn-area">
+              <button (click)="openServiceDetail(s)" class="btn btn-outline btn-block">
+                <span>{{ 'services_view_details' | localized }}</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section B: Services Financiers (Figure 5) -->
+      <section class="services-group-section mt-5">
+        <div class="group-header">
+          <div class="group-title-box">
+            <div class="group-icon-circle finance">
+              <span class="material-symbols-outlined">payments</span>
+            </div>
+            <div>
+              <h2 class="group-heading">{{ 'services_financiers_heading' | localized }}</h2>
+              <p class="group-desc">Mandats électroniques, cartes e-DINAR, factures STEG/SONEDE et crédits</p>
+            </div>
+          </div>
         </div>
 
-        <h3 class="service-title">{{ service.title | localized }}</h3>
-        <p class="service-summary">{{ service.summary | localized }}</p>
+        <div class="services-cards-grid">
+          <div *ngFor="let s of financialServices" class="service-box-card">
+            <div class="card-icon-area">
+              <span class="material-symbols-outlined card-main-icon">{{ s.icon }}</span>
+              <span class="card-time-badge">
+                <span class="material-symbols-outlined">timer</span>
+                <span>{{ s.deliveryTime | localized }}</span>
+              </span>
+            </div>
 
-        <!-- Requirements Preview -->
-        <div class="req-preview">
-          <span class="req-title">Documents essentiels :</span>
-          <ul>
-            <li *ngFor="let req of (service.requirements | localized).slice(0, 2)">
-              <span class="material-symbols-outlined r-icon">check</span>
-              <span>{{ req }}</span>
-            </li>
-          </ul>
+            <h3 class="card-title">{{ s.title | localized }}</h3>
+            <p class="card-summary">{{ s.summary | localized }}</p>
+
+            <div class="card-req-hint">
+              <strong>Pièces requises :</strong>
+              <ul>
+                <li *ngFor="let r of (s.requirements | localized).slice(0, 2)">
+                  <span class="material-symbols-outlined">check</span>
+                  <span>{{ r }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-btn-area">
+              <button (click)="openServiceDetail(s)" class="btn btn-primary btn-block">
+                <span>{{ 'services_view_details' | localized }}</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+          </div>
         </div>
+      </section>
+    </div>
 
-        <div class="service-card-bottom">
-          <button (click)="openServiceDetail(service)" class="btn btn-primary btn-block">
-            <span>{{ 'service_btn_details' | localized }}</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
-          </button>
+    <!-- 2. FILTERED / SEARCH VIEW -->
+    <div *ngIf="!loading && filteredServices.length > 0 && (selectedCategory !== 'all' || searchQuery)">
+      <div class="services-cards-grid">
+        <div *ngFor="let s of filteredServices" class="service-box-card">
+          <div class="card-icon-area">
+            <span class="material-symbols-outlined card-main-icon">{{ s.icon }}</span>
+            <span class="card-time-badge">
+              <span class="material-symbols-outlined">timer</span>
+              <span>{{ s.deliveryTime | localized }}</span>
+            </span>
+          </div>
+
+          <h3 class="card-title">{{ s.title | localized }}</h3>
+          <p class="card-summary">{{ s.summary | localized }}</p>
+
+          <div class="card-req-hint">
+            <strong>Pièces requises :</strong>
+            <ul>
+              <li *ngFor="let r of (s.requirements | localized).slice(0, 2)">
+                <span class="material-symbols-outlined">check</span>
+                <span>{{ r }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-btn-area">
+            <button (click)="openServiceDetail(s)" class="btn btn-primary btn-block">
+              <span>{{ 'services_view_details' | localized }}</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SERVICE DETAIL MODAL -->
-<div *ngIf="selectedService" class="modal-backdrop" (click)="closeServiceDetail()">
-  <div class="modal-dialog" (click)="$event.stopPropagation()">
-    <div class="modal-header">
-      <div class="modal-title-box">
-        <span class="material-symbols-outlined modal-head-icon">{{ selectedService.icon }}</span>
+<!-- SERVICE DETAIL MODAL (Figure 5) -->
+<div *ngIf="selectedService" class="modal-overlay" (click)="closeServiceDetail()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="modal-card-header">
+      <div class="modal-title-row">
+        <div class="modal-icon-badge">
+          <span class="material-symbols-outlined">{{ selectedService.icon }}</span>
+        </div>
         <div>
-          <h3 class="modal-title">{{ selectedService.title | localized }}</h3>
-          <span class="badge badge-gold" *ngIf="selectedService.isPopular">Service Prioritaire</span>
+          <h3 class="modal-service-title">{{ selectedService.title | localized }}</h3>
+          <span class="modal-time-tag">
+            <span class="material-symbols-outlined">timer</span>
+            <span>{{ 'services_modal_delay' | localized }} {{ selectedService.deliveryTime | localized }}</span>
+          </span>
         </div>
       </div>
-      <button class="modal-close" (click)="closeServiceDetail()">
+      <button class="modal-x-btn" (click)="closeServiceDetail()">
         <span class="material-symbols-outlined">close</span>
       </button>
     </div>
 
-    <div class="modal-body">
-      <div class="m-summary-callout">
-        <p>{{ selectedService.description | localized }}</p>
-      </div>
+    <!-- Modal Content -->
+    <div class="modal-card-body">
+      <p class="modal-full-desc">{{ selectedService.description | localized }}</p>
 
-      <!-- Requirements Section -->
-      <div class="modal-section">
-        <h4>
-          <span class="material-symbols-outlined icon-sec">assignment</span>
-          <span>{{ 'service_requirements' | localized }}</span>
+      <!-- Requirements (Pièces requises) -->
+      <div class="modal-section-block">
+        <h4 class="modal-section-title">
+          <span class="material-symbols-outlined text-primary">fact_check</span>
+          <span>{{ 'services_modal_reqs' | localized }}</span>
         </h4>
-        <ul class="modal-check-list">
+        <ul class="modal-bullet-list">
           <li *ngFor="let req of (selectedService.requirements | localized)">
-            <span class="material-symbols-outlined c-green">check_circle</span>
+            <span class="material-symbols-outlined check-mark">check_circle</span>
             <span>{{ req }}</span>
           </li>
         </ul>
       </div>
 
-      <!-- Steps Section -->
-      <div class="modal-section">
-        <h4>
-          <span class="material-symbols-outlined icon-sec">checklist</span>
-          <span>{{ 'service_steps' | localized }}</span>
+      <!-- Counter Steps (Étapes au guichet) -->
+      <div class="modal-section-block">
+        <h4 class="modal-section-title">
+          <span class="material-symbols-outlined text-primary">format_list_numbered</span>
+          <span>{{ 'services_modal_steps' | localized }}</span>
         </h4>
-        <div class="steps-timeline">
-          <div *ngFor="let step of (selectedService.steps | localized); let idx = index" class="timeline-step">
-            <div class="step-badge">{{ idx + 1 }}</div>
-            <div class="step-content">
-              <p>{{ step }}</p>
-            </div>
+        <div class="modal-numbered-steps">
+          <div *ngFor="let step of (selectedService.steps | localized); let i = index" class="step-row">
+            <div class="step-bubble">{{ i + 1 }}</div>
+            <div class="step-text">{{ step }}</div>
           </div>
-        </div>
-      </div>
-
-      <!-- Delivery / Delay Info -->
-      <div class="delivery-highlight">
-        <span class="material-symbols-outlined">timer</span>
-        <div>
-          <strong>{{ 'service_delivery' | localized }}</strong>
-          <p>{{ selectedService.deliveryTime | localized }}</p>
         </div>
       </div>
     </div>
 
-    <div class="modal-footer">
+    <!-- Modal Footer -->
+    <div class="modal-card-footer">
       <button class="btn btn-secondary" (click)="closeServiceDetail()">
-        {{ 'service_modal_close' | localized }}
+        {{ 'services_modal_close' | localized }}
       </button>
       <a routerLink="/contact" (click)="closeServiceDetail()" class="btn btn-primary">
-        <span class="material-symbols-outlined">mail</span>
-        <span>Poser une question au guichet</span>
+        <span class="material-symbols-outlined">contact_support</span>
+        <span>Poser une question au bureau</span>
       </a>
     </div>
   </div>
