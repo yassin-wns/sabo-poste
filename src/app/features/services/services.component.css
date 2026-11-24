@@ -231,7 +231,7 @@
 }
 
 .card-main-icon {
-  font-size: 2.2rem;
+  font-size: 1.85rem !important;
   color: var(--primary-blue);
   background-color: var(--primary-light);
   width: 48px;
@@ -240,6 +240,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  text-transform: none !important;
+  user-select: none;
+  flex-shrink: 0;
 }
 
 .card-time-badge {

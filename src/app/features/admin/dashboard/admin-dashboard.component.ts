@@ -271,4 +271,9 @@ export class AdminDashboardComponent implements OnInit {
     this.notify.info('Vous êtes déconnecté.');
     this.router.navigate(['/login']);
   }
+
+  public formatIcon(icon: string | undefined): string {
+    if (!icon) return 'local_post_office';
+    return icon.replace(/-/g, '_');
+  }
 }

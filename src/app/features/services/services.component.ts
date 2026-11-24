@@ -96,4 +96,9 @@ export class ServicesComponent implements OnInit {
   public closeServiceDetail(): void {
     this.selectedService = null;
   }
+
+  public formatIcon(icon: string | undefined): string {
+    if (!icon) return 'local_post_office';
+    return icon.replace(/-/g, '_');
+  }
 }

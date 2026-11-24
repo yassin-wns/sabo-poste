@@ -27,7 +27,7 @@
         "ar": "الحوالة الإلكترونية، الحوالات الفورية، الحوالات العادية والتحويلات المالية السريعة.",
         "en": "Web Money Orders, instant electronic transfers, ordinary money orders."
       },
-      "icon": "currency-exchange",
+      "icon": "currency_exchange",
       "count": 3
     },
     {
@@ -42,7 +42,7 @@
         "ar": "البطاقات مسبقة الدفع: دينار سمارت، دينار للمحترفين، دينار الشباب للطلبة والتلاميذ.",
         "en": "Prepaid electronic cards: e-DINAR SMART, PRO, and Jeune for students and youth."
       },
-      "icon": "credit-card",
+      "icon": "credit_card",
       "count": 4
     },
     {
@@ -57,7 +57,7 @@
         "ar": "استخلاص فواتير الماء (الصوناد)، الكهرباء والغاز (الستايغ)، الاتصالات والرسوم.",
         "en": "Settlement of utility bills: water (SONEDE), electricity (STEG), telecoms and public fees."
       },
-      "icon": "receipt-long",
+      "icon": "receipt_long",
       "count": 3
     },
     {
@@ -156,7 +156,7 @@
         "ar": "تضمن خدمة البريد السريع التوصيل العاجل لوثائقكم الهامة وطرودكم، مع إمكانية التتبع الفوري عبر الإنترنت وإشعار بالوصول والتسليم باليد.",
         "en": "Rapid-Poste (CPX) guarantees urgent delivery of vital documents and packages with full tracking, proof of deposit, and delivery confirmation."
       },
-      "icon": "local-shipping",
+      "icon": "local_shipping",
       "requirements": {
         "fr": [
           "Emballage sécurisé et adapté",
@@ -217,7 +217,7 @@
         "ar": "إرسال اقتصادي ومضمون لطرودكم وبضائعكم مع خيارات التأمين، الإعلام بالبلوغ، والتسليم الآمن.",
         "en": "Economical transport for parcels, with options for insurance, return receipts, and signature delivery."
       },
-      "icon": "inventory-2",
+      "icon": "inventory_2",
       "requirements": {
         "fr": [
           "Pièce d'identité de l'expéditeur",
@@ -278,7 +278,7 @@
         "ar": "تحافظ البرقية البريدية على قيمتها الإثباتية والقانونية في توجيه الاستدعاءات الرسمية والمناسبات الهامة والمستعجلة.",
         "en": "Telegrams preserve full legal proof for official summons, competitions, and urgent family announcements."
       },
-      "icon": "mark-chat-unread",
+      "icon": "mark_chat_unread",
       "requirements": {
         "fr": [
           "Texte du message clair",
@@ -400,7 +400,7 @@
         "ar": "مناسبة للوفاء بالالتزامات الرسمية، النفقة، والتحويلات التي لا تتطلب سحباً فورياً عبر الهاتف.",
         "en": "Ideal for court settlements, alimony payments, and non-instant domestic transfers."
       },
-      "icon": "price-change",
+      "icon": "price_change",
       "requirements": {
         "fr": [
           "CIN valide",
@@ -461,7 +461,7 @@
         "ar": "تعتبر بطاقة e-DINAR SMART بطاقة مسبقة الدفع قابلة للشحن، تتيح سحب الأموال من جميع الموزعات الآلية للأوراق المالية (DAB)، وخلاص المشتريات لدى التجار، والدفع عبر الإنترنت، ومتابعة الرصيد في الحين عبر تطبيق D17.",
         "en": "A rechargeable prepaid card allowing ATM cash withdrawals, in-store payments, internet transactions, and instant balance monitoring via D17."
       },
-      "icon": "credit-card",
+      "icon": "credit_card",
       "requirements": {
         "fr": [
           "Copie de la CIN originale",
@@ -583,7 +583,7 @@
         "ar": "تمكن المحترفين من استخلاص مستحقاتهم من الحرفاء، وخلاص المزودين، ومتابعة المعاملات التجارية والاستفادة من الخدمات الموجهة للشركات.",
         "en": "Enables business owners to collect customer payments, settle supplier invoices, track cashflow, and access corporate postal services."
       },
-      "icon": "business-center",
+      "icon": "business_center",
       "requirements": {
         "fr": [
           "Extrait du Registre National des Entreprises (RNE) / Patente",
@@ -763,7 +763,7 @@
         "ar": "تكامل نقدي رسمي يتيح لمستخدمي منصات صب فلوس، ديجيكارد، موبي تمكين، موبي تسهيل، فارماسي وفورايفر شحن حساباتهم وتسوية معاملاتهم عبر حساباتهم البريدية.",
         "en": "Monetary integration enabling users of Sobflous, DigiCard, Mobi Tamkeen, and partner platforms to top up accounts and settle payments directly."
       },
-      "icon": "account-balance-wallet",
+      "icon": "account_balance_wallet",
       "requirements": {
         "fr": [
           "Identifiant compte partenaire",
@@ -1225,6 +1225,16 @@
       "status": "replied",
       "createdAt": "2026-11-24T20:39:15.659Z",
       "id": 1
+    },
+    {
+      "fullName": "yassinwannassi",
+      "email": "yassinlbreuu7@gmail.com",
+      "category": "D17 & Portefeuille Mobile",
+      "subject": "aaaaaaaaaa",
+      "message": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "pending",
+      "createdAt": "2026-11-24T20:47:53.077Z",
+      "id": 2
     }
   ],
   "users": [
